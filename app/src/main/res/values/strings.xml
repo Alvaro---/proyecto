@@ -5,4 +5,16 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    //***************Menu**************************
+
+    //Letras
+    <string name="lblBienvenido">Hola </string>
+    <string name="lblQueDeseaHacer">¿Que quieres hacer?</string>
+
+    //Botones
+    <string name="btnActividades">Actividades</string>
+    <string name="btnPuntuaciones">Puntuaciones</string>
+    <string name="btnNuevoNombreUsuario">Cambiar su Nombre</string>
+    <string name="btnAyuda">Ayuda</string>
+
 </resources>
