@@ -19,7 +19,6 @@ public class MainActivity extends Activity {
 
     String bienvenido;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
