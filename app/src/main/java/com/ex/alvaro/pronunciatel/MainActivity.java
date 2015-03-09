@@ -36,7 +36,6 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
 
     //Frase a leer cuando ingresa un nombre
     String leer1="Hola";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +68,7 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
                     //El label que s leera cambia por la pregunta del nombre
                     leer1="Hola, ¿Cual es tu nombre?";
                     lblBienvenido.callOnClick();
+                    //lamar a ventana para introducir texto
                 }
             }, 5000);
 
