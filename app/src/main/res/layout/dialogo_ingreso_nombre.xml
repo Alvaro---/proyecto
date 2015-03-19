@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/abc_search_url_text_normal">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lblIngreseSuNombre"
+        android:textSize="@dimen/tamLabelsTitulo"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margenSuperior"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/btnIngresoNombre"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Me llamo ..."
+        android:gravity="center"
+        android:textSize="@dimen/tamLabelsTitulo"
+        android:layout_marginTop="@dimen/margenTituloSubtitulo"/>
+
+
+</LinearLayout>

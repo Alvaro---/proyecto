@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/lblBienvenido"
         android:textStyle="bold"
-        android:textSize="30dp"
+        android:textSize="@dimen/tamLabelsTitulo"
         android:gravity="center_horizontal"
         android:layout_marginTop="@dimen/margenSuperior"
         android:id="@+id/lblBienvenida"/>
@@ -22,7 +22,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/lblQueDeseaHacer"
-        android:textSize="25dp"
+        android:textSize="@dimen/tamLabelsSubtitulo"
         android:gravity="center_horizontal"
         android:layout_marginBottom="100dp"
         android:layout_marginTop="@dimen/margenTituloSubtitulo"

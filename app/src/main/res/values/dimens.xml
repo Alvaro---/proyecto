@@ -10,5 +10,8 @@
     <dimen name="margenInfButon">5dp</dimen>
     <dimen name="margenSupButon">5dp</dimen>
 
+    <dimen name="tamLabelsTitulo">30dp</dimen>
+    <dimen name="tamLabelsSubtitulo">25dp</dimen>
+
 
 </resources>

@@ -7,11 +7,13 @@
 
     //***************Menu**************************
 
-    //Letras
+    //LABELS
     <string name="lblBienvenido">Hola </string>
     <string name="lblQueDeseaHacer">¿Que quieres hacer?</string>
 
-    //Botones
+    <string name="lblIngreseSuNombre">Pulse aqui y pronuncia tu nombre</string>
+
+    //BOTONES
     <string name="btnActividades">Actividades</string>
     <string name="btnPuntuaciones">Puntuaciones</string>
     <string name="btnNuevoNombreUsuario">Cambiar su Nombre</string>

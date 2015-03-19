@@ -70,10 +70,10 @@ public class menuPrincipal extends Activity implements TextToSpeech.OnInitListen
                     lblBienvenido.callOnClick();
                     //lamar a ventana para introducir texto
                 }
-            }, 5000);
+            }, 3000);
 
             //Ingresar Nomber de usuario
-            //abrirDialogoIngresoNombre();
+            abrirDialogoIngresoNombre();
 
 
         }else {
@@ -91,6 +91,27 @@ public class menuPrincipal extends Activity implements TextToSpeech.OnInitListen
         });
     }
 
+    public void abrirDialogoIngresoNombre() {
+        final Dialog dialogIngreso = new Dialog(this);
+        dialogIngreso.setTitle("Ingresa tu nombre");
+        dialogIngreso.setContentView(R.layout.dialogo_ingreso_nombre);
+
+        Button btnIngresoNombre =(Button)dialogIngreso.findViewById(R.id.btnIngresoNombre);
+        btnIngresoNombre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(,"HOLA...",Toast.LENGTH_LONG).show();
+                dialogIngreso.dismiss();
+            }
+        });
+
+        dialogIngreso.show();
+    }
+
+
+    /***********************ELEMENTOS DE INTERFAZ ***************************************
+     * ******************************************************************************************
+     *******************************************************************/
 
 
     private void cargarElementosInterfaz() {
@@ -102,6 +123,11 @@ public class menuPrincipal extends Activity implements TextToSpeech.OnInitListen
         //Labels - TextView
         lblBienvenido=(TextView)findViewById(R.id.lblBienvenida);
     }
+
+
+    /**************   METODOS TTS    ******************************************************************
+     ********************************************************************************************
+     **************************************************************************************************/
 
     private void speak(String leer) {
         myTTS.speak(leer, TextToSpeech.QUEUE_FLUSH, null);
