@@ -4,18 +4,20 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.ex.alvaro.pronunciatel.menuPrincipal;
+
 import Coneccion.Conexion;
 import Repos.repoUsuario;
 
 /**
  * Created by Alvaro on 04/03/2015.
  */
-public class sqliteUsuario extends repoUsuario {
+public class sqliteUsuario implements repoUsuario {
     @Override
-    public String cargarUsuario(Context con) {
+    public String cargarUsuario() {
 
-        //Obtiene la instancia de la conexcion
-        Conexion conex=Conexion.getInstance(con);
+        //Obtiene la instancia de la conexcion, llamando al conexto del menu principal
+        Conexion conex=Conexion.getInstance(menuPrincipal.con);
 
         //Variable para almacenar el nobmre de usuario
         String nombre="";

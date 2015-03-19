@@ -10,13 +10,11 @@ import SQLite_repos.sqliteUsuario;
  */
 public class Usuario {
     String nombre;
-    Context con;
 
     repoUsuario repository=new sqliteUsuario();
 
-    public Usuario(String nombre, Context con) {
+    public Usuario(String nombre) {
         this.nombre = nombre;
-        this.con=con;
     }
 
     public String getNombre() {
@@ -28,6 +26,6 @@ public class Usuario {
     }
 
     public void cargarUsuario (){
-        this.nombre=repository.cargarUsuario(con);
+        this.nombre=repository.cargarUsuario();
     }
 }

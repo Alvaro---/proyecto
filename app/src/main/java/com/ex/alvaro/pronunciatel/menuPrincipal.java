@@ -1,16 +1,12 @@
 package com.ex.alvaro.pronunciatel;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.speech.tts.TextToSpeech;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,8 +17,10 @@ import java.util.Locale;
 import Clases.Usuario;
 
 
-public class MainActivity extends Activity implements TextToSpeech.OnInitListener{
+public class menuPrincipal extends Activity implements TextToSpeech.OnInitListener{
 
+    //Context para llamar en cualquier clase
+    public static Context con;
     //Elementos de la pantalla
     Button btnActividades, btnPuntuacion, btnAyuda, btnUsuario;
     TextView lblBienvenido;
@@ -39,8 +37,11 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.layout_menu);
         cargarElementosInterfaz();
+
+        //definir context que sera usado por cualquier clase
+        con=getApplicationContext();
 
         //Inicia intent de habla
         Intent checkTTSIntent=new Intent();
@@ -51,15 +52,14 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
         bienvenido=lblBienvenido.getText().toString();
 
         //Crea un usuario para cargar los valores existentes
-        Usuario usu=new Usuario("",getApplicationContext());
+        Usuario usu=new Usuario("");
         usu.cargarUsuario();
 
         //Verifica nombre vacio
         if (usu.getNombre().equals("")){
 
-            /* El handler sirve para esperar unos segundos antes de la llamada al TTS. El TTS no puede iniciarse con la aplicacion.
-            Debe llamarse una vez que la aplicacion ya esta iniciada, como con una accion o alguna forma similar.
-            En este caso, la accion no se puede llamar al iniciarse la aplicacion, sino cuando esta ya inicio.
+            /* El handler sirve para esperar unos segundos antes de la llamada al TTS.
+            El TTS no puede iniciarse con la aplicacion. Debe llamarse una vez que la aplicacion ya esta iniciada.
              */
             Handler espera =new Handler();
             espera.postDelayed(new Runnable() {
@@ -73,13 +73,14 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
             }, 5000);
 
             //Ingresar Nomber de usuario
+            //abrirDialogoIngresoNombre();
+
 
         }else {
             //Continuar al menu
             lblBienvenido.setText(bienvenido+" "+usu.getNombre());
             leer1=lblBienvenido.getText().toString();
         }
-
 
         //ACCIONES DE ELEMENTOS
         lblBienvenido.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +90,8 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
             }
         });
     }
+
+
 
     private void cargarElementosInterfaz() {
         //Botones
@@ -102,10 +105,14 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
 
     private void speak(String leer) {
         myTTS.speak(leer, TextToSpeech.QUEUE_FLUSH, null);
+        //va tercero
+        //Toast.makeText(this,"SPEAK",Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onInit(int status) {
+        //va segundo
+        //Toast.makeText(this,"INIT",Toast.LENGTH_LONG).show();
         if (status==TextToSpeech.SUCCESS){
             Locale loc = new Locale ("spa", "ESP");
             myTTS.setLanguage(loc);
@@ -115,6 +122,8 @@ public class MainActivity extends Activity implements TextToSpeech.OnInitListene
     }
 
     protected void onActivityResult (int request_code, int result_code, Intent data){
+        //va primero 2 veces
+        //Toast.makeText(this,"ACTIVITYRESULT",Toast.LENGTH_LONG).show();
         if (request_code==MY_DATA_CHECK_CODE){
             if (result_code==TextToSpeech.Engine.CHECK_VOICE_DATA_PASS){
                 myTTS=new TextToSpeech(this,this);

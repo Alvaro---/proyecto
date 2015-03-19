@@ -7,6 +7,6 @@ import Clases.Usuario;
 /**
  * Created by Alvaro on 04/03/2015.
  */
-public abstract class repoUsuario {
-    public abstract String cargarUsuario (Context con);
+public interface repoUsuario {
+    public abstract String cargarUsuario ();
 }
