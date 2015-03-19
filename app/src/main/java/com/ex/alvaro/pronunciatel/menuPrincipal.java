@@ -17,7 +17,7 @@ import java.util.Locale;
 import Clases.Usuario;
 
 
-public class menuPrincipal extends Activity implements TextToSpeech.OnInitListener{
+public class menuPrincipal extends Activity /*implements TextToSpeech.OnInitListener*/{
 
     //Context para llamar en cualquier clase
     public static Context con;
@@ -35,7 +35,7 @@ public class menuPrincipal extends Activity implements TextToSpeech.OnInitListen
     //Frase a leer cuando ingresa un nombre
     String leer1="Hola";
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_menu);
         cargarElementosInterfaz();
@@ -86,7 +86,10 @@ public class menuPrincipal extends Activity implements TextToSpeech.OnInitListen
         lblBienvenido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                speak(leer1);
+               // speak(leer1);
+                Intent service = new Intent(con, leerTTS.class);
+                service.putExtra("leeme", leer1);
+                con.startService(service);
             }
         });
     }
@@ -129,6 +132,8 @@ public class menuPrincipal extends Activity implements TextToSpeech.OnInitListen
      ********************************************************************************************
      **************************************************************************************************/
 
+    /*
+
     private void speak(String leer) {
         myTTS.speak(leer, TextToSpeech.QUEUE_FLUSH, null);
         //va tercero
@@ -160,4 +165,6 @@ public class menuPrincipal extends Activity implements TextToSpeech.OnInitListen
             }
         }
     }
+
+    */
 }
