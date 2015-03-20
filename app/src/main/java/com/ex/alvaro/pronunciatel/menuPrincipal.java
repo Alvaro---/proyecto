@@ -5,14 +5,15 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import android.speech.tts.TextToSpeech;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
-import java.util.Locale;
+import java.util.ArrayList;
 
 import Clases.Usuario;
 
@@ -25,15 +26,14 @@ public class menuPrincipal extends Activity /*implements TextToSpeech.OnInitList
     Button btnActividades, btnPuntuacion, btnAyuda, btnUsuario;
     TextView lblBienvenido;
 
-    //Para armar un sludo con el nombre
+    //Para armar un saludo con el nombre
     String bienvenido;
-
-    //Para leer palabras.
-    private TextToSpeech myTTS;
-    private int MY_DATA_CHECK_CODE=0;
 
     //Frase a leer cuando ingresa un nombre
     String leer1="Hola";
+
+    //servicio de reconocimiento de voz
+    Intent service1;
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,10 +43,8 @@ public class menuPrincipal extends Activity /*implements TextToSpeech.OnInitList
         //definir context que sera usado por cualquier clase
         con=getApplicationContext();
 
-        //Inicia intent de habla
-        Intent checkTTSIntent=new Intent();
-        checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
-        startActivityForResult(checkTTSIntent, MY_DATA_CHECK_CODE);
+        //iniciar servicio
+        service1= new Intent(con, reconocerVoz.class);
 
         //Valores iniciales
         bienvenido=lblBienvenido.getText().toString();
@@ -57,7 +55,6 @@ public class menuPrincipal extends Activity /*implements TextToSpeech.OnInitList
 
         //Verifica nombre vacio
         if (usu.getNombre().equals("")){
-
             /* El handler sirve para esperar unos segundos antes de la llamada al TTS.
             El TTS no puede iniciarse con la aplicacion. Debe llamarse una vez que la aplicacion ya esta iniciada.
              */
@@ -65,18 +62,14 @@ public class menuPrincipal extends Activity /*implements TextToSpeech.OnInitList
             espera.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    //El label que s leera cambia por la pregunta del nombre
                     leer1="Hola, ¿Cual es tu nombre?";
-                    lblBienvenido.callOnClick();
-                    //lamar a ventana para introducir texto
+                    lblBienvenido.callOnClick(); //su metodo leera un saludo.
                 }
             }, 3000);
+            abrirDialogoIngresoNombre(); //INGRESAR NOMBRE DE USUARIO
 
-            //Ingresar Nomber de usuario
-            abrirDialogoIngresoNombre();
-
-
-        }else {
+        } //SI YA EXISTE UN USUARIO
+        else {
             //Continuar al menu
             lblBienvenido.setText(bienvenido+" "+usu.getNombre());
             leer1=lblBienvenido.getText().toString();
@@ -99,16 +92,32 @@ public class menuPrincipal extends Activity /*implements TextToSpeech.OnInitList
         dialogIngreso.setTitle("Ingresa tu nombre");
         dialogIngreso.setContentView(R.layout.dialogo_ingreso_nombre);
 
-        Button btnIngresoNombre =(Button)dialogIngreso.findViewById(R.id.btnIngresoNombre);
-        btnIngresoNombre.setOnClickListener(new View.OnClickListener() {
+        ToggleButton btnIngresoNombre =(ToggleButton)dialogIngreso.findViewById(R.id.btnIngresoNombre);
+        btnIngresoNombre.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                //Toast.makeText(,"HOLA...",Toast.LENGTH_LONG).show();
-                dialogIngreso.dismiss();
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    //llamar a un service para ingvreso de nombre
+                    startService(service1);
+                    Toast.makeText(con, "toca el boton", Toast.LENGTH_SHORT).show();
+
+                    service1.putExtra("clase","menuPrincipal");
+
+                    //ArrayList <String> resultados=reconocerVoz.resultados;
+
+
+                    //dialogIngreso.dismiss();
+                }else{
+                    stopService(service1);
+                }
+
             }
         });
-
         dialogIngreso.show();
+    }
+
+    public static void resultado(){
+
     }
 
 
@@ -130,41 +139,5 @@ public class menuPrincipal extends Activity /*implements TextToSpeech.OnInitList
 
     /**************   METODOS TTS    ******************************************************************
      ********************************************************************************************
-     **************************************************************************************************/
-
-    /*
-
-    private void speak(String leer) {
-        myTTS.speak(leer, TextToSpeech.QUEUE_FLUSH, null);
-        //va tercero
-        //Toast.makeText(this,"SPEAK",Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onInit(int status) {
-        //va segundo
-        //Toast.makeText(this,"INIT",Toast.LENGTH_LONG).show();
-        if (status==TextToSpeech.SUCCESS){
-            Locale loc = new Locale ("spa", "ESP");
-            myTTS.setLanguage(loc);
-        }else if (status==TextToSpeech.ERROR){
-            Toast.makeText(this, "Error.. ", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    protected void onActivityResult (int request_code, int result_code, Intent data){
-        //va primero 2 veces
-        //Toast.makeText(this,"ACTIVITYRESULT",Toast.LENGTH_LONG).show();
-        if (request_code==MY_DATA_CHECK_CODE){
-            if (result_code==TextToSpeech.Engine.CHECK_VOICE_DATA_PASS){
-                myTTS=new TextToSpeech(this,this);
-            }else{
-                Intent installTTSIntent=new Intent();
-                installTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
-                startActivity(installTTSIntent);
-            }
-        }
-    }
-
-    */
+     *************************************************************************************************/
 }

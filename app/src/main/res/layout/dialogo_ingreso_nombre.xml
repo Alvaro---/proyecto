@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/abc_search_url_text_normal">
+    android:background="@color/abc_search_url_text_normal"
+    android:weightSum="1">
 
     <TextView
         android:layout_width="fill_parent"
@@ -14,14 +15,16 @@
         android:layout_marginTop="@dimen/margenSuperior"
         android:layout_marginBottom="10dp"/>
 
-    <Button
+    <ToggleButton
         android:id="@+id/btnIngresoNombre"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Me llamo ..."
         android:gravity="center"
         android:textSize="@dimen/tamLabelsTitulo"
-        android:layout_marginTop="@dimen/margenTituloSubtitulo"/>
+        android:layout_marginTop="@dimen/margenTituloSubtitulo"
+        android:checked="false"
+        android:layout_weight="0.04" />
 
 
 </LinearLayout>

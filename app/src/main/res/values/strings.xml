@@ -11,7 +11,7 @@
     <string name="lblBienvenido">Hola </string>
     <string name="lblQueDeseaHacer">¿Que quieres hacer?</string>
 
-    <string name="lblIngreseSuNombre">Pulse aqui y pronuncia tu nombre</string>
+    <string name="lblIngreseSuNombre">Presiona el boton e ingresa tu nombre</string>
 
     //BOTONES
     <string name="btnActividades">Actividades</string>

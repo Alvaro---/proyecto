@@ -1,14 +1,10 @@
 package com.ex.alvaro.pronunciatel;
 
-import android.app.Activity;
 import android.app.Service;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.IBinder;
 import android.speech.tts.TextToSpeech;
-import android.speech.tts.Voice;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -75,57 +71,3 @@ public class leerTTS extends Service implements TextToSpeech.OnInitListener {
         super.onDestroy();
     }
 }
-  /*
-
-
-
-
-
-    private TextToSpeech myTTS;
-    private int MY_DATA_CHECK_CODE=0;
-
-    public leerTTS (){
-
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        //Inicia intent de habla
-        Intent checkTTSIntent = new Intent();
-        checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
-    }
-
-    public void speak(String leer) {
-        myTTS.speak(leer, TextToSpeech.QUEUE_FLUSH, null);
-        //va tercero
-        //Toast.makeText(this,"SPEAK",Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onInit(int status) {
-        //va segundo
-        //Toast.makeText(this,"INIT",Toast.LENGTH_LONG).show();
-        if (status==TextToSpeech.SUCCESS){
-            Locale loc = new Locale ("spa", "ESP");
-            myTTS.setLanguage(loc);
-        }else if (status==TextToSpeech.ERROR){
-            Toast.makeText(this, "Error.. ", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    protected void onActivityResult (int request_code, int result_code, Intent data){
-        //va primero 2 veces
-        //Toast.makeText(this,"ACTIVITYRESULT",Toast.LENGTH_LONG).show();
-        if (request_code==MY_DATA_CHECK_CODE){
-            if (result_code==TextToSpeech.Engine.CHECK_VOICE_DATA_PASS){
-                myTTS=new TextToSpeech(this,this);
-            }else{
-                Intent installTTSIntent=new Intent();
-                installTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
-                startActivity(installTTSIntent);
-            }
-        }
-    }
-}
-*/
