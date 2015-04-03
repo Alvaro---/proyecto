@@ -28,4 +28,8 @@ public class Usuario {
     public void cargarUsuario (){
         this.nombre=repository.cargarUsuario();
     }
+
+    public boolean guardarNuevoUsuario() {
+        return repository.guardarUsuario(this);
+    }
 }

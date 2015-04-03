@@ -35,13 +35,11 @@ public class leerTTS extends Service implements TextToSpeech.OnInitListener {
         String leeme = intent.getExtras().getString("leeme");
         str=leeme;
         speak(str);
-        Log.v(TAG, "onStart -");
         super.onStart(intent, startId);
     }
 
     @Override
     public void onInit(int status) {
-        Log.v(TAG, "oninit");
         if (status == TextToSpeech.SUCCESS) {
             Locale loc = new Locale ("spa", "ESP");
             mTts.setLanguage(loc);
@@ -58,7 +56,6 @@ public class leerTTS extends Service implements TextToSpeech.OnInitListener {
     }
 
     private void speak(String str) {
-        Log.v(TAG, "SPEAK");
         mTts.speak(str,TextToSpeech.QUEUE_FLUSH,null);
     }
 

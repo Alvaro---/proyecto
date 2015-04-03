@@ -17,13 +17,14 @@ import java.util.ArrayList;
  */
 public class reconocerVoz extends Service implements RecognitionListener {
 
+    private String TAG="reconocer Voz";
     private SpeechRecognizer speech = null;
     private Intent recognizerIntent;
     private String LOG_TAG = "Reconocer Voz";
 
     public String a;
 
-    String texto="";
+    static String texto="";
     public static ArrayList<String> resultados=null;
 
     @Override
@@ -33,6 +34,7 @@ public class reconocerVoz extends Service implements RecognitionListener {
 
     @Override
     public void onCreate() {
+        Log.v(TAG, "onCreate");
         speech = SpeechRecognizer.createSpeechRecognizer(this);
         speech.setRecognitionListener(this);
 
@@ -49,7 +51,8 @@ public class reconocerVoz extends Service implements RecognitionListener {
 
     @Override
     public void onStart(Intent intent, int startId) {
-        a=intent.getExtras().getString("clase");
+//        a=intent.getExtras().getString("clase");
+        Log.v(TAG, "omStart");
         super.onStart(intent, startId);
     }
 
@@ -73,7 +76,7 @@ public class reconocerVoz extends Service implements RecognitionListener {
     public void onError(int errorCode) {
         String errorMessage = getErrorText(errorCode);
         Log.d(LOG_TAG, "FAILED " + errorMessage);
-        texto = errorMessage;
+        //texto = errorMessage;
     }
 
     @Override
@@ -86,7 +89,8 @@ public class reconocerVoz extends Service implements RecognitionListener {
         Log.i(LOG_TAG, "onPartialResults");
     }
 
-    @Override    public void onReadyForSpeech(Bundle arg0) {
+    @Override
+    public void onReadyForSpeech(Bundle arg0) {
         Log.i(LOG_TAG, "onReadyForSpeech");
     }
 
@@ -94,14 +98,19 @@ public class reconocerVoz extends Service implements RecognitionListener {
     public void onResults(Bundle results) {
         Log.i(LOG_TAG, "onResults");
         ArrayList<String> matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+        // Se convertira en cadena de texto para ver si es que se capto el audio mas facil.
         String text = "";
         for (String result : matches)
             text += result + "\n";
+        //Se copia el texto y el array list a las variables globales staticas
         texto=text;
         resultados=matches;
-        Toast.makeText(getApplicationContext(),"Resultados: "+texto,Toast.LENGTH_SHORT).show();
 
-        Log.d(LOG_TAG, texto);
+        //Mostrar en pantalla el resultado
+        /*
+        Toast.makeText(getApplicationContext(),"Resultados: "+texto,Toast.LENGTH_SHORT).show();
+        Log.d(LOG_TAG, texto);*/
+
     }
 
     @Override
@@ -144,5 +153,21 @@ public class reconocerVoz extends Service implements RecognitionListener {
                 break;
         }
         return message;
+    }
+
+    public static String getTexto() {
+        return texto;
+    }
+
+    public static void setTexto(String texto) {
+        reconocerVoz.texto = texto;
+    }
+
+    public static ArrayList<String> getResultados() {
+        return resultados;
+    }
+
+    public static void setResultados(ArrayList<String> resultados) {
+        reconocerVoz.resultados = resultados;
     }
 }

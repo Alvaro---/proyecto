@@ -9,4 +9,6 @@ import Clases.Usuario;
  */
 public interface repoUsuario {
     public abstract String cargarUsuario ();
+
+    public boolean guardarUsuario(Usuario u);
 }
