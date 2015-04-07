@@ -15,6 +15,8 @@
 
     <string name="lblIngresaTunombreEscrito">Escribe tu nombre en el cuadro</string>
 
+    <string name="lblSeleccionActividad">Selecciona la actividad que quieres hacer</string>
+
     //BOTONES
     <string name="btnActividades">Actividades</string>
     <string name="btnPuntuaciones">Puntuaciones</string>
@@ -23,5 +25,11 @@
 
     <string name="aceptar">Aceptar</string>
     <string name="cancelar">Cancelar</string>
+
+    //Acividades
+    <string name="actividadImagen">Adivina la imagen</string>
+    <string name="actividadPregunta">Preguntas</string>
+    <string name="actividadLetras">Repasemos las letras</string>
+    <string name="actividadPintar">Pinta</string>
 
 </resources>

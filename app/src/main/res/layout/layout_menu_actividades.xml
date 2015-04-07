@@ -3,4 +3,50 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lblSeleccionActividad"
+        android:textSize="@dimen/tamLabelsTitulo"
+        android:layout_marginTop="@dimen/margenSuperior"
+        android:layout_marginBottom="@dimen/margenTituloSubtitulo"
+        android:gravity="center"
+        android:id="@+id/lblSelectActividad"/>
+
+
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/actividadImagen"
+        android:id="@+id/btnActImagen"
+        android:layout_marginTop="@dimen/margenSupButon"
+        android:layout_marginBottom="@dimen/margenInfButon"
+        />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/actividadPregunta"
+        android:id="@+id/btnActPreguntas"
+        android:layout_marginTop="@dimen/margenSupButon"
+        android:layout_marginBottom="@dimen/margenInfButon"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/actividadLetras"
+        android:id="@+id/btnActLetras"
+        android:layout_marginTop="@dimen/margenSupButon"
+        android:layout_marginBottom="@dimen/margenInfButon"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/actividadPintar"
+        android:id="@+id/btnActPintar"
+        android:layout_marginTop="@dimen/margenSupButon"
+        android:layout_marginBottom="@dimen/margenInfButon"/>
+
+
 </LinearLayout>

@@ -140,6 +140,7 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
             public void onClick(View v) {
                 speak(ACTIVIDADES);
                 Intent intentActividades=new Intent(actMenuPrincipal.this, actMenuActividades.class );
+                startActivity(intentActividades);
             }
         });
 
@@ -190,7 +191,7 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
 
     }
 
-    public void speak(String leer1){
+    public static void speak(String leer1){
         Intent service = new Intent(con, leerTTS.class);
         service.putExtra("leeme", leer1);
         con.startService(service);
