@@ -6,12 +6,22 @@
     <dimen name="margenSuperior">20dp</dimen>
     <dimen name="margenTituloSubtitulo">20dp</dimen>
 
+
     //SEPARACION DE BOTONES
     <dimen name="margenInfButon">5dp</dimen>
     <dimen name="margenSupButon">5dp</dimen>
 
+
+    //TAM LABELS
     <dimen name="tamLabelsTitulo">30dp</dimen>
     <dimen name="tamLabelsSubtitulo">25dp</dimen>
+
+    <dimen name="largoBoton">100dp</dimen>
+    <dimen name="anchoBoton">20dp</dimen>
+
+    //EDIT-TEXT
+    <dimen name="altoEditText">50dp</dimen>
+
 
 
 </resources>

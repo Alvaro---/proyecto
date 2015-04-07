@@ -11,12 +11,17 @@
     <string name="lblBienvenido">Hola </string>
     <string name="lblQueDeseaHacer">¿Que quieres hacer?</string>
 
-    <string name="lblIngreseSuNombre">Presiona el boton e ingresa tu nombre</string>
+    <string name="lblIngreseSuNombreHablado">Presiona el boton e ingresa tu nombre</string>
+
+    <string name="lblIngresaTunombreEscrito">Escribe tu nombre en el cuadro</string>
 
     //BOTONES
     <string name="btnActividades">Actividades</string>
     <string name="btnPuntuaciones">Puntuaciones</string>
     <string name="btnNuevoNombreUsuario">Cambiar su Nombre</string>
     <string name="btnAyuda">Ayuda</string>
+
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
 
 </resources>

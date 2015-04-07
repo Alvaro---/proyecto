@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lblIngresaTunombreEscrito"
+        android:textSize="@dimen/tamLabelsTitulo"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/altoEditText"
+        android:id="@+id/txtNombreManual"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="@dimen/largoBoton"
+            android:layout_height="wrap_content"
+            android:text="@string/aceptar"
+            android:gravity="center"
+            android:id="@+id/btnAceptarNombreManual"/>
+
+        <Button
+            android:layout_width="@dimen/largoBoton"
+            android:layout_height="wrap_content"
+            android:text="@string/cancelar"
+            android:gravity="center"
+            android:id="@+id/btnCancelarNombreManual"/>
+
+    </LinearLayout>
+
+</LinearLayout>

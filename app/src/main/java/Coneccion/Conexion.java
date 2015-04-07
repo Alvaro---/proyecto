@@ -17,7 +17,7 @@ public class Conexion extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION=1;
 
     //La tabla de usuarios, contara con un nombre de usuario. Las puntuacioes se asociaran despues a un usuario, por dia.
-    private String tb1="CREATE TABLE Usuario (nombre TEXT primarykey)";
+    private String tb1="CREATE TABLE Usuario (nombre TEXT PRIMARY KEY)";
 
     //Para la instanciar la coneccion a SQLite una vez, se utilizara el patron Singleton
     public static Conexion getInstance(Context con) {

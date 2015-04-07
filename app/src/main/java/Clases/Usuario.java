@@ -2,6 +2,8 @@ package Clases;
 
 import android.content.Context;
 
+import java.util.ArrayList;
+
 import Repos.repoUsuario;
 import SQLite_repos.sqliteUsuario;
 
@@ -31,5 +33,9 @@ public class Usuario {
 
     public boolean guardarNuevoUsuario() {
         return repository.guardarUsuario(this);
+    }
+
+    public ArrayList<String> cargarTodosNombre() {
+        return repository.cargarTodos();
     }
 }
