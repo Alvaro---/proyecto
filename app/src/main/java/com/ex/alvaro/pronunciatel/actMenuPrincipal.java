@@ -110,7 +110,7 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
         }
         else {//SI YA EXISTE UN USUARIO
             //Continuar al menu
-            lblBienvenido.setText(bienvenido+" "+usuario.getNombre());
+            lblBienvenido.setText(bienvenido+" "+usuario.getNombre().toUpperCase());
             saludar(usuario.getNombre());
 
         }
@@ -253,6 +253,10 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
         nombres_reconocidos.add(NINGUNO);
 
         lista_nombres.setAdapter(new ArrayAdapter<String>(dialogSeleccion.getContext(), R.layout.word, nombres_reconocidos));
+
+        for (int i=0;i<nombres_reconocidos.size();i++){
+            nombres_reconocidos.set(i,nombres_reconocidos.get(i).toString().toUpperCase());
+        }
 
         lista_nombres.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
