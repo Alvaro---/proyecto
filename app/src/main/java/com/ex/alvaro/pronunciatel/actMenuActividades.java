@@ -13,7 +13,7 @@ import android.widget.TextView;
  */
 public class actMenuActividades extends Activity{
 
-    String IMAGEN="Vamos a jugar con unas imágenes";
+    String IMAGEN="Vamos a jugar, con unas imágenes";
     Button btnActImagenes, btnActPreguntas, btnActPintar, btnActLetras;
     TextView lblActividades;
     Handler espera=new Handler();
@@ -30,7 +30,7 @@ public class actMenuActividades extends Activity{
             public void run() {
                   actMenuPrincipal.speak(lblActividades.getText().toString());
             }
-        },3000);
+        },2000);
     }
 
 
@@ -42,6 +42,7 @@ public class actMenuActividades extends Activity{
             public void onClick(View v) {
                 actMenuPrincipal.speak(IMAGEN);
                 Intent actIagenes =new Intent(actMenuActividades.this, actImagenes.class);
+                actMenuPrincipal.speak(IMAGEN);
                 startActivity(actIagenes);
             }
         });
