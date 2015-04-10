@@ -292,7 +292,7 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
             public void run() {
                 speak(QUE_HACER);
             }
-        },1000);
+        },1500);
     }
 
     private void abrirDialogoIngresoManual(String nombre) {

@@ -1,6 +1,7 @@
 package com.ex.alvaro.pronunciatel;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -32,6 +34,7 @@ public class actImagenes extends Activity {
 
     String LOG_TAG="ACTIVIDAD IMAGENES";
     String REPETIR_PRONUNCIACION="¿Puedes intentarlo de nuevo?";
+    String CORRECTO="Correcto";
 
     ActImagenes actividadImagenes=ActImagenes.getInstanciaActImagenes(con);
 
@@ -40,7 +43,7 @@ public class actImagenes extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_imagenes);
-        con=getApplicationContext();
+        con=this;
         cargarElementosLayout();
         sReconocerVoz= new Intent(con, reconocerVoz.class);
         cargarAcionesElementosLayout();
@@ -75,6 +78,10 @@ public class actImagenes extends Activity {
         btnPronunciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final Dialog dialogoEscucha=new Dialog(con);
+                dialogoEscucha.setTitle("Escuchando...");
+                dialogoEscucha.setContentView(R.layout.dialogo_escuchando);
+
                 startService(sReconocerVoz);
                 espera.postDelayed(new Runnable() {
                     @Override
@@ -83,24 +90,45 @@ public class actImagenes extends Activity {
                         palabrasReconocidas=reconocerVoz.getResultados();
                         Log.d(LOG_TAG, text);
                         int a=0;
+                        boolean c=false;
                         if (text!=""){
                             //calificar pronunciacion
                             for (int i=0;i<palabrasReconocidas.size();i++){
-                                if (palabrasReconocidas.equals(actividadImagenes.getPalabraObjetivo())){
+                                if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo())){
+                                    Log.d(LOG_TAG, actividadImagenes.getPalabraObjetivo()+" aaaaaaaaaaaaaaaa ");
                                     a=i;
+                                    c=true;
                                 }
                             }
+                            Log.d(LOG_TAG, a+"");
+                            dialogoEscucha.dismiss();
+                            if (!c){
+                                mostrarResultado(REPETIR_PRONUNCIACION);
+                                actMenuPrincipal.speak(REPETIR_PRONUNCIACION);
+                            }else{
+                                mostrarResultado(CORRECTO);
+                                actMenuPrincipal.speak(CORRECTO+". "+actividadImagenes.getDetallePalabra());
+                            }
+                            c=false;
 
                         }
                         else {
                             actMenuPrincipal.speak(REPETIR_PRONUNCIACION);
+                            actMenuPrincipal.speak(REPETIR_PRONUNCIACION);
+                            dialogoEscucha.dismiss();
                         }
                         stopService(sReconocerVoz);
                     }
                 }, 3500);
+                dialogoEscucha.show();
 
             }
         });
+    }
+
+    private void mostrarResultado(String mostrar) {
+        Toast.makeText(con,mostrar, Toast.LENGTH_LONG).show();
+
     }
 
 }

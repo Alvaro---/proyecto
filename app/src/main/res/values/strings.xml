@@ -34,6 +34,8 @@
     <string name="actividadLetras">Repasemos las letras</string>
     <string name="actividadPintar">Pinta</string>
 
-    <string name="imagenInstruccion">Pulsa el boton y pronuncia el nombre de la imagen</string>
+    <string name="imagenInstruccion">Pulsa el botón y pronuncia el nombre de la imagen</string>
+
+    <string name="hablaAhora">Habla ahora</string>
 
 </resources>
