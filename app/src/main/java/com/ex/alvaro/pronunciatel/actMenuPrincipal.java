@@ -49,7 +49,7 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
     String SELECCIONA_NOMBRE="Cual de estoss es tu nombre?";
     String NOBMRE_MANUAL="Escribe tu nombre en el cuadro";
 
-    String NINGUNO="Ninguno de estos es mi nombre";
+    String NINGUNO="NINGUNO DE ESTOS ES MI NOMBRE";
 
     //servicio de reconocimiento de voz
     Intent sReconocerVoz;
@@ -224,6 +224,8 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
                                 dialogIngreso.dismiss();
                                 //abrir dialogo seleccion de nombre
                                 abrirDialogoSeleccionNombre();
+                                text="";
+                                nombres_reconocidos=null;
                             }
                             else {
                                 speak(REPETIR_NOMBRE);
@@ -315,6 +317,7 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
                 usuario.setNombre(nombre);
                 usuario.guardarNuevoUsuario();
                 saludar(nombre);
+                lblBienvenido.setText(bienvenido+" "+usuario.getNombre().toUpperCase());
                 dialogIngresoManual.dismiss();
 
             }

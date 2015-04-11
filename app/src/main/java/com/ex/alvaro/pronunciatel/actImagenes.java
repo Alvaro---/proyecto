@@ -38,6 +38,8 @@ public class actImagenes extends Activity {
 
     ActImagenes actividadImagenes=ActImagenes.getInstanciaActImagenes(con);
 
+    int a=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,13 +91,11 @@ public class actImagenes extends Activity {
                         String text = reconocerVoz.getTexto();
                         palabrasReconocidas=reconocerVoz.getResultados();
                         Log.d(LOG_TAG, text);
-                        int a=0;
                         boolean c=false;
                         if (text!=""){
                             //calificar pronunciacion
                             for (int i=0;i<palabrasReconocidas.size();i++){
                                 if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo())){
-                                    Log.d(LOG_TAG, actividadImagenes.getPalabraObjetivo()+" aaaaaaaaaaaaaaaa ");
                                     a=i;
                                     c=true;
                                 }
@@ -110,9 +110,7 @@ public class actImagenes extends Activity {
                                 actMenuPrincipal.speak(CORRECTO+". "+actividadImagenes.getDetallePalabra());
                             }
                             c=false;
-
-                        }
-                        else {
+                        }else {
                             actMenuPrincipal.speak(REPETIR_PRONUNCIACION);
                             actMenuPrincipal.speak(REPETIR_PRONUNCIACION);
                             dialogoEscucha.dismiss();
@@ -127,8 +125,14 @@ public class actImagenes extends Activity {
     }
 
     private void mostrarResultado(String mostrar) {
-        Toast.makeText(con,mostrar, Toast.LENGTH_LONG).show();
+        if (mostrar.equals(CORRECTO))
+            dialogoContinuar ();
+        else
+            Toast.makeText(con,mostrar, Toast.LENGTH_LONG).show();
+    }
 
+    private void dialogoContinuar() {
+        cargarImagenAleatoria();
     }
 
 }

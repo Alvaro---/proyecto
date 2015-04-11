@@ -52,7 +52,8 @@ public class reconocerVoz extends Service implements RecognitionListener {
     @Override
     public void onStart(Intent intent, int startId) {
 //        a=intent.getExtras().getString("clase");
-        Log.v(TAG, "omStart");
+        vaciarResultados();
+        Log.v(TAG, "onStart");
         super.onStart(intent, startId);
     }
 
@@ -169,5 +170,9 @@ public class reconocerVoz extends Service implements RecognitionListener {
 
     public static void setResultados(ArrayList<String> resultados) {
         reconocerVoz.resultados = resultados;
+    }
+    private void vaciarResultados(){
+        texto="";
+        resultados=null;
     }
 }
