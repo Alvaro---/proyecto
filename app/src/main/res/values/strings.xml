@@ -37,5 +37,7 @@
     <string name="imagenInstruccion">Pulsa el botón y pronuncia el nombre de la imagen</string>
 
     <string name="hablaAhora">Habla ahora</string>
+    <string name="puntos">Puntuacion: </string>
+    <string name="continuar">Continuar</string>
 
 </resources>

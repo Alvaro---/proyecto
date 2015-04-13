@@ -7,11 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -39,6 +42,7 @@ public class actImagenes extends Activity {
     ActImagenes actividadImagenes=ActImagenes.getInstanciaActImagenes(con);
 
     int a=0;
+    float act=0;
 
 
     @Override
@@ -66,6 +70,7 @@ public class actImagenes extends Activity {
         //establecer imagen
         int resId=getResources().getIdentifier(actividadImagenes.getImagen(),"drawable",getPackageName());
         imvImagen.setImageResource(resId);
+        Log.v("RECONOCER NOMBRE DE IMAGEN AL CARGARSE. ERROR DE CARGA",actividadImagenes.getImagen());
 
     }
 
@@ -95,7 +100,11 @@ public class actImagenes extends Activity {
                         if (text!=""){
                             //calificar pronunciacion
                             for (int i=0;i<palabrasReconocidas.size();i++){
-                                if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo())){
+                                if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo())||
+                                    palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo2())||
+                                    palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo3())||
+                                    palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo4())){
+
                                     a=i;
                                     c=true;
                                 }
@@ -106,8 +115,8 @@ public class actImagenes extends Activity {
                                 mostrarResultado(REPETIR_PRONUNCIACION);
                                 actMenuPrincipal.speak(REPETIR_PRONUNCIACION);
                             }else{
-                                mostrarResultado(CORRECTO);
                                 actMenuPrincipal.speak(CORRECTO+". "+actividadImagenes.getDetallePalabra());
+                                mostrarResultado(CORRECTO);
                             }
                             c=false;
                         }else {
@@ -132,7 +141,28 @@ public class actImagenes extends Activity {
     }
 
     private void dialogoContinuar() {
-        cargarImagenAleatoria();
-    }
+        Puntuacion p=new Puntuacion (a);
+        act=p.unEjercicio();
 
+
+        final Dialog dialogoContinuar=new Dialog(this);
+        dialogoContinuar.setTitle("Correcto: ");
+
+        LayoutInflater li=(LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View v = li.inflate(R.layout.dialogo_continuar, null, false);
+        dialogoContinuar.setContentView(v);
+
+        TextView lblPuntuacion=(TextView)dialogoContinuar.findViewById(R.id.lblPuntos);
+        lblPuntuacion.setText(act+" pts");
+
+        Button btnContinuar=(Button)dialogoContinuar.findViewById(R.id.btnContinuar);
+        btnContinuar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogoContinuar.dismiss();
+            }
+        });
+        cargarImagenAleatoria();
+        dialogoContinuar.show();
+    }
 }

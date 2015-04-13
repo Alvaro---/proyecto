@@ -8,7 +8,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/lblEscucha"
         android:text="@string/hablaAhora"
-        android:textSize="@dimen/tamLabelsSubtitulo"/>
+        android:textSize="@dimen/tamLabelsSubtitulo"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margenSuperior"
+        android:layout_marginBottom="@dimen/margenTituloSubtitulo" />
 
 
 </LinearLayout>

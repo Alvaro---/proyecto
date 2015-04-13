@@ -15,7 +15,7 @@ import Repos.repoActImagenes;
 public class sqliteActImagenes implements repoActImagenes {
 
 
-    private String select="select * from actimagen";
+    private String select="select Palabra, imagen, descripcion, palabra2, palabra3, palabra4 from actimagen";
     @Override
     public void cargarImagenAleatoria() {
         ActImagenes act=ActImagenes.getInstanciaActImagenes(actImagenes.con);
@@ -36,6 +36,9 @@ public class sqliteActImagenes implements repoActImagenes {
             act.setImagen(fila.getString(1));
             act.setPalabraObjetivo(fila.getString(0));
             act.setDetallePalabra(fila.getString(2));
+            act.setPalabraObjetivo2(fila.getString(3));
+            act.setPalabraObjetivo3(fila.getString(4));
+            act.setPalabraObjetivo4(fila.getString(5));
         }
     }
 }

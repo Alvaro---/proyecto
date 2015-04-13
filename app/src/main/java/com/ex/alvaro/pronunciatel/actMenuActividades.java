@@ -14,6 +14,10 @@ import android.widget.TextView;
 public class actMenuActividades extends Activity{
 
     String IMAGEN="Vamos a jugar, con unas imágenes";
+    String PREGUNTAS="¿Puedes responder estas preguntas?";
+    String LETRAS="Repasemos las letras";
+    String PINTAR="Pintemos";
+
     Button btnActImagenes, btnActPreguntas, btnActPintar, btnActLetras;
     TextView lblActividades;
     Handler espera=new Handler();
@@ -41,9 +45,36 @@ public class actMenuActividades extends Activity{
             @Override
             public void onClick(View v) {
                 actMenuPrincipal.speak(IMAGEN);
-                Intent actIagenes =new Intent(actMenuActividades.this, actImagenes.class);
-                actMenuPrincipal.speak(IMAGEN);
-                startActivity(actIagenes);
+                Intent actividad =new Intent(actMenuActividades.this, actImagenes.class);
+                //actMenuPrincipal.speak(IMAGEN);
+                startActivity(actividad);
+            }
+        });
+
+        btnActPreguntas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                actMenuPrincipal.speak(PREGUNTAS);
+                Intent acttividad =new Intent(actMenuActividades.this, actPreguntas.class);
+                startActivity(acttividad);
+            }
+        });
+
+        btnActLetras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                actMenuPrincipal.speak(LETRAS);
+                Intent actividad =new Intent(actMenuActividades.this, actLetras.class);
+                startActivity(actividad);
+            }
+        });
+
+        btnActPintar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                actMenuPrincipal.speak(PINTAR);
+                Intent actividad =new Intent(actMenuActividades.this, actPintar.class);
+                startActivity(actividad);
             }
         });
     }
