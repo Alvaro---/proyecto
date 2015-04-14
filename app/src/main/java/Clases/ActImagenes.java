@@ -35,8 +35,8 @@ public class ActImagenes extends Actividad{
     }
 
     @Override
-    public void buscarImagen() {
-        super.buscarImagen();
-        repository.cargarImagenAleatoria();
+    public void buscarAleatorio() {
+        super.buscarAleatorio();
+        repository.cargarAleatoria();
     }
 }

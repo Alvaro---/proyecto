@@ -65,12 +65,11 @@ public class actImagenes extends Activity {
     }
 
     private void cargarImagenAleatoria() {
-        actividadImagenes.buscarImagen();
+        actividadImagenes.buscarAleatorio();
 
         //establecer imagen
         int resId=getResources().getIdentifier(actividadImagenes.getImagen(),"drawable",getPackageName());
         imvImagen.setImageResource(resId);
-        Log.v("RECONOCER NOMBRE DE IMAGEN AL CARGARSE. ERROR DE CARGA",actividadImagenes.getImagen());
 
     }
 
@@ -109,7 +108,6 @@ public class actImagenes extends Activity {
                                     c=true;
                                 }
                             }
-                            Log.d(LOG_TAG, a+"");
                             dialogoEscucha.dismiss();
                             if (!c){
                                 mostrarResultado(REPETIR_PRONUNCIACION);
@@ -120,7 +118,6 @@ public class actImagenes extends Activity {
                             }
                             c=false;
                         }else {
-                            actMenuPrincipal.speak(REPETIR_PRONUNCIACION);
                             actMenuPrincipal.speak(REPETIR_PRONUNCIACION);
                             dialogoEscucha.dismiss();
                         }

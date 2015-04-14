@@ -17,7 +17,7 @@ public class sqliteActImagenes implements repoActImagenes {
 
     private String select="select Palabra, imagen, descripcion, palabra2, palabra3, palabra4 from actimagen";
     @Override
-    public void cargarImagenAleatoria() {
+    public void cargarAleatoria() {
         ActImagenes act=ActImagenes.getInstanciaActImagenes(actImagenes.con);
 
         Conexion conex=Conexion.getInstance(actImagenes.con);

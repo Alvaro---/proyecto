@@ -54,7 +54,7 @@ public class Actividad {
         this.palabraObjetivo4 = palabraObjetivo4;
     }
 
-    public void buscarImagen(){
+    public void buscarAleatorio(){
 
     };
 }

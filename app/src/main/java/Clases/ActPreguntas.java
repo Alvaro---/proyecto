@@ -10,14 +10,14 @@ import SQLite_repos.sqliteActPreguntas;
  */
 public class ActPreguntas extends Actividad{
 
-    String pregunta=";";
+    String pregunta="";
 
     repoActPreguntas repository=new sqliteActPreguntas();
 
     //SINGLETON
     private static ActPreguntas instancioActPreguntas=null;
 
-    public static ActPreguntas getInstanciaActImagenes(Context con){
+    public static ActPreguntas getInstanciaActPreguntas(Context con){
         if (instancioActPreguntas==null){
             instancioActPreguntas=new ActPreguntas();
         }
@@ -36,7 +36,9 @@ public class ActPreguntas extends Actividad{
     }
 
     @Override
-    public void buscarImagen() {
-        super.buscarImagen();
+    public void buscarAleatorio() {
+        super.buscarAleatorio();
+        repository.cargarPregunta();
     }
+
 }

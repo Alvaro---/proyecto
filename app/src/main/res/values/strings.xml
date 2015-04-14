@@ -40,4 +40,9 @@
     <string name="puntos">Puntuacion: </string>
     <string name="continuar">Continuar</string>
 
+    <string name="actividadPreguntas">Preguntas</string>
+    <string name="instruccionPreguntas">Pulsa el botón cuando sepas la respuesta</string>
+    <string name="preguntasCorrectas">Preguntas correctas: </string>
+
+
 </resources>

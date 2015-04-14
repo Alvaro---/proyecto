@@ -3,4 +3,75 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tamLabelsTitulo"
+        android:text="@string/actividadPreguntas"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margenSuperior"
+        android:layout_marginBottom="@dimen/margenTituloSubtitulo"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/tamLabelsSubtitulo"
+        android:text="@string/instruccionPreguntas"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/margenInfButon"
+        android:id="@+id/lblInstruccion"/>
+
+    <RelativeLayout
+        android:layout_width="290dp"
+        android:layout_height="290dp"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/imageViewImagenPregunta"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:id="@+id/lblPregunta"
+            android:text="Pregunta"
+            android:textSize="@dimen/tamLabelsSubtitulo"/>
+     </RelativeLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pronunciar"
+        android:id="@+id/btnPronunciarRespuesta" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnContinuarPregunta"
+        android:layout_marginTop="@dimen/margenSupButon"
+        android:text="nueva pregunta (Empieza los puntos en 0)"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="@string/preguntasCorrectas"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/lblpuntosPreguntas"
+            android:text="0"/>
+    </LinearLayout>
+
+
 </LinearLayout>
