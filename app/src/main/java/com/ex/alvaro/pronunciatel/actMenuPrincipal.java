@@ -56,7 +56,8 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
 
     //Almacen de nombres
     ArrayList<String> nombres_reconocidos;
-    ArrayList<String> nombres_existentes;
+    ArrayList<String> nombres_existentes=new ArrayList<String>();
+    String text;
 
     //listView de nombres reconocidos
     ListView lista_nombres;
@@ -209,27 +210,17 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
                 if (isChecked){
                     //llamar a un service para ingreso de nombre en un metodo..
                     startService(sReconocerVoz);
-                    //Toast.makeText(con, "toca el boton", Toast.LENGTH_SHORT).show();
                     // service1.putExtra("clase","menuPrincipal");
-                    //Log.v(LOG_TAG, "Llamar al servicio reconocimiento (Despues)");
-
                     espera.postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             btnIngresoNombre.setChecked(false);
-                            String text = reconocerVoz.getTexto();
+                            text = reconocerVoz.getTexto();
                             nombres_reconocidos=reconocerVoz.getResultados();
-                            Log.d(LOG_TAG, text);
-                            if (text!=""){
+                            if(verificarResultados())
                                 dialogIngreso.dismiss();
-                                //abrir dialogo seleccion de nombre
-                                abrirDialogoSeleccionNombre();
-                                text="";
-                                nombres_reconocidos=null;
-                            }
-                            else {
+                            else
                                 speak(REPETIR_NOMBRE);
-                            }
                         }
                     }, 3500);
                 }else{
@@ -238,6 +229,19 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
             }
         });
         dialogIngreso.show();
+    }
+
+    public boolean verificarResultados(){
+        Log.d(LOG_TAG, text);
+        if (text!=""){
+            //abrir dialogo seleccion de nombre
+            abrirDialogoSeleccionNombre();
+            text="";
+            nombres_reconocidos=null;
+            return true;
+        }
+        else
+            return false;
     }
 
     public void abrirDialogoSeleccionNombre(){

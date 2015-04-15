@@ -1,4 +1,4 @@
-package com.ex.alvaro.pronunciatel;
+package Clases;
 
 /**
  * Created by Alvaro on 13/04/2015.

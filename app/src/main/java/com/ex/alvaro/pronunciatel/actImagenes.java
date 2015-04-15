@@ -14,11 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 import Clases.ActImagenes;
+import Clases.Puntuacion;
 
 /**
  * Created by Alvaro on 07/04/2015.
@@ -34,6 +33,7 @@ public class actImagenes extends Activity {
 
     Intent sReconocerVoz;
     ArrayList<String> palabrasReconocidas;
+    String text;
 
     String LOG_TAG="ACTIVIDAD IMAGENES";
     String REPETIR_PRONUNCIACION="¿Puedes intentarlo de nuevo?";
@@ -92,18 +92,14 @@ public class actImagenes extends Activity {
                 espera.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        String text = reconocerVoz.getTexto();
+                        text = reconocerVoz.getTexto();
                         palabrasReconocidas=reconocerVoz.getResultados();
                         Log.d(LOG_TAG, text);
                         boolean c=false;
                         if (text!=""){
                             //calificar pronunciacion
                             for (int i=0;i<palabrasReconocidas.size();i++){
-                                if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo())||
-                                    palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo2())||
-                                    palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo3())||
-                                    palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo4())){
-
+                                if (compararResultado(i)){
                                     a=i;
                                     c=true;
                                 }
@@ -129,6 +125,16 @@ public class actImagenes extends Activity {
             }
         });
     }
+    public boolean compararResultado(int i){
+        if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo())||
+                palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo2())||
+                palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo3())||
+                palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo4()))
+            return true;
+        else
+            return false;
+    }
+
 
     private void mostrarResultado(String mostrar) {
         if (mostrar.equals(CORRECTO))

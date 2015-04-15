@@ -104,8 +104,8 @@ public class reconocerVoz extends Service implements RecognitionListener {
         for (String result : matches)
             text += result + "\n";
         //Se copia el texto y el array list a las variables globales staticas
-        texto=text;
-        resultados=matches;
+        setTexto(text);
+        setResultados(matches);
 
         //Mostrar en pantalla el resultado
         /*

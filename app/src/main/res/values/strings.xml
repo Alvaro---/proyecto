@@ -44,5 +44,13 @@
     <string name="instruccionPreguntas">Pulsa el botón cuando sepas la respuesta</string>
     <string name="preguntasCorrectas">Preguntas correctas: </string>
 
+    //PINTAR
+
+    <string name="start_new">Nuevo</string>
+    <string name="brush">Pincel</string>
+    <string name="erase">Borrador</string>
+    <string name="save">Guardar</string>
+    <string name="cambiarColor">Cambiar el color del pincel</string>
+
 
 </resources>
