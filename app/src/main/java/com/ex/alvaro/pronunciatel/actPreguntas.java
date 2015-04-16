@@ -29,9 +29,11 @@ public class actPreguntas extends Activity {
 
     public static Context con;
     ArrayList<String> palabrasReconocidas;
+    String text;
 
     String REPETIR_PRONUNCIACION="¿Puedes intentarlo de nuevo?";
-    String CORRECTO="Correcto";
+    String CORRECTO="Correcto. Continuemos con la siguiente imagen.";
+    String INCORRECTO="Esa no es la respuesta que esperaba. Intenta de nuevo.";
     String NUEVA_PREGUNTA="nueva pregunta (Empieza los puntos en 0)";
 
     Intent sReconocerVoz;
@@ -90,7 +92,7 @@ public class actPreguntas extends Activity {
                 espera.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        String text = reconocerVoz.getTexto();
+                        text = reconocerVoz.getTexto();
                         palabrasReconocidas=reconocerVoz.getResultados();
                         boolean c=false;
                         if (text!=""){
@@ -99,10 +101,6 @@ public class actPreguntas extends Activity {
                                         palabrasReconocidas.get(i).toString().equals(pregunta.getPalabraObjetivo2())){
                                     a=i;
                                     c=true;
-
-                                    int resId=getResources().getIdentifier(pregunta.getImagen(),"drawable",getPackageName());
-                                    imagenRespuesta.setImageResource(resId);
-                                    lblPregunta.setText("");
                                 }
                             }
                             dialogoEscucha.dismiss();
@@ -116,7 +114,8 @@ public class actPreguntas extends Activity {
                             c=false;
 
                         }else {
-                            actMenuPrincipal.speak(REPETIR_PRONUNCIACION);
+                            //Si reconoce sonido, pero no la respuesta.
+                            actMenuPrincipal.speak(INCORRECTO);
                             dialogoEscucha.dismiss();
                         }
                         stopService(sReconocerVoz);
@@ -130,7 +129,7 @@ public class actPreguntas extends Activity {
             @Override
             public void onClick(View v) {
                 actualizarPregunta();
-                imagenRespuesta.setImageResource(0);
+                actuamizarImagen(false);
             }
         });
     }
@@ -139,9 +138,19 @@ public class actPreguntas extends Activity {
         if (mostrar.equals(CORRECTO)) {
             btnContinuar.setText("CONTINUAR");
             lblPuntos.setText("5");
+            actuamizarImagen(true);
         }
         else
             Toast.makeText(con, mostrar, Toast.LENGTH_LONG).show();
+    }
+
+    private void actuamizarImagen(boolean b) {
+        if (b){
+            int resId=getResources().getIdentifier(pregunta.getImagen(),"drawable",getPackageName());
+            imagenRespuesta.setImageResource(resId);
+            lblPregunta.setText("");
+        }else
+            imagenRespuesta.setImageResource(0);
     }
 
     private int calificar() {

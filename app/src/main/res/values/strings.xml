@@ -52,5 +52,7 @@
     <string name="save">Guardar</string>
     <string name="cambiarColor">Cambiar el color del pincel</string>
 
+    <string name="selectTono">Seleccion el tono del color</string>
+
 
 </resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="rojo1">#ffff0000</color>
+    <color name="rojo2">#DC143C</color>
+    <color name="rojo3">#CD5C5C</color>
+    <color name="rojo4">#C71585</color>
+
+
+    <color name="rosado1">#FF00FF</color>
+    <color name="rosado2">#FFC0CB</color>
+    <color name="rosado4">#FF69B4</color>
+    <color name="rosado3">#DA70D6</color>
+
+
+    <color name="amarillo1">#FFFF00</color>
+    <color name="amarillo2">#F0E68C</color>
+    <color name="amarillo3">#FFD700</color>
+    <color name="amarillo4">#DAA520</color>
+
+
+    <color name="purpura1">#800080</color>
+    <color name="purpura2">#FF1493</color>
+    <color name="purpura3">#FF00FF</color>
+    <color name="purpura4">#FF00FF</color>
+
+    <color name="plomo1">#808080</color>
+    <color name="plomo2">#A9A9A9</color>
+    <color name="plomo3">#AAA0A0</color>
+    <color name="plomo4">#AAAAAA</color>
+
+
+    <color name="cafe1">#800000</color>
+    <color name="cafe2">#A52A2A</color>
+    <color name="cafe3">#A0522D</color>
+    <color name="cafe4">#8B4513</color>
+
+
+    <color name="azul1">#0000FF</color>
+    <color name="azul2">#191970</color>
+    <color name="azul3">#008080</color>
+    <color name="azul4">#000080</color>
+
+
+    <color name="verde">#008000</color>
+    <color name="verde2">#00FF00</color>
+    <color name="verde3">#ADFF2F</color>
+    <color name="verde4">#556B2F</color>
+
+
+
+    <color name="negro">#000000</color>
+    <color name="negro2">#222222</color>
+    <color name="negro3">#444444</color>
+    <color name="negro4">#111111</color>
+
+    <color name="blanco1">#FFFFE0</color>
+    <color name="blanco2">#FFFAFA</color>
+    <color name="blanco3">#FFDEAD</color>
+    <color name="blanco4">#FFDAB9</color>
+
+
+    <color name="naranja">#FFA500</color>
+    <color name="naranja2">#FFA07A</color>
+    <color name="naranja3">#FF4500</color>
+    <color name="naranja4">#FF7F50</color>
+
+
+    <color name="celeste1">#87CEFA</color>
+    <color name="celeste2">#87CEEB</color>
+    <color name="celeste3">#87AAEB</color>
+    <color name="celeste4">#00FFFF</color>
+
+</resources>
