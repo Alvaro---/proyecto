@@ -13,7 +13,7 @@
 
 
     //TAM LABELS
-    <dimen name="tamLabelsTitulo">30dp</dimen>
+    <dimen name="tamLabelsTitulo">28dp</dimen>
     <dimen name="tamLabelsSubtitulo">25dp</dimen>
 
     <dimen name="largoBoton">100dp</dimen>

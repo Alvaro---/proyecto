@@ -42,7 +42,8 @@ public class actPintar extends Activity implements View.OnClickListener{
     String CAMBIOCOLOR="Pronuncia un color";
     String REPETIR_PRONUNCIACION="¿Puedes repetirlo?";
     String ADVERTENCIA_NUEVO="¿Quieres comenzar un nuevo dibujo?. El dibujo actual se borrara";
-    String NO_ENCONTRADO="No entendi bien el color. ¿Puedes repetirlo?";
+    String NO_ENCONTRADO="No entendí bien el color. ¿Puedes repetirlo?";
+    String INSTRUCCION_NOMBRE_DIBUJO="Pronuncia el nombre del dibujo";
 
     //colores a reconocerse
     ArrayList<String> colores = new ArrayList<String>();
@@ -446,33 +447,40 @@ public class actPintar extends Activity implements View.OnClickListener{
 
         else if(v.getId()==R.id.save_btn){
             AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
-            saveDialog.setTitle("Save drawing");
-            saveDialog.setMessage("Save drawing to device Gallery?");
-            saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+            saveDialog.setTitle("Guardar Dibujo");
+            saveDialog.setMessage("¿Quieres guardar el dibujo a la galeria?");
+            saveDialog.setPositiveButton("Si", new DialogInterface.OnClickListener(){
                 public void onClick(DialogInterface dialog, int which){
-                    //HABILITAR CACHE DE GUARDADO
-                    drawView.setDrawingCacheEnabled(true);
-                    //RETORNA NULL SI FALLO. Y EL UIDD GENERADO SI PASO.
-                    String imgSaved = MediaStore.Images.Media.insertImage(
-                            getContentResolver(), drawView.getDrawingCache(),
-                            UUID.randomUUID().toString()+".png", "drawing");
+                    //actMenuPrincipal.speak(INSTRUCCION_NOMBRE_DIBUJO);
+                    final Dialog dialogoEscucha=new Dialog(con);
+                    dialogoEscucha.setTitle(INSTRUCCION_NOMBRE_DIBUJO);
+                    dialogoEscucha.setContentView(R.layout.dialogo_escuchando);
 
-                    if(imgSaved!=null){
-                        Toast savedToast = Toast.makeText(getApplicationContext(),
-                                "Drawing saved to Gallery!", Toast.LENGTH_SHORT);
-                        savedToast.show();
-                    }
-                    else{
-                        Toast unsavedToast = Toast.makeText(getApplicationContext(),
-                                "Oops! Image could not be saved.", Toast.LENGTH_SHORT);
-                        unsavedToast.show();
-                    }
+                    //espera.postDelayed(new Runnable() {
+                      //  @Override
+                        //public void run() {
+                            startService(sReconocerVoz);
+                        //}
+                    //},2100);
+                    espera.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            text = reconocerVoz.getTexto();
+                            palabrasReconocidas = reconocerVoz.getResultados();
+                            Log.d("NOMBRES DE DIBUJO: ", text+"*************");
+                            if (text != "")
+                                guardarDibujo(palabrasReconocidas.get(0));
+                            else
+                                actMenuPrincipal.speak(REPETIR_PRONUNCIACION);
+                            stopService(sReconocerVoz);
+                            dialogoEscucha.dismiss();
 
-                    //DESTRUIR EL CACHE DE GUARDADO
-                    drawView.destroyDrawingCache();
+                        }
+                    },3000);
+                    dialogoEscucha.show();
                 }
             });
-            saveDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+            saveDialog.setNegativeButton("No", new DialogInterface.OnClickListener(){
                 public void onClick(DialogInterface dialog, int which){
                     dialog.cancel();
                 }
@@ -480,5 +488,26 @@ public class actPintar extends Activity implements View.OnClickListener{
             saveDialog.show();
         }
 
+    }
+
+    private void guardarDibujo(String nombre) {
+        //HABILITAR CACHE DE GUARDADO
+        drawView.setDrawingCacheEnabled(true);
+        String imgSaved = MediaStore.Images.Media.insertImage(
+                getContentResolver(), drawView.getDrawingCache(),
+                nombre+".png", "drawing");
+        if(imgSaved!=null){
+            Toast savedToast = Toast.makeText(getApplicationContext(),
+                    "Dibujo guardado a la galeria", Toast.LENGTH_SHORT);
+            savedToast.show();
+        }
+        else{
+            Toast unsavedToast = Toast.makeText(getApplicationContext(),
+                    "Ups.. No pude guardar el dibujo. Intentalo de nuevo.", Toast.LENGTH_SHORT);
+            unsavedToast.show();
+        }
+
+        //DESTRUIR EL CACHE DE GUARDADO
+        drawView.destroyDrawingCache();
     }
 }

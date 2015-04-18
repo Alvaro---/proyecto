@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/menu1">
 
     <!-- actividad principal - Pantalla inicial de la aplicacion -->
 
@@ -15,7 +16,7 @@
         android:textStyle="bold"
         android:textSize="@dimen/tamLabelsTitulo"
         android:gravity="center_horizontal"
-        android:layout_marginTop="@dimen/margenSuperior"
+        android:layout_marginTop="150dp"
         android:id="@+id/lblBienvenida"/>
 
     <TextView
@@ -25,7 +26,6 @@
         android:textSize="@dimen/tamLabelsSubtitulo"
         android:gravity="center_horizontal"
         android:layout_marginBottom="100dp"
-        android:layout_marginTop="@dimen/margenTituloSubtitulo"
         android:id="@+id/lblQueDeseaHacer"/>
 
     <Button
@@ -34,6 +34,7 @@
         android:text="@string/btnActividades"
         android:layout_marginTop="@dimen/margenSupButon"
         android:layout_marginBottom="@dimen/margenInfButon"
+        style="@style/button"
         android:id="@+id/btnActividades"/>
 
     <Button
@@ -42,6 +43,7 @@
         android:text="@string/btnPuntuaciones"
         android:layout_marginTop="@dimen/margenSupButon"
         android:layout_marginBottom="@dimen/margenInfButon"
+        style="@style/button"
         android:id="@+id/btnPuntuacion"/>
 
     <Button
@@ -50,6 +52,7 @@
         android:text="@string/btnNuevoNombreUsuario"
         android:layout_marginTop="@dimen/margenSupButon"
         android:layout_marginBottom="@dimen/margenInfButon"
+        style="@style/button"
         android:id="@+id/btnUsuario"/>
 
     <Button
@@ -58,6 +61,7 @@
         android:text="@string/btnAyuda"
         android:layout_marginTop="@dimen/margenSupButon"
         android:layout_marginBottom="@dimen/margenInfButon"
+        style="@style/button"
         android:id="@+id/btnAyuda"/>
 
 </LinearLayout>

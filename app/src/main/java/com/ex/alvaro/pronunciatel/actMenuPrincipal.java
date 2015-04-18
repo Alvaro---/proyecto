@@ -93,7 +93,6 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
             /* El handler sirve para esperar unos segundos antes de la llamada al TTS.
             El TTS no puede iniciarse con la aplicacion. Debe llamarse una vez que la aplicacion ya esta iniciada.
              */
-
             espera.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -204,6 +203,9 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
         dialogIngreso.setContentView(R.layout.dialogo_ingreso_nombre);
         speak(INGRESAR_NOMBRE);
         final ToggleButton btnIngresoNombre =(ToggleButton)dialogIngreso.findViewById(R.id.btnIngresoNombre);
+        btnIngresoNombre.setTextOn("Habla");
+        btnIngresoNombre.setTextOff("Pulsame");
+        btnIngresoNombre.setText("Pulsame");
         btnIngresoNombre.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

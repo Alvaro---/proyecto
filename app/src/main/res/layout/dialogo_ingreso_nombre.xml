@@ -19,7 +19,7 @@
         android:id="@+id/btnIngresoNombre"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Me llamo ..."
+        android:text="Pulsame"
         android:gravity="center"
         android:textSize="@dimen/tamLabelsTitulo"
         android:layout_marginTop="@dimen/margenTituloSubtitulo"
