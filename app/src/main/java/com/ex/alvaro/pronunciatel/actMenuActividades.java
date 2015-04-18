@@ -18,7 +18,7 @@ public class actMenuActividades extends Activity{
     String LETRAS="Repasemos las letras";
     String PINTAR="Pintemos";
 
-    Button btnActImagenes, btnActPreguntas, btnActPintar, btnActLetras;
+    Button btnActImagenes, btnActPreguntas, btnActPintar, btnActLetras, btnAtras;
     TextView lblActividades;
     Handler espera=new Handler();
 
@@ -77,6 +77,13 @@ public class actMenuActividades extends Activity{
                 startActivity(actividad);
             }
         });
+
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void cargarElementosInterfaz() {
@@ -85,6 +92,7 @@ public class actMenuActividades extends Activity{
         btnActPreguntas=(Button)findViewById(R.id.btnActPreguntas);
         btnActPintar=(Button)findViewById(R.id.btnActPintar);
         btnActLetras=(Button)findViewById(R.id.btnActLetras);
+        btnAtras=(Button)findViewById(R.id.btnAtrasActividades);
 
         //Labels
         lblActividades=(TextView)findViewById(R.id.lblSelectActividad);

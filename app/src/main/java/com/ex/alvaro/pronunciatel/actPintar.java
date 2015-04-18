@@ -195,7 +195,7 @@ public class actPintar extends Activity implements View.OnClickListener{
             btnCol4.setTag(getResources().getString(R.color.amarillo4));
         }
 
-        if (color.equals("purpura")||color.equals("violeta")){
+        if (color.equals("purpura")||color.equals("violeta")||color.equals("morado")||color.equals("lila")){
             btnCol1.setBackgroundColor(getResources().getColor(R.color.purpura1));
             btnCol1.setTag(getResources().getString(R.color.purpura1));
 
@@ -223,7 +223,7 @@ public class actPintar extends Activity implements View.OnClickListener{
             btnCol4.setTag(getResources().getString(R.color.plomo4));
         }
 
-        if (color.equals("café")||color.equals("marron")){
+        if (color.equals("café")||color.equals("marron")||color.equals("cafe")){
             btnCol1.setBackgroundColor(getResources().getColor(R.color.cafe1));
             btnCol1.setTag(getResources().getString(R.color.cafe1));
 

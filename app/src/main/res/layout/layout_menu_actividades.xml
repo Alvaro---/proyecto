@@ -9,8 +9,8 @@
         android:layout_height="wrap_content"
         android:text="@string/lblSeleccionActividad"
         android:textSize="25dp"
-        android:layout_marginTop="110dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginTop="@dimen/margenTopTituloMenuActividades"
+        android:layout_marginBottom="@dimen/margenButonTituloMenuActividades"
         android:gravity="center"
         android:id="@+id/lblSelectActividad"/>
 
@@ -20,7 +20,7 @@
         style="@style/buttonAct"
         android:text="@string/actividadImagen"
         android:id="@+id/btnActImagen"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginBottom="@dimen/margenInfButon"/>
 
     <Button
         android:layout_width="190dp"
@@ -28,7 +28,8 @@
         style="@style/buttonAct"
         android:text="@string/actividadPregunta"
         android:id="@+id/btnActPreguntas"
-        android:layout_marginTop="@dimen/margenSupButon"/>
+        android:layout_marginTop="@dimen/margenSupButon"
+        android:layout_marginBottom="@dimen/margenInfButon"/>
 
     <Button
         android:layout_width="190dp"
@@ -36,21 +37,23 @@
         style="@style/buttonAct"
         android:text="@string/actividadLetras"
         android:id="@+id/btnActLetras"
-        android:layout_marginTop="@dimen/margenSupButon"/>
+        android:layout_marginBottom="@dimen/margenInfButon"/>
 
     <Button
         android:layout_width="190dp"
         android:layout_height="45dp"
         style="@style/buttonAct"
         android:text="@string/actividadPintar"
-        android:id="@+id/btnActPintar"/>
+        android:id="@+id/btnActPintar"
+        android:layout_marginTop="@dimen/margenSupButon"/>
 
     <Button
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_width="180dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="@dimen/margenSuperiorBotonAtrasMenuActividades"
         android:text=""
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        android:id="@+id/btnAtrasActividades"/>
 
 
 </LinearLayout>
