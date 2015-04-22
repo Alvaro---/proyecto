@@ -1,31 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/menu4">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/tamLabelsTitulo"
-        android:text="@string/actividadPreguntas"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/margenSuperior"
-        android:layout_marginBottom="@dimen/margenTituloSubtitulo"/>
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/tamLabelsSubtitulo"
-        android:text="@string/instruccionPreguntas"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_marginBottom="@dimen/margenInfButon"
-        android:id="@+id/lblInstruccion"/>
 
     <RelativeLayout
+        android:layout_marginTop="@dimen/preguntasMarenSuperior"
         android:layout_width="290dp"
-        android:layout_height="290dp"
+        android:layout_height="260dp"
         android:layout_gravity="center_horizontal">
 
         <ImageView
@@ -53,7 +36,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnContinuarPregunta"
         android:layout_marginTop="@dimen/margenSupButon"
-        android:text="nueva pregunta (Empieza los puntos en 0)"/>
+        android:text="Otra pregunta"/>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -61,16 +44,13 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <Button
+            android:layout_width="180dp"
             android:layout_height="fill_parent"
-            android:text="@string/preguntasCorrectas"/>
+            android:text=""
+            android:background="@android:color/transparent"
+            android:id="@+id/btnAtrasPreguntas"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/lblpuntosPreguntas"
-            android:text="0"/>
     </LinearLayout>
 
 

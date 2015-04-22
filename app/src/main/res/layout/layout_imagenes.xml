@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/menu3">
 
     <TextView
         android:layout_width="fill_parent"
@@ -11,7 +12,21 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:layout_marginTop="@dimen/margenSuperior"
-        android:layout_marginBottom="@dimen/margenTituloSubtitulo"/>
+        android:textStyle="bold"/>
+
+    <ImageButton
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_gravity="right"
+        android:background="@drawable/recargar"
+        android:id="@+id/btnRecargarImagen"/>
+
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:id="@+id/imageViewImagen"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/imagenesMargenTituloImagen"/>
 
     <TextView
         android:layout_width="fill_parent"
@@ -20,14 +35,9 @@
         android:text="@string/imagenInstruccion"
         android:layout_gravity="center"
         android:gravity="center"
-        android:layout_marginBottom="@dimen/margenInfButon"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/imagenesMargenTituloImagen"
         android:id="@+id/lblInstruccion"/>
-
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:id="@+id/imageViewImagen"
-        android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="fill_parent"
@@ -35,11 +45,32 @@
         android:text="@string/pronunciar"
         android:id="@+id/btnPronunciarImagen"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnejemploImagen"
-        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="fill_parent"
+            android:text=""
+            android:background="@android:color/transparent"
+            android:id="@+id/btnAtrasImagenes"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text=""
+            android:background="@android:color/transparent"
+            android:id="@+id/btnPronunciarEjemploImagenes"/>
+
+
+
+        </LinearLayout>
+
+
+
 
 
 </LinearLayout>

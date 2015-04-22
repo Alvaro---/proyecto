@@ -44,6 +44,8 @@
     <string name="instruccionPreguntas">Pulsa el botón cuando sepas la respuesta</string>
     <string name="preguntasCorrectas">Preguntas correctas: </string>
 
+    <string name="escuchar">Escuchar</string>
+
     //PINTAR
 
     <string name="start_new">Nuevo</string>

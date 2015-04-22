@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
+    //pantalla principal
     <dimen name="margenTituloMenuPrincipalSuperior">160dp</dimen>
+
+    //menu actividades
     <dimen name="margenTopTituloMenuActividades">120dp</dimen>
     <dimen name="margenButonTituloMenuActividades">100dp</dimen>
     <dimen name="margenSuperiorBotonAtrasMenuActividades">100dp</dimen>
 
+    //actividad imagenes
+    <dimen name="imagenesMargenSuperior">30dp</dimen>
+    <dimen name="imagenesMargenTituloImagen">20dp</dimen>
 
-    //pintar
-    <dimen name="small_brush">10dp</dimen>
-    <integer name="small_size">10</integer>
-    <dimen name="medium_brush">20dp</dimen>
-    <integer name="medium_size">20</integer>
-    <dimen name="large_brush">30dp</dimen>
-    <integer name="large_size">30</integer>
+    //preguntas
+    <dimen name="preguntasMarenSuperior">100dp</dimen>
+
+
+
 
 </resources>

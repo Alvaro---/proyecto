@@ -23,7 +23,7 @@ import Clases.ActPreguntas;
  */
 public class actPreguntas extends Activity {
 
-    Button btnPronunciar, btnContinuar;
+    Button btnPronunciar, btnContinuar, btnAtras;
     ImageView imagenRespuesta;
     TextView lblPregunta, lblPuntos;
 
@@ -34,7 +34,7 @@ public class actPreguntas extends Activity {
     String REPETIR_PRONUNCIACION="¿Puedes intentarlo de nuevo?";
     String CORRECTO="Correcto. Continuemos con la siguiente imagen.";
     String INCORRECTO="Esa no es la respuesta que esperaba. Intenta de nuevo.";
-    String NUEVA_PREGUNTA="nueva pregunta (Empieza los puntos en 0)";
+    String NUEVA_PREGUNTA="Otra pregunta";
 
     Intent sReconocerVoz;
     Handler espera=new Handler();
@@ -64,7 +64,7 @@ public class actPreguntas extends Activity {
         btnContinuar.setText(NUEVA_PREGUNTA);
         pregunta.buscarAleatorio();
 
-        //establecer pregunta
+        //MOSTRAR PREGUNTA
         String preg=pregunta.getPregunta();
         lblPregunta.setText(preg);
         actMenuPrincipal.speak(preg);
@@ -75,7 +75,7 @@ public class actPreguntas extends Activity {
         imagenRespuesta=(ImageView)findViewById(R.id.imageViewImagenPregunta);
         lblPregunta=(TextView)findViewById(R.id.lblPregunta);
         btnContinuar=(Button)findViewById(R.id.btnContinuarPregunta);
-        lblPuntos=(TextView)findViewById(R.id.lblpuntosPreguntas);
+        btnAtras=(Button)findViewById(R.id.btnAtrasPreguntas);
     }
 
 
@@ -132,12 +132,25 @@ public class actPreguntas extends Activity {
                 actuamizarImagen(false);
             }
         });
+
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        imagenRespuesta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                actMenuPrincipal.speak(pregunta.getPregunta());
+            }
+        });
     }
 
     private void mostrarResultado(String mostrar) {
         if (mostrar.equals(CORRECTO)) {
             btnContinuar.setText("CONTINUAR");
-            lblPuntos.setText("5");
             actuamizarImagen(true);
         }
         else

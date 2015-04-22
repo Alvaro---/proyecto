@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,7 +29,8 @@ public class actImagenes extends Activity {
     Handler espera=new Handler();
 
     ImageView imvImagen;
-    Button btnPronunciar;
+    Button btnPronunciar, btnEjemplo, btnAtras;
+    ImageButton btnRecargar;
     TextView lblInstruccion;
 
     Intent sReconocerVoz;
@@ -36,7 +38,8 @@ public class actImagenes extends Activity {
     String text;
 
     String LOG_TAG="ACTIVIDAD IMAGENES";
-    String REPETIR_PRONUNCIACION="¿Puedes intentarlo de nuevo?";
+    String REPETIR_PRONUNCIACION="No entendi bien. ¿Puedes intentarlo de nuevo?";
+    String INCORRECTO="Creo que esa no es la respuesta. Intenta de nuevo";
     String CORRECTO="Correcto";
 
     ActImagenes actividadImagenes=ActImagenes.getInstanciaActImagenes(con);
@@ -77,7 +80,10 @@ public class actImagenes extends Activity {
         imvImagen=(ImageView)findViewById(R.id.imageViewImagen);
         btnPronunciar=(Button)findViewById(R.id.btnPronunciarImagen);
         lblInstruccion=(TextView)findViewById(R.id.lblInstruccion);
+        btnAtras=(Button)findViewById(R.id.btnAtrasImagenes);
+        btnEjemplo=(Button)findViewById(R.id.btnPronunciarEjemploImagenes);
 
+        btnRecargar=(ImageButton)findViewById(R.id.btnRecargarImagen);
 
     }
     private void cargarAcionesElementosLayout() {
@@ -106,8 +112,13 @@ public class actImagenes extends Activity {
                             }
                             dialogoEscucha.dismiss();
                             if (!c){
-                                mostrarResultado(REPETIR_PRONUNCIACION);
-                                actMenuPrincipal.speak(REPETIR_PRONUNCIACION);
+                                actMenuPrincipal.speak(INCORRECTO);
+                                espera.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        btnPronunciar.callOnClick();
+                                    }
+                                },3500);
                             }else{
                                 actMenuPrincipal.speak(CORRECTO+". "+actividadImagenes.getDetallePalabra());
                                 mostrarResultado(CORRECTO);
@@ -116,12 +127,46 @@ public class actImagenes extends Activity {
                         }else {
                             actMenuPrincipal.speak(REPETIR_PRONUNCIACION);
                             dialogoEscucha.dismiss();
+                            espera.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btnPronunciar.callOnClick();
+                                }
+                            },3500);
                         }
                         stopService(sReconocerVoz);
                     }
                 }, 3500);
                 dialogoEscucha.show();
 
+            }
+        });
+
+        btnEjemplo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                actMenuPrincipal.speak(actividadImagenes.getPalabraObjetivo());
+            }
+        });
+
+        btnAtras.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        lblInstruccion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                actMenuPrincipal.speak(lblInstruccion.getText().toString());
+            }
+        });
+
+        btnRecargar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cargarImagenAleatoria();
             }
         });
     }
@@ -138,9 +183,7 @@ public class actImagenes extends Activity {
 
     private void mostrarResultado(String mostrar) {
         if (mostrar.equals(CORRECTO))
-            dialogoContinuar ();
-        else
-            Toast.makeText(con,mostrar, Toast.LENGTH_LONG).show();
+            dialogoContinuar();
     }
 
     private void dialogoContinuar() {
