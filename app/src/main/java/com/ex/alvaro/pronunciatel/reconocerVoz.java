@@ -22,7 +22,7 @@ public class reconocerVoz extends Service implements RecognitionListener {
     private Intent recognizerIntent;
     private String LOG_TAG = "Reconocer Voz";
 
-    public String a;
+    //public String a;
 
     static String texto="";
     public static ArrayList<String> resultados=null;

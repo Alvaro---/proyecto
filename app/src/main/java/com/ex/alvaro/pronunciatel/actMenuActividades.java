@@ -13,6 +13,7 @@ import android.widget.TextView;
  */
 public class actMenuActividades extends Activity{
 
+    //FRASES PARA LEER
     String IMAGEN="Vamos a jugar, con unas imágenes";
     String PREGUNTAS="¿Puedes responder estas preguntas?";
     String LETRAS="Repasemos las letras";

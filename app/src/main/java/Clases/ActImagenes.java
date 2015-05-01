@@ -11,6 +11,8 @@ import SQLite_repos.sqliteActImagenes;
 public class ActImagenes extends Actividad{
 
     private static ActImagenes instanciaActImagenes=null;
+    String detallePalabra;
+    repoActImagenes repository =new sqliteActImagenes();
 
     public static ActImagenes getInstanciaActImagenes(Context con){
         if (instanciaActImagenes==null){
@@ -18,10 +20,6 @@ public class ActImagenes extends Actividad{
         }
         return instanciaActImagenes;
     }
-
-    String detallePalabra;
-
-    repoActImagenes repository =new sqliteActImagenes();
 
     private ActImagenes() {
     }

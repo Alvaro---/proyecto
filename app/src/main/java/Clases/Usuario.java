@@ -12,6 +12,7 @@ import SQLite_repos.sqliteUsuario;
  */
 public class Usuario {
     String nombre;
+    int id;
 
     repoUsuario repository=new sqliteUsuario();
 
@@ -21,6 +22,14 @@ public class Usuario {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setNombre(String nombre) {

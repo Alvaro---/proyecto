@@ -2,7 +2,9 @@ package SQLite_repos;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.ex.alvaro.pronunciatel.actMenuPrincipal;
 
@@ -58,8 +60,14 @@ public class sqliteUsuario implements repoUsuario {
         ContentValues registro=new ContentValues();
         registro.put("nombre",u.getNombre());
 
-        db.insert("usuario",null, registro);
-        return true;
+        try {
+            db.insertOrThrow("usuario", null, registro);
+            return true;
+        }catch (SQLiteConstraintException e){
+            Log.v("SQLITEUSUARIO:", "NO GUARDO - USUARIO EXISTENTE");
+            return false;
+        }
+
     }
 
     @Override

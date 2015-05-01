@@ -17,10 +17,11 @@ import Repos.repoActPreguntas;
 public class sqliteActPreguntas implements repoActPreguntas {
 
     String select ="select pregunta,palabra,palabra2,imagen from actpreguntas";
+    ActPreguntas pregunta;
 
     @Override
     public void cargarPregunta() {
-        ActPreguntas pregunta=ActPreguntas.getInstanciaActPreguntas(actPreguntas.con);
+        pregunta=ActPreguntas.getInstanciaActPreguntas(actPreguntas.con);
         Conexion conex=Conexion.getInstance(actImagenes.con);
         SQLiteDatabase db= conex.getWritableDatabase();
 
@@ -28,21 +29,28 @@ public class sqliteActPreguntas implements repoActPreguntas {
         Cursor fila=db.rawQuery(consulta,null);
 
         //conseguir la cantidad de preguntas
-        int numero=(int) (Math.random()*16);
+        int numero=obtenerAleatorio();
 
         if (fila.moveToFirst()){
             for (int a=0;a<numero;a++){
                 fila.moveToNext();
             }
-            pregunta.setPregunta(fila.getString(0));
-            pregunta.setPalabraObjetivo(fila.getString(1));
-            pregunta.setPalabraObjetivo2(fila.getString(2));
-            pregunta.setImagen(fila.getString(3));
+            actualizarPregunta(fila);
 
             Log.v("PREGUNTA: ",fila.getString(0));
         }
 
+    }
 
+    private void actualizarPregunta(Cursor fila) {
 
+        pregunta.setPregunta(fila.getString(0));
+        pregunta.setPalabraObjetivo(fila.getString(1));
+        pregunta.setPalabraObjetivo2(fila.getString(2));
+        pregunta.setImagen(fila.getString(3));
+    }
+
+    private int obtenerAleatorio() {
+        return (int) (Math.random()*16);
     }
 }

@@ -223,7 +223,7 @@ public class actPintar extends Activity implements View.OnClickListener{
             btnCol4.setTag(getResources().getString(R.color.plomo4));
         }
 
-        if (color.equals("café")||color.equals("marron")||color.equals("cafe")){
+        if (color.equals("café")||color.equals("marrón")||color.equals("cafe")){
             btnCol1.setBackgroundColor(getResources().getColor(R.color.cafe1));
             btnCol1.setTag(getResources().getString(R.color.cafe1));
 

@@ -35,7 +35,7 @@ public class actImagenes extends Activity {
 
     Intent sReconocerVoz;
     ArrayList<String> palabrasReconocidas;
-    String text;
+    String text; //Texto Reconocido
 
     String LOG_TAG="ACTIVIDAD IMAGENES";
     String REPETIR_PRONUNCIACION="No entendi bien. ¿Puedes intentarlo de nuevo?";
@@ -187,9 +187,7 @@ public class actImagenes extends Activity {
     }
 
     private void dialogoContinuar() {
-        Puntuacion p=new Puntuacion (a);
-        act=p.unEjercicio();
-
+        puntuar();
 
         final Dialog dialogoContinuar=new Dialog(this);
         dialogoContinuar.setTitle("Correcto: ");
@@ -210,5 +208,11 @@ public class actImagenes extends Activity {
         });
         cargarImagenAleatoria();
         dialogoContinuar.show();
+    }
+
+    private void puntuar() {
+        Puntuacion p=new Puntuacion (a);
+        act=p.unEjercicio();
+
     }
 }

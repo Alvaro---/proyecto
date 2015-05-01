@@ -24,7 +24,8 @@
         android:textSize="@dimen/tamLabelsTitulo"
         android:layout_marginTop="@dimen/margenTituloSubtitulo"
         android:checked="false"
-        android:layout_weight="0.04" />
+        android:layout_weight="0.04"
+        />
 
 
 </LinearLayout>

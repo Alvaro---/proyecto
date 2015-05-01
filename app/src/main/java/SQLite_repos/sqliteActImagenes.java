@@ -27,7 +27,7 @@ public class sqliteActImagenes implements repoActImagenes {
         Cursor fila=db.rawQuery(consulta,null);
 
         //CORREGIR EL NUMERO CON EL TOTAL DE DATOS EN SQLITE
-        int numero=(int) (Math.random()*32);
+        int numero=obtenerAleatorio();
 
         if (fila.moveToFirst()){
             for (int a=0;a<numero;a++){
@@ -35,6 +35,10 @@ public class sqliteActImagenes implements repoActImagenes {
             }
             actualizarDatos(fila);
         }
+    }
+
+    private int obtenerAleatorio() {
+        return (int) (Math.random()*32);
     }
 
     private void actualizarDatos(Cursor fila) {

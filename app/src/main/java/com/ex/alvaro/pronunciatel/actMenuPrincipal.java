@@ -35,10 +35,12 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
     TextView lblBienvenido;
     TextView lblQueHacer;
 
+    //listView de nombres reconocidos
+    ListView lista_nombres;
+
     //Para armar un saludo con el nombre
     String bienvenido;
-
-    //Frase a leer cuando ingresa un nombre
+    //Frases para leer
     String HOLA="Hola";
     String REPETIR_NOMBRE="Puedes repetirlo?";
     String INGRESAR_NOMBRE="como te llamas?, pulsa el botón y dime tu nombre";
@@ -47,26 +49,26 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
     String PUNTUACIONES="veamos las puntuaciones";
     String CAMBIAR_NOMBRE="Veamos si tu nombre esta aqui";
     String SELECCIONA_NOMBRE="Cual de estoss es tu nombre?";
+    String EL_NOMBRE_YA_EXISTE="Ese nombre ya existe, seleccionalo";
+
     String NOBMRE_MANUAL="Escribe tu nombre en el cuadro";
 
     String NINGUNO="NINGUNO DE ESTOS ES MI NOMBRE";
 
     //servicio de reconocimiento de voz
     Intent sReconocerVoz;
-
     //Almacen de nombres
     ArrayList<String> nombres_reconocidos;
     ArrayList<String> nombres_existentes=new ArrayList<String>();
-    String text;
 
-    //listView de nombres reconocidos
-    ListView lista_nombres;
+    String text; // TEXTO DE NOMBRES RECONOCIDOS - TEXTORECONOCIDO
 
     //contador de intentos antes de que permita escribir el nombre con el teclado
     int c=0;
+    int c2=0;
 
     //NOMBRE DE USUARIO DE SESION
-    Usuario usuario=new Usuario("");
+    static Usuario usuario=new Usuario("");
 
     Handler espera =new Handler();
 
@@ -219,10 +221,18 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
                             btnIngresoNombre.setChecked(false);
                             text = reconocerVoz.getTexto();
                             nombres_reconocidos=reconocerVoz.getResultados();
-                            if(verificarResultados())
+                            if(verificarResultados()) {
                                 dialogIngreso.dismiss();
-                            else
+                                c2=0;
+                            }else {
+                                if (c2==2){
+                                    c2=0;
+                                    abrirDialogoIngresoManual("");
+                                    dialogIngreso.dismiss();
+                                }
                                 speak(REPETIR_NOMBRE);
+                                c2++;
+                            }
                         }
                     }, 3500);
                 }else{
@@ -283,6 +293,9 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
                     if(usuario.guardarNuevoUsuario()){
                         lblBienvenido.setText(bienvenido+" "+usuario.getNombre());
                         saludar(nombre);
+                    }else{
+                        Toast.makeText(con,EL_NOMBRE_YA_EXISTE,Toast.LENGTH_LONG).show();
+                        speak(EL_NOMBRE_YA_EXISTE);
                     }
                     dialogSeleccion.dismiss();
                 }
@@ -305,7 +318,7 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
 
     private void abrirDialogoIngresoManual(String nombre) {
         final Dialog dialogIngresoManual = new Dialog(this);
-        dialogIngresoManual.setTitle("Ingrea tu nobmre manualmente");
+        dialogIngresoManual.setTitle("Ingrea tu nombre manualmente");
         LayoutInflater li=(LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = li.inflate(R.layout.dialogo_ingreso_nombre_manual, null, false);
         dialogIngresoManual.setContentView(v);
@@ -314,18 +327,22 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
 
         final EditText nombre_manual=(EditText) dialogIngresoManual.findViewById(R.id.txtNombreManual);
         final Button btnAceptar=(Button)dialogIngresoManual.findViewById(R.id.btnAceptarNombreManual);
-        final Button btnCancelar=(Button)dialogIngresoManual.findViewById(R.id.btnCancelarNombreManual);
+        final Button btnCancelar=(Button)di alogIngresoManual.findViewById(R.id.btnCancelarNombreManual);
 
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String nombre=nombre_manual.getText().toString();
                 usuario.setNombre(nombre);
-                usuario.guardarNuevoUsuario();
-                saludar(nombre);
-                lblBienvenido.setText(bienvenido+" "+usuario.getNombre().toUpperCase());
-                dialogIngresoManual.dismiss();
-
+                if(usuario.guardarNuevoUsuario()){
+                    saludar(nombre);
+                    lblBienvenido.setText(bienvenido+" "+usuario.getNombre().toUpperCase());
+                    dialogIngresoManual.dismiss();
+                }else{
+                    Toast.makeText(con,EL_NOMBRE_YA_EXISTE,Toast.LENGTH_LONG).show();
+                    speak(EL_NOMBRE_YA_EXISTE);
+                    abrirDialogoSeleccionNombre();
+                }
             }
         });
 

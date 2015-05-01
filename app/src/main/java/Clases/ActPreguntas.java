@@ -11,11 +11,10 @@ import SQLite_repos.sqliteActPreguntas;
 public class ActPreguntas extends Actividad{
 
     String pregunta="";
-
-    repoActPreguntas repository=new sqliteActPreguntas();
-
     //SINGLETON
     private static ActPreguntas instancioActPreguntas=null;
+    //REPOSITORY
+    repoActPreguntas repository=new sqliteActPreguntas();
 
     public static ActPreguntas getInstanciaActPreguntas(Context con){
         if (instancioActPreguntas==null){

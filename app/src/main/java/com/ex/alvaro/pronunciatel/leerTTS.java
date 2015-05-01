@@ -51,7 +51,7 @@ public class leerTTS extends Service implements TextToSpeech.OnInitListener {
                 speak(str);
             }
         } else {
-            Log.v(TAG, "Could not initialize TextToSpeech.");
+            Log.v(TAG, "No se puede Iniciar TextToSpeech.");
         }
     }
 

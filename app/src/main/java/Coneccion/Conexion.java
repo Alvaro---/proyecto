@@ -17,13 +17,13 @@ public class Conexion extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION=1;
 
     //La tabla de usuarios, contara con un nombre de usuario. Las puntuacioes se asociaran despues a un usuario, por dia.
-    private String tbUsuario="CREATE TABLE Usuario (nombre TEXT PRIMARY KEY)";
+    private String tbUsuario="CREATE TABLE Usuario (id, INT PRIMARY KEY, nombre TEXT UNIQUE)";
     private String tbPalabras="CREATE TABLE actimagen (Palabra TEXT PRIMARY KEY, palabra2 TEXT,palabra3 TEXT, palabra4 TEXT, imagen TEXT, descripcion TEXT)";
     private String tbPreguntas="CREATE TABLE actpreguntas (pregunta TEXT, palabra TEXT, palabra2 TEXT, imagen TEXT)";
 
 
     //Palabras de ACTIVIDAD IMAGEN
-        private String actImg1="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('abuela', 'abuelita', '', '', 'abuela', 'la abuela nos quiere mucho')";
+    private String actImg1="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('abuela', 'abuelita', '', '', 'abuela', 'la abuela nos quiere mucho')";
     private String actImg2="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('abuelo', 'abuelito', '', '', 'abuelo', 'el abuelo nos cuenta muchas historias')";
     private String actImg3="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('árbol', 'arbolito', '', '', 'arbol', 'el árbol de frutos')";
     private String actImg4="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('auto', 'autito', '', '', 'auto', 'un auto viaja muy rápido')";
@@ -35,7 +35,7 @@ public class Conexion extends SQLiteOpenHelper {
     private String actImg10="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('dinosaurio', 'dinosaurito', '', '', 'dinosaurio', 'los dinosaurios se extinguieron hace mucho')";
     private String actImg11="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('dragón', 'dragoncito', '', '', 'dragon', 'los dragones lanzan fuego')";
     private String actImg12="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('gato', 'gatito', '', '', 'gato', 'el gato maúlla')";
-    private String actImg13="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('guerrero', '', '', '', 'guerrero', 'el guerrero defiende a las personas')";
+    private String actImg13="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('guerrero', 'soldado', '', '', 'guerrero', 'el guerrero defiende a las personas')";
     private String actImg14="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('guitarra', 'guitarra', '', '', 'guitarra', 'la guitarra produce música muy linda')";
     private String actImg15="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('jirafa', 'jirafa', '', '', 'jirafa', 'la jirafa tiene el cuello muy largo')";
     private String actImg16="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('ladrón', 'ratero', '', '', 'ladron', 'los ladrones son peligrosos')";
@@ -52,7 +52,7 @@ public class Conexion extends SQLiteOpenHelper {
     private String actImg27="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('planeta', 'tierra', 'mundo', '', 'planeta', 'todos vivimos en el planeta tierra')";
     private String actImg28="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('rana', 'sapo', 'ranita', 'sapito', 'rana', 'la rana salta muy alto')";
     private String actImg29="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('ratón', 'ratoncito', '', '', 'raton', 'los ratones son pequeños')";
-    private String actImg30="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('regalo', 'paquete', '', '', 'regalo', 'un regalo misterioso es muy divertido')";
+    private String actImg30="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('regalo', 'paquete', 'presente', '', 'regalo', 'un regalo misterioso es muy divertido')";
     private String actImg31="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('robot', 'robotito', '', '', 'robot', 'los robots pueden hacer muchas cosas')";
     private String actImg32="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('soldado', '', '', '', 'soldado', 'el soldado vive por la patria')";
     private String actImg33="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('tigre', '', '', '', 'tigre', 'el tigre vive en la selva')";
@@ -145,6 +145,7 @@ public class Conexion extends SQLiteOpenHelper {
         //insercion de preguntas
         db.execSQL(actPreg1);
         db.execSQL(actPreg2);
+        db.execSQL(actPreg3);
         db.execSQL(actPreg4);
         db.execSQL(actPreg5);
         db.execSQL(actPreg6);
