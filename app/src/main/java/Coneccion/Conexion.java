@@ -23,7 +23,6 @@ public class Conexion extends SQLiteOpenHelper {
     private String tbPalabras="CREATE TABLE actimagen (idImage INT PRIMARY KEY, Palabra TEXT UNIQUE, palabra2 TEXT, palabra3 TEXT, palabra4 TEXT, imagen TEXT, descripcion TEXT)";
     private String tbPreguntas="CREATE TABLE actpreguntas (pregunta TEXT, palabra TEXT, palabra2 TEXT, imagen TEXT)";
 
-
     ArrayList <String> palabrasImagenesRegistros=new ArrayList<>();
 
     //Palabras de ACTIVIDAD IMAGEN
@@ -102,7 +101,7 @@ public class Conexion extends SQLiteOpenHelper {
         ademas. Eso tal vez para cambiar la version o algo asi.*/
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
-        
+
 
 
     }
