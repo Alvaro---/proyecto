@@ -17,6 +17,12 @@
 
     <string name="lblSeleccionActividad">Selecciona la actividad que quieres hacer</string>
 
+    <string name="eliminar_modificar">Quieres eliminar o modificar el nombre?</string>
+
+    <string name="EliminarNombre">Eliminar Nombre</string>
+
+    <string name="ModificarNombre">Modificar Nombre</string>
+
     //BOTONES
     <string name="btnActividades">Actividades</string>
     <string name="btnPuntuaciones">Puntuaciones</string>

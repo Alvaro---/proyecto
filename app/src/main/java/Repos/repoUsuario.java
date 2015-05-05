@@ -15,4 +15,8 @@ public interface repoUsuario {
     public boolean guardarUsuario(Usuario u);
 
     ArrayList<String> cargarTodos();
+
+    void eliminarNombre(Usuario usuario);
+
+    boolean modificarUsuario(Usuario usuario, String nombreAnterior);
 }

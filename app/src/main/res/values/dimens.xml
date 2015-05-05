@@ -11,6 +11,8 @@
     <dimen name="margenInfButon">5dp</dimen>
     <dimen name="margenSupButon">5dp</dimen>
 
+    <dimen name="tamaLetraBotonInicio">30dp</dimen>
+
 
     //SIZE LETRA LABELS
     <dimen name="tamLabelsTitulo">28dp</dimen>
@@ -29,6 +31,8 @@
     <dimen name="margenSuperiorBotonAtrasMenuActividades">80dp</dimen>
 
     <dimen name="margenButonSubtituloMenuPrincipal">100dp</dimen>
+
+
 
 
     //pintar

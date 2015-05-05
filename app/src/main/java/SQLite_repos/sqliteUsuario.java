@@ -95,5 +95,28 @@ public class sqliteUsuario implements repoUsuario {
         return nombres;
     }
 
+    @Override
+    public void eliminarNombre(Usuario usuario) {
+        Conexion conex=Conexion.getInstance(actMenuPrincipal.con);
+        SQLiteDatabase db= conex.getWritableDatabase();
+
+        ContentValues registro=new ContentValues();
+        registro.put("nombre",usuario.getNombre());
+
+        db.delete("usuario","nombre="+usuario.getNombre(),null);
+    }
+
+    @Override
+    public boolean modificarUsuario(Usuario usuario, String nombreAnterior) {
+        Conexion conex=Conexion.getInstance(actMenuPrincipal.con);
+        SQLiteDatabase db= conex.getWritableDatabase();
+
+        ContentValues registro=new ContentValues();
+        registro.put("nombre",usuario.getNombre());
+
+        db.update("usuario",registro,"nombre="+nombreAnterior,null);
+        return false;
+    }
+
 
 }

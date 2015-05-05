@@ -152,6 +152,15 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
                 cambioUsuario();
             }
         });
+
+        btnPuntuacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                speak(PUNTUACIONES);
+                Intent intentPuntuaciones=new Intent(actMenuPrincipal.this, actPuntuaciones.class);
+                startActivity(intentPuntuaciones);
+            }
+        });
     }
 
     private void cambioUsuario() {
@@ -186,6 +195,41 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
                     saludar(nombre);
                     dialogSeleccion.dismiss();
                 }
+            }
+        });
+        lista_nombres.setLongClickable(true);
+        lista_nombres.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(final AdapterView<?> parent, View view, final int position, long id) {
+                final Dialog dialogoEliminarModificar = new Dialog(con);
+                dialogoEliminarModificar.setTitle("¿Quieres editar un nombre?");
+
+                LayoutInflater li=(LayoutInflater)con.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View v = li.inflate(R.layout.dialogo_eliminar_modificar, null, false);
+                dialogoEliminarModificar.setContentView(v);
+                //speak(SELECCIONA_NOMBRE);
+
+                Button btnEliminar=(Button)dialogoEliminarModificar.findViewById(R.id.btnEliminarNombre);
+                Button btnModificar=(Button)dialogoEliminarModificar.findViewById(R.id.btnModificarNombre);
+
+                btnEliminar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Usuario usu =new Usuario((String)parent.getItemAtPosition(position));
+                        Toast.makeText(con,(String)parent.getItemAtPosition(position),Toast.LENGTH_LONG);
+                        usu.EliminarNombre();
+                        dialogoEliminarModificar.dismiss();
+                    }
+                });
+
+                btnModificar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        abrirDialogoIngresoManual((String)parent.getItemAtPosition(position));
+                        dialogoEliminarModificar.dismiss();
+                    }
+                });
+                return false;
             }
         });
 
@@ -316,8 +360,9 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
         },1500);
     }
 
-    private void abrirDialogoIngresoManual(String nombre) {
+    private void abrirDialogoIngresoManual(String nombreA) {
         final Dialog dialogIngresoManual = new Dialog(this);
+        final String nombreAnterior=nombreA;
         dialogIngresoManual.setTitle("Ingrea tu nombre manualmente");
         LayoutInflater li=(LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = li.inflate(R.layout.dialogo_ingreso_nombre_manual, null, false);
@@ -327,22 +372,35 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
 
         final EditText nombre_manual=(EditText) dialogIngresoManual.findViewById(R.id.txtNombreManual);
         final Button btnAceptar=(Button)dialogIngresoManual.findViewById(R.id.btnAceptarNombreManual);
-        final Button btnCancelar=(Button)di alogIngresoManual.findViewById(R.id.btnCancelarNombreManual);
+        final Button btnCancelar=(Button)dialogIngresoManual.findViewById(R.id.btnCancelarNombreManual);
 
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String nombre=nombre_manual.getText().toString();
                 usuario.setNombre(nombre);
-                if(usuario.guardarNuevoUsuario()){
-                    saludar(nombre);
-                    lblBienvenido.setText(bienvenido+" "+usuario.getNombre().toUpperCase());
-                    dialogIngresoManual.dismiss();
+                if (nombreAnterior.equals("")){
+                    if(usuario.guardarNuevoUsuario()){
+                        saludar(nombre);
+                        lblBienvenido.setText(bienvenido+" "+usuario.getNombre().toUpperCase());
+                        dialogIngresoManual.dismiss();
+                    }else{
+                        Toast.makeText(con,EL_NOMBRE_YA_EXISTE,Toast.LENGTH_LONG).show();
+                        saludar(nombre);
+                        dialogIngresoManual.dismiss();
+                    }
                 }else{
-                    Toast.makeText(con,EL_NOMBRE_YA_EXISTE,Toast.LENGTH_LONG).show();
-                    speak(EL_NOMBRE_YA_EXISTE);
-                    abrirDialogoSeleccionNombre();
+                    if(usuario.modificarUsuario(nombreAnterior)){
+                        saludar(nombre);
+                        lblBienvenido.setText(bienvenido+" "+usuario.getNombre().toUpperCase());
+                        dialogIngresoManual.dismiss();
+                    }else{
+                        Toast.makeText(con,EL_NOMBRE_YA_EXISTE,Toast.LENGTH_LONG).show();
+                        saludar(nombre);
+                        dialogIngresoManual.dismiss();
+                    }
                 }
+
             }
         });
 

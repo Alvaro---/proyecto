@@ -47,4 +47,12 @@ public class Usuario {
     public ArrayList<String> cargarTodosNombre() {
         return repository.cargarTodos();
     }
+
+    public void EliminarNombre() {
+        repository.eliminarNombre(this);
+    }
+
+    public boolean modificarUsuario(String nombreAnterior) {
+        return repository.modificarUsuario(this,nombreAnterior);
+    }
 }

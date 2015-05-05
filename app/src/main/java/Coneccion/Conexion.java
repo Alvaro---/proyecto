@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 /**
  * Created by Alvaro on 04/03/2015.
  */
@@ -18,9 +20,11 @@ public class Conexion extends SQLiteOpenHelper {
 
     //La tabla de usuarios, contara con un nombre de usuario. Las puntuacioes se asociaran despues a un usuario, por dia.
     private String tbUsuario="CREATE TABLE Usuario (id, INT PRIMARY KEY, nombre TEXT UNIQUE)";
-    private String tbPalabras="CREATE TABLE actimagen (Palabra TEXT PRIMARY KEY, palabra2 TEXT,palabra3 TEXT, palabra4 TEXT, imagen TEXT, descripcion TEXT)";
+    private String tbPalabras="CREATE TABLE actimagen (idImage INT PRIMARY KEY, Palabra TEXT UNIQUE, palabra2 TEXT, palabra3 TEXT, palabra4 TEXT, imagen TEXT, descripcion TEXT)";
     private String tbPreguntas="CREATE TABLE actpreguntas (pregunta TEXT, palabra TEXT, palabra2 TEXT, imagen TEXT)";
 
+
+    ArrayList <String> palabrasImagenesRegistros=new ArrayList<>();
 
     //Palabras de ACTIVIDAD IMAGEN
     private String actImg1="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('abuela', 'abuelita', '', '', 'abuela', 'la abuela nos quiere mucho')";
@@ -97,6 +101,10 @@ public class Conexion extends SQLiteOpenHelper {
         instancia dentro del getInstance
         ademas. Eso tal vez para cambiar la version o algo asi.*/
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+
+        
+
+
     }
 
     @Override

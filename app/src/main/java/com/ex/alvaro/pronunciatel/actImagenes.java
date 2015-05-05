@@ -38,7 +38,7 @@ public class actImagenes extends Activity {
     String text; //Texto Reconocido
 
     String LOG_TAG="ACTIVIDAD IMAGENES";
-    String REPETIR_PRONUNCIACION="No entendi bien. ¿Puedes intentarlo de nuevo?";
+    String REPETIR_PRONUNCIACION="No entendí bien. ¿Puedes intentarlo de nuevo?";
     String INCORRECTO="Creo que esa no es la respuesta. Intenta de nuevo";
     String CORRECTO="Correcto";
 
@@ -46,6 +46,8 @@ public class actImagenes extends Activity {
 
     int a=0;
     float act=0;
+
+    int repeticiones=0;
 
 
     @Override
@@ -68,6 +70,7 @@ public class actImagenes extends Activity {
     }
 
     private void cargarImagenAleatoria() {
+        repeticiones=0;
         actividadImagenes.buscarAleatorio();
 
         //establecer imagen
@@ -113,19 +116,22 @@ public class actImagenes extends Activity {
                             dialogoEscucha.dismiss();
                             if (!c){
                                 actMenuPrincipal.speak(INCORRECTO);
-                                espera.postDelayed(new Runnable() {
+                                repeticiones=repeticiones+2;
+                            /*    espera.postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
                                         btnPronunciar.callOnClick();
                                     }
-                                },3500);
+                                },3500);*/
                             }else{
+                                repeticiones=0;
                                 actMenuPrincipal.speak(CORRECTO+". "+actividadImagenes.getDetallePalabra());
                                 mostrarResultado(CORRECTO);
                             }
                             c=false;
                         }else {
                             actMenuPrincipal.speak(REPETIR_PRONUNCIACION);
+                            repeticiones=repeticiones+1;
                             dialogoEscucha.dismiss();
                             espera.postDelayed(new Runnable() {
                                 @Override
@@ -212,7 +218,6 @@ public class actImagenes extends Activity {
 
     private void puntuar() {
         Puntuacion p=new Puntuacion (a);
-        act=p.unEjercicio();
-
+        act=p.unEjercicio(repeticiones,"imagenes");
     }
 }

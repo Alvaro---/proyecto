@@ -1,3 +1,9 @@
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#ffb9c7ff">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -35,7 +41,9 @@
         android:layout_marginTop="@dimen/margenSupButon"
         android:layout_marginBottom="@dimen/margenInfButon"
         style="@style/button"
-        android:id="@+id/btnActividades"/>
+        android:id="@+id/btnActividades"
+        android:background="#ff99ff83"
+        android:textSize="@dimen/tamaLetraBotonInicio"/>
 
     <Button
         android:layout_width="fill_parent"
@@ -44,7 +52,9 @@
         android:layout_marginTop="@dimen/margenSupButon"
         android:layout_marginBottom="@dimen/margenInfButon"
         style="@style/button"
-        android:id="@+id/btnPuntuacion"/>
+        android:id="@+id/btnPuntuacion"
+        android:textSize="@dimen/tamaLetraBotonInicio"
+        android:background="#ffffde66" />
 
     <Button
         android:layout_width="fill_parent"
@@ -53,7 +63,9 @@
         android:layout_marginTop="@dimen/margenSupButon"
         android:layout_marginBottom="@dimen/margenInfButon"
         style="@style/button"
-        android:id="@+id/btnUsuario"/>
+        android:id="@+id/btnUsuario"
+        android:textSize="@dimen/tamaLetraBotonInicio"
+        android:background="#ff8fa2ff" />
 
     <Button
         android:layout_width="fill_parent"
@@ -62,6 +74,12 @@
         android:layout_marginTop="@dimen/margenSupButon"
         android:layout_marginBottom="@dimen/margenInfButon"
         style="@style/button"
-        android:id="@+id/btnAyuda"/>
+        android:id="@+id/btnAyuda"
+        android:textSize="@dimen/tamaLetraBotonInicio"
+        android:background="#ffff9d94"
+        android:singleLine="false"
+        android:textColor="@android:color/background_dark" />
 
 </LinearLayout>
+
+</ScrollView>

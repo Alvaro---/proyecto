@@ -25,6 +25,7 @@
         <activity android:name=".actPreguntas"></activity>
         <activity android:name=".actLetras"></activity>
         <activity android:name=".actPintar"></activity>
+        <activity android:name=".actPuntuaciones"></activity>
 
         <service android:name=".leerTTS" />
         <service android:name=".reconocerVoz"/>
