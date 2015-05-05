@@ -23,22 +23,22 @@ public class Conexion extends SQLiteOpenHelper {
     private String tbPalabras="CREATE TABLE actimagen (idImage INT PRIMARY KEY, Palabra TEXT UNIQUE, palabra2 TEXT, palabra3 TEXT, palabra4 TEXT, imagen TEXT, descripcion TEXT)";
     private String tbPreguntas="CREATE TABLE actpreguntas (pregunta TEXT, palabra TEXT, palabra2 TEXT, imagen TEXT)";
 
-    ArrayList <String> palabrasImagenesRegistros=new ArrayList<>();
+    public static ArrayList <String> palabrasImagenesRegistros=new ArrayList<>();
 
     //Palabras de ACTIVIDAD IMAGEN
-    private String actImg1="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('abuela', 'abuelita', '', '', 'abuela', 'la abuela nos quiere mucho')";
-    private String actImg2="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('abuelo', 'abuelito', '', '', 'abuelo', 'el abuelo nos cuenta muchas historias')";
-    private String actImg3="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('árbol', 'arbolito', '', '', 'arbol', 'el árbol de frutos')";
-    private String actImg4="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('auto', 'autito', '', '', 'auto', 'un auto viaja muy rápido')";
-    private String actImg5="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('avión', 'avioncito', '', '', 'avion', 'el avión vuela por todo el mundo')";
-    private String actImg6="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('barco', 'barquito', '', '', 'barco', 'un barco sobre el mar')";
-    private String actImg7="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('caballo', 'caballito', '', '', 'caballo', 'los caballos son muy rápidos')";
-    private String actImg8="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('casa', 'casita', '', '', 'casa', 'una casa muy linda')";
-    private String actImg9="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('cebra', '', '', '', 'cebra', 'la cebra tiene rayas negras')";
-    private String actImg10="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('dinosaurio', 'dinosaurito', '', '', 'dinosaurio', 'los dinosaurios se extinguieron hace mucho')";
-    private String actImg11="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('dragón', 'dragoncito', '', '', 'dragon', 'los dragones lanzan fuego')";
-    private String actImg12="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('gato', 'gatito', '', '', 'gato', 'el gato maúlla')";
-    private String actImg13="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('guerrero', 'soldado', '', '', 'guerrero', 'el guerrero defiende a las personas')";
+    //private String actImg1="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('abuela', 'abuelita', '', '', 'abuela', 'la abuela nos quiere mucho')";
+    //private String actImg2="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('abuelo', 'abuelito', '', '', 'abuelo', 'el abuelo nos cuenta muchas historias')";
+    //private String actImg3="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('árbol', 'arbolito', '', '', 'arbol', 'el árbol de frutos')";
+    //private String actImg4="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('auto', 'autito', '', '', 'auto', 'un auto viaja muy rápido')";
+    //private String actImg5="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('avión', 'avioncito', '', '', 'avion', 'el avión vuela por todo el mundo')";
+    //private String actImg6="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('barco', 'barquito', '', '', 'barco', 'un barco sobre el mar')";
+    //private String actImg7="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('caballo', 'caballito', '', '', 'caballo', 'los caballos son muy rápidos')";
+    //private String actImg8="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('casa', 'casita', '', '', 'casa', 'una casa muy linda')";
+    //private String actImg9="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('cebra', '', '', '', 'cebra', 'la cebra tiene rayas negras')";
+    //private String actImg10="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('dinosaurio', 'dinosaurito', '', '', 'dinosaurio', 'los dinosaurios se extinguieron hace mucho')";
+    //private String actImg11="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('dragón', 'dragoncito', '', '', 'dragon', 'los dragones lanzan fuego')";
+    //private String actImg12="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('gato', 'gatito', '', '', 'gato', 'el gato maúlla')";
+    private String actImg13=">INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('guerrero', 'soldado', '', '', 'guerrero', 'el guerrero defiende a las personas')";
     private String actImg14="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('guitarra', 'guitarra', '', '', 'guitarra', 'la guitarra produce música muy linda')";
     private String actImg15="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('jirafa', 'jirafa', '', '', 'jirafa', 'la jirafa tiene el cuello muy largo')";
     private String actImg16="INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('ladrón', 'ratero', '', '', 'ladron', 'los ladrones son peligrosos')";
@@ -100,8 +100,23 @@ public class Conexion extends SQLiteOpenHelper {
         instancia dentro del getInstance
         ademas. Eso tal vez para cambiar la version o algo asi.*/
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        cargarArrayList();
+    }
 
-
+    private void cargarArrayList() {
+        palabrasImagenesRegistros.add("INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('abuela', 'abuelita', '', '', 'abuela', 'la abuela nos quiere mucho')");
+        palabrasImagenesRegistros.add("INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('abuelo', 'abuelito', '', '', 'abuelo', 'el abuelo nos cuenta muchas historias')");
+        palabrasImagenesRegistros.add("INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('árbol', 'arbolito', '', '', 'arbol', 'el árbol de frutos')");
+        palabrasImagenesRegistros.add("INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('auto', 'autito', '', '', 'auto', 'un auto viaja muy rápido')");
+        palabrasImagenesRegistros.add("INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('avión', 'avioncito', '', '', 'avion', 'el avión vuela por todo el mundo')");
+        palabrasImagenesRegistros.add("INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('barco', 'barquito', '', '', 'barco', 'un barco sobre el mar')");
+        palabrasImagenesRegistros.add("INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('caballo', 'caballito', '', '', 'caballo', 'los caballos son muy rápidos')");
+        palabrasImagenesRegistros.add("INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('casa', 'casita', '', '', 'casa', 'una casa muy linda')");
+        palabrasImagenesRegistros.add("INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('cebra', '', '', '', 'cebra', 'la cebra tiene rayas negras')");
+        palabrasImagenesRegistros.add("INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('dinosaurio', 'dinosaurito', '', '', 'dinosaurio', 'los dinosaurios se extinguieron hace mucho')");
+        palabrasImagenesRegistros.add("INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('dragón', 'dragoncito', '', '', 'dragon', 'los dragones lanzan fuego')");
+        palabrasImagenesRegistros.add("INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('gato', 'gatito', '', '', 'gato', 'el gato maúlla')");
+        palabrasImagenesRegistros.add("INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('guerrero', 'soldado', '', '', 'guerrero', 'el guerrero defiende a las personas')");
 
 
     }
@@ -114,7 +129,13 @@ public class Conexion extends SQLiteOpenHelper {
         db.execSQL(tbPreguntas);
 
         //insercion de palabras actImagenes
-        db.execSQL( actImg1);
+
+        for (int i=0; i<palabrasImagenesRegistros.size();i++){
+            db.execSQL(palabrasImagenesRegistros.get(i));
+        }
+
+
+        /*db.execSQL( actImg1);
         db.execSQL( actImg2);
         db.execSQL( actImg3);
         db.execSQL( actImg4);
@@ -147,7 +168,7 @@ public class Conexion extends SQLiteOpenHelper {
         db.execSQL( actImg31);
         db.execSQL( actImg32);
         db.execSQL( actImg33);
-        db.execSQL( actImg34);
+        db.execSQL( actImg34);*/
 
         //insercion de preguntas
         db.execSQL(actPreg1);

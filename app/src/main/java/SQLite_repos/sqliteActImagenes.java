@@ -38,7 +38,7 @@ public class sqliteActImagenes implements repoActImagenes {
     }
 
     private int obtenerAleatorio() {
-        return (int) (Math.random()*32);
+        return (int) (Math.random()*Conexion.palabrasImagenesRegistros.size());
     }
 
     private void actualizarDatos(Cursor fila) {
