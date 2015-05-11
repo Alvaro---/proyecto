@@ -2,7 +2,7 @@
 <resources>
 
     //pantalla principal
-    <dimen name="margenTituloMenuPrincipalSuperior">160dp</dimen>
+    <dimen name="margenTituloMenuPrincipalSuperior">210dp</dimen>
 
     //menu actividades
     <dimen name="margenTopTituloMenuActividades">120dp</dimen>

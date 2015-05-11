@@ -4,6 +4,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#ffb9c7ff">
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -11,7 +16,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="@drawable/menu1">
+    android:background="@drawable/menu11">
 
     <!-- actividad principal - Pantalla inicial de la aplicacion -->
 
@@ -34,6 +39,14 @@
         android:layout_marginBottom="@dimen/margenButonSubtituloMenuPrincipal"
         android:id="@+id/lblQueDeseaHacer"/>
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/menu12"
+        android:orientation="vertical">
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -43,7 +56,9 @@
         style="@style/button"
         android:id="@+id/btnActividades"
         android:background="#ff99ff83"
-        android:textSize="@dimen/tamaLetraBotonInicio"/>
+        android:textSize="@dimen/tamaLetraBotonInicio"
+        android:drawableTop="@drawable/delfin"
+        android:alpha="0.7"/>
 
     <Button
         android:layout_width="fill_parent"
@@ -54,7 +69,9 @@
         style="@style/button"
         android:id="@+id/btnPuntuacion"
         android:textSize="@dimen/tamaLetraBotonInicio"
-        android:background="#ffffde66" />
+        android:background="#ffffde66"
+        android:drawableTop="@drawable/buho"
+        android:alpha="0.7"/>
 
     <Button
         android:layout_width="fill_parent"
@@ -65,7 +82,9 @@
         style="@style/button"
         android:id="@+id/btnUsuario"
         android:textSize="@dimen/tamaLetraBotonInicio"
-        android:background="#ff8fa2ff" />
+        android:background="#ff8fa2ff"
+        android:drawableTop="@drawable/nino"
+        android:alpha="0.7"/>
 
     <Button
         android:layout_width="fill_parent"
@@ -78,8 +97,12 @@
         android:textSize="@dimen/tamaLetraBotonInicio"
         android:background="#ffff9d94"
         android:singleLine="false"
-        android:textColor="@android:color/background_dark" />
+        android:textColor="@android:color/background_dark"
+        android:drawableTop="@drawable/pregunta"
+        android:alpha="0.7"/>
 
 </LinearLayout>
+
+    </LinearLayout>
 
 </ScrollView>

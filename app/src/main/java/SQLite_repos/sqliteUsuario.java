@@ -103,7 +103,7 @@ public class sqliteUsuario implements repoUsuario {
         ContentValues registro=new ContentValues();
         registro.put("nombre",usuario.getNombre());
 
-        db.delete("usuario","nombre="+usuario.getNombre(),null);
+        db.delete("usuario","nombre='"+usuario.getNombre()+"'",null);
     }
 
     @Override
@@ -114,8 +114,8 @@ public class sqliteUsuario implements repoUsuario {
         ContentValues registro=new ContentValues();
         registro.put("nombre",usuario.getNombre());
 
-        db.update("usuario",registro,"nombre="+nombreAnterior,null);
-        return false;
+        db.update("usuario",registro,"nombre='"+nombreAnterior+"'",null);
+        return true;
     }
 
 

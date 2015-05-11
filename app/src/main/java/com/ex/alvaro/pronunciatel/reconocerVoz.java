@@ -43,7 +43,12 @@ public class reconocerVoz extends Service implements RecognitionListener {
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,this.getPackageName());
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_WEB_SEARCH);
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 4);
+        try{
         speech.startListening(recognizerIntent);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
         Toast.makeText(getApplicationContext(),"onCreate",Toast.LENGTH_LONG).show();
         super.onCreate();
@@ -176,4 +181,12 @@ public class reconocerVoz extends Service implements RecognitionListener {
         resultados=null;
     }
 
+    //borrar si no funciona
+    /*@Override
+    public void onDestroy() {
+        if (speech != null) {
+            speech.destroy();
+        }
+        super.onDestroy();
+    }*/
 }

@@ -19,13 +19,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import java.io.StringBufferInputStream;
 import java.util.ArrayList;
 
 import Clases.Usuario;
 
 
 public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitListener*/{
+
+    int cantidadUsuarios=0;
 
     private String LOG_TAG="Menu Principal";
     //Context para llamar en cualquier clase
@@ -50,6 +51,7 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
     String CAMBIAR_NOMBRE="Veamos si tu nombre esta aqui";
     String SELECCIONA_NOMBRE="Cual de estoss es tu nombre?";
     String EL_NOMBRE_YA_EXISTE="Ese nombre ya existe, seleccionalo";
+    String ELIMINADO_CORRECTAMENTE="Se elimino el nombre de ";
 
     String NOBMRE_MANUAL="Escribe tu nombre en el cuadro";
 
@@ -197,14 +199,15 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
                 }
             }
         });
+
         lista_nombres.setLongClickable(true);
         lista_nombres.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(final AdapterView<?> parent, View view, final int position, long id) {
-                final Dialog dialogoEliminarModificar = new Dialog(con);
-                dialogoEliminarModificar.setTitle("¿Quieres editar un nombre?");
+                final Dialog dialogoEliminarModificar = new Dialog(actMenuPrincipal.this);
+                dialogoEliminarModificar.setTitle("Editar o eliminar un nombre");
 
-                LayoutInflater li=(LayoutInflater)con.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                LayoutInflater li=(LayoutInflater)actMenuPrincipal.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View v = li.inflate(R.layout.dialogo_eliminar_modificar, null, false);
                 dialogoEliminarModificar.setContentView(v);
                 //speak(SELECCIONA_NOMBRE);
@@ -217,8 +220,13 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
                     public void onClick(View v) {
                         Usuario usu =new Usuario((String)parent.getItemAtPosition(position));
                         Toast.makeText(con,(String)parent.getItemAtPosition(position),Toast.LENGTH_LONG);
+
                         usu.EliminarNombre();
                         dialogoEliminarModificar.dismiss();
+                        speak(ELIMINADO_CORRECTAMENTE+" "+usu.getNombre());
+                        dialogSeleccion.dismiss();
+
+
                     }
                 });
 
@@ -227,11 +235,14 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
                     public void onClick(View v) {
                         abrirDialogoIngresoManual((String)parent.getItemAtPosition(position));
                         dialogoEliminarModificar.dismiss();
+                        dialogSeleccion.dismiss();
                     }
                 });
-                return false;
+                dialogoEliminarModificar.show();
+                return true;
             }
         });
+
 
         dialogSeleccion.show();
 
@@ -374,6 +385,7 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
         final Button btnAceptar=(Button)dialogIngresoManual.findViewById(R.id.btnAceptarNombreManual);
         final Button btnCancelar=(Button)dialogIngresoManual.findViewById(R.id.btnCancelarNombreManual);
 
+        nombre_manual.setText(nombreA);
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -392,11 +404,7 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
                 }else{
                     if(usuario.modificarUsuario(nombreAnterior)){
                         saludar(nombre);
-                        lblBienvenido.setText(bienvenido+" "+usuario.getNombre().toUpperCase());
-                        dialogIngresoManual.dismiss();
-                    }else{
-                        Toast.makeText(con,EL_NOMBRE_YA_EXISTE,Toast.LENGTH_LONG).show();
-                        saludar(nombre);
+                        lblBienvenido.setText(bienvenido+" "+nombre);
                         dialogIngresoManual.dismiss();
                     }
                 }
