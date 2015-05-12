@@ -48,7 +48,6 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
     String QUE_HACER="Que quieres hacer";
     String ACTIVIDADES="Veamos las actividades";
     String PUNTUACIONES="veamos las puntuaciones";
-    String CAMBIAR_NOMBRE="Veamos si tu nombre esta aqui";
     String SELECCIONA_NOMBRE="Cual de estoss es tu nombre?";
     String EL_NOMBRE_YA_EXISTE="Ese nombre ya existe, seleccionalo";
     String ELIMINADO_CORRECTAMENTE="Se elimino el nombre de ";
@@ -70,7 +69,7 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
     int c2=0;
 
     //NOMBRE DE USUARIO DE SESION
-    static Usuario usuario=new Usuario("");
+    public static Usuario usuario=new Usuario("");
 
     Handler espera =new Handler();
 
@@ -91,6 +90,7 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
 
         //Crea un usuario para cargar los valores existentes
         usuario.cargarUsuario();
+        usuario.actualizarid();
 
         //Verifica nombre vacio
         if (usuario.getNombre().equals("")){
@@ -193,6 +193,7 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
                     dialogSeleccion.dismiss();
                 }else{
                     usuario.setNombre(nombre);
+                    usuario.actualizarid();
                     lblBienvenido.setText(bienvenido+" "+usuario.getNombre());
                     saludar(nombre);
                     dialogSeleccion.dismiss();
@@ -346,6 +347,7 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
                     c=0;
                     usuario.setNombre(nombre);
                     if(usuario.guardarNuevoUsuario()){
+                        usuario.actualizarid();
                         lblBienvenido.setText(bienvenido+" "+usuario.getNombre());
                         saludar(nombre);
                     }else{
@@ -394,6 +396,7 @@ public class actMenuPrincipal extends Activity /*implements TextToSpeech.OnInitL
                 if (nombreAnterior.equals("")){
                     if(usuario.guardarNuevoUsuario()){
                         saludar(nombre);
+                        usuario.actualizarid();
                         lblBienvenido.setText(bienvenido+" "+usuario.getNombre().toUpperCase());
                         dialogIngresoManual.dismiss();
                     }else{

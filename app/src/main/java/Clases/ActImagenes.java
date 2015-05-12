@@ -13,6 +13,7 @@ public class ActImagenes extends Actividad{
     private static ActImagenes instanciaActImagenes=null;
     String detallePalabra;
     repoActImagenes repository =new sqliteActImagenes();
+    int idPalabra;
 
     public static ActImagenes getInstanciaActImagenes(Context con){
         if (instanciaActImagenes==null){
@@ -22,6 +23,14 @@ public class ActImagenes extends Actividad{
     }
 
     private ActImagenes() {
+    }
+
+    public int getIdPalabra() {
+        return idPalabra;
+    }
+
+    public void setIdPalabra(int idPalabra) {
+        this.idPalabra = idPalabra;
     }
 
     public String getDetallePalabra() {

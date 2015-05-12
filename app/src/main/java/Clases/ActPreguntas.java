@@ -11,6 +11,7 @@ import SQLite_repos.sqliteActPreguntas;
 public class ActPreguntas extends Actividad{
 
     String pregunta="";
+    int idPregunta;
     //SINGLETON
     private static ActPreguntas instancioActPreguntas=null;
     //REPOSITORY
@@ -32,6 +33,14 @@ public class ActPreguntas extends Actividad{
 
     public void setPregunta(String pregunta) {
         this.pregunta = pregunta;
+    }
+
+    public int getIdPregunta() {
+        return idPregunta;
+    }
+
+    public void setIdPregunta(int idPregunta) {
+        this.idPregunta = idPregunta;
     }
 
     @Override

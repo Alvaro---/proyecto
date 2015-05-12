@@ -17,6 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import Clases.ActPreguntas;
+import Clases.Puntuacion;
 
 /**
  * Created by Alvaro on 13/04/2015.
@@ -43,6 +44,9 @@ public class actPreguntas extends Activity {
 
     int a=0;
     float act;
+    int repeticiones=0;
+    int idPregunta=-1;
+    String palabraPronunciad;
 
 
     @Override
@@ -68,6 +72,7 @@ public class actPreguntas extends Activity {
         String preg=pregunta.getPregunta();
         lblPregunta.setText(preg);
         actMenuPrincipal.speak(preg);
+        repeticiones=0;
     }
 
     private void cargarElementosInterfaz() {
@@ -97,8 +102,12 @@ public class actPreguntas extends Activity {
                         boolean c=false;
                         if (text!=""){
                             for (int i=0;i<palabrasReconocidas.size();i++){
-                                if (palabrasReconocidas.get(i).toString().equals(pregunta.getPalabraObjetivo())||
-                                        palabrasReconocidas.get(i).toString().equals(pregunta.getPalabraObjetivo2())){
+                                if (palabrasReconocidas.get(i).toString().equals(pregunta.getPalabraObjetivo())){
+                                    palabraPronunciad=pregunta.getPalabraObjetivo();
+                                    a=i;
+                                    c=true;
+                                }else if (palabrasReconocidas.get(i).toString().equals(pregunta.getPalabraObjetivo2())){
+                                    palabraPronunciad=pregunta.getPalabraObjetivo2();
                                     a=i;
                                     c=true;
                                 }
@@ -107,6 +116,7 @@ public class actPreguntas extends Activity {
                             if (!c){
                                 mostrarResultado(REPETIR_PRONUNCIACION);
                                 actMenuPrincipal.speak(REPETIR_PRONUNCIACION);
+                                repeticiones++;
                             }else{
                                 actMenuPrincipal.speak(CORRECTO + ". ");
                                 mostrarResultado(CORRECTO);
@@ -150,6 +160,7 @@ public class actPreguntas extends Activity {
 
     private void mostrarResultado(String mostrar) {
         if (mostrar.equals(CORRECTO)) {
+            calificar();
             btnContinuar.setText("CONTINUAR");
             actuamizarImagen(true);
         }
@@ -167,6 +178,8 @@ public class actPreguntas extends Activity {
     }
 
     private int calificar() {
+        Puntuacion p=new Puntuacion (a);
+        act=p.unaPregunta(repeticiones,"imagenes", idPregunta, palabraPronunciad);
         return 5;
     }
 

@@ -15,7 +15,7 @@ import Repos.repoActImagenes;
 public class sqliteActImagenes implements repoActImagenes {
 
 
-    private String select="select Palabra, imagen, descripcion, palabra2, palabra3, palabra4 from actimagen";
+    private String select="select Palabra, imagen, descripcion, palabra2, palabra3, palabra4, id from actimagen";
     ActImagenes act;
     @Override
     public void cargarAleatoria() {
@@ -26,7 +26,6 @@ public class sqliteActImagenes implements repoActImagenes {
         String consulta=select;
         Cursor fila=db.rawQuery(consulta,null);
 
-        //CORREGIR EL NUMERO CON EL TOTAL DE DATOS EN SQLITE
         int numero=obtenerAleatorio();
 
         if (fila.moveToFirst()){
@@ -48,5 +47,6 @@ public class sqliteActImagenes implements repoActImagenes {
         act.setPalabraObjetivo2(fila.getString(3));
         act.setPalabraObjetivo3(fila.getString(4));
         act.setPalabraObjetivo4(fila.getString(5));
+        act.setIdPalabra(fila.getInt(6));
     }
 }

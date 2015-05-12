@@ -19,4 +19,6 @@ public interface repoUsuario {
     void eliminarNombre(Usuario usuario);
 
     boolean modificarUsuario(Usuario usuario, String nombreAnterior);
+
+    int actualizarid(Usuario usuario);
 }

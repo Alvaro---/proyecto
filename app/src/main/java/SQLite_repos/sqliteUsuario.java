@@ -21,7 +21,7 @@ public class sqliteUsuario implements repoUsuario {
 
 
     //consultas
-    String select="select nombre from usuario";
+    String select="select nombre, id from usuario";
 
     @Override
     public String cargarUsuario() {
@@ -30,6 +30,7 @@ public class sqliteUsuario implements repoUsuario {
 
         //Variable para almacenar el nobmre de usuario
         String nombre="";
+        int id=-1;
 
         //Obtiene Base de datos.
         SQLiteDatabase db= conex.getWritableDatabase();
@@ -118,5 +119,21 @@ public class sqliteUsuario implements repoUsuario {
         return true;
     }
 
+    @Override
+    public int actualizarid(Usuario usuario) {
+        int id=-1;
+        Conexion conex=Conexion.getInstance(actMenuPrincipal.con);
+        SQLiteDatabase db= conex.getWritableDatabase();
+        String consulta="select nombre, id from usuario where nombre='"+usuario.getNombre()+"'";
+
+        Cursor fila=db.rawQuery(consulta,null);
+
+        //Nombre, toma el primer nombre encontrado
+        if (fila.moveToFirst())
+            id=fila.getInt(fila.getColumnIndex("id"));
+        fila.close();
+        db.close();
+        return id;
+    }
 
 }

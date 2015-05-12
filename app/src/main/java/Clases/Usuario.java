@@ -55,4 +55,8 @@ public class Usuario {
     public boolean modificarUsuario(String nombreAnterior) {
         return repository.modificarUsuario(this,nombreAnterior);
     }
+
+    public void actualizarid() {
+        this.setId(repository.actualizarid(this));
+    }
 }

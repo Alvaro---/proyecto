@@ -20,8 +20,10 @@ public class Conexion extends SQLiteOpenHelper {
 
     //La tabla de usuarios, contara con un nombre de usuario. Las puntuacioes se asociaran despues a un usuario, por dia.
     private String tbUsuario="CREATE TABLE Usuario (id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT UNIQUE)";
-    private String tbPalabras="CREATE TABLE actimagen (idImage INTEGER PRIMARY KEY AUTOINCREMENT, Palabra TEXT, palabra2 TEXT, palabra3 TEXT, palabra4 TEXT, imagen TEXT, descripcion TEXT)";
-    private String tbPreguntas="CREATE TABLE actpreguntas (idImage INTEGER PRIMARY KEY AUTOINCREMENT, pregunta TEXT, palabra TEXT, palabra2 TEXT, imagen TEXT)";
+    private String tbPalabras="CREATE TABLE actimagen (id INTEGER PRIMARY KEY AUTOINCREMENT, Palabra TEXT, palabra2 TEXT, palabra3 TEXT, palabra4 TEXT, imagen TEXT, descripcion TEXT)";
+    private String tbPreguntas="CREATE TABLE actpreguntas (id INTEGER PRIMARY KEY AUTOINCREMENT, pregunta TEXT, palabra TEXT, palabra2 TEXT, imagen TEXT)";
+    private String tbPuntuacionPalabras="CREATE TABLE puntuacionImagen (fecha TEXT not null, hora TEXT not null,puntuacion NUMERIC, idUsuario INTEGER, idPalabra INTEGER, palabraPronunciada TEXT, primary key (fecha,hora))";
+    private String tbPuntuacionPreguntas="CREATE TABLE puntuacionPreguntas (fecha TEXT not null, hora TEXT not null,puntuacion NUMERIC, idUsuario INTEGER, idPregunta INTEGER, palabraPronunciada TEXT, primary key (fecha,hora))";
 
     public static ArrayList <String> palabrasImagenesRegistros=new ArrayList<>();
 
@@ -130,6 +132,8 @@ public class Conexion extends SQLiteOpenHelper {
         db.execSQL(tbUsuario);
         db.execSQL(tbPalabras);
         db.execSQL(tbPreguntas);
+        db.execSQL(tbPuntuacionPalabras);
+        db.execSQL(tbPuntuacionPreguntas);
 
         //insercion de palabras actImagenes
 

@@ -63,4 +63,11 @@
     <string name="selectTono">Seleccion el tono del color</string>
 
 
+    //puntuaciones
+    <string name="puntuaciontitulo">Puntuaciones</string>
+
+    //Letras
+    <string name="letrasTitulo">Letras</string>
+    <string name="instruccionLetras">¿Puedes seleccionar la letra que se reproduce?</string>
+
 </resources>

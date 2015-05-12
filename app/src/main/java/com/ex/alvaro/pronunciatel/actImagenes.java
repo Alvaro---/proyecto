@@ -42,10 +42,14 @@ public class actImagenes extends Activity {
     String INCORRECTO="Creo que esa no es la respuesta. Intenta de nuevo";
     String CORRECTO="Correcto";
 
+    String palabraPronunciad;
+    int idPalabra;
+
     ActImagenes actividadImagenes=ActImagenes.getInstanciaActImagenes(con);
 
     int a=0;
     float act=0;
+    int puntosPorReconocimiento=0;
 
     int repeticiones=0;
 
@@ -76,6 +80,7 @@ public class actImagenes extends Activity {
         //establecer imagen
         int resId=getResources().getIdentifier(actividadImagenes.getImagen(),"drawable",getPackageName());
         imvImagen.setImageResource(resId);
+        idPalabra=actividadImagenes.getIdPalabra();
 
     }
 
@@ -177,12 +182,23 @@ public class actImagenes extends Activity {
         });
     }
     public boolean compararResultado(int i){
-        if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo())||
-                palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo2())||
-                palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo3())||
-                palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo4()))
+        if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo())){
+            palabraPronunciad=actividadImagenes.getPalabraObjetivo();
+            puntosPorReconocimiento=0;
             return true;
-        else
+        }else if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo2())){
+            palabraPronunciad=actividadImagenes.getPalabraObjetivo2();
+            puntosPorReconocimiento=1;
+            return true;
+        }else if(palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo3())){
+            palabraPronunciad=actividadImagenes.getPalabraObjetivo3();
+            puntosPorReconocimiento=2;
+            return true;
+        }else if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo4())) {
+            palabraPronunciad = actividadImagenes.getPalabraObjetivo4();
+            puntosPorReconocimiento = 3;
+            return true;
+        }else
             return false;
     }
 
@@ -218,6 +234,6 @@ public class actImagenes extends Activity {
 
     private void puntuar() {
         Puntuacion p=new Puntuacion (a);
-        act=p.unEjercicio(repeticiones,"imagenes");
+        act=p.unEjercicio(repeticiones,"imagenes", puntosPorReconocimiento, idPalabra,palabraPronunciad);
     }
 }

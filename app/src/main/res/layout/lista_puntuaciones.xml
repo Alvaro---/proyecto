@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffc8e5ff"
+        android:alpha="0.7">
+
+        <TextView
+            android:id="@+id/nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="ACTIVIDAD"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="30dp"/>
+
+        <TextView
+            android:id="@+id/palabra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nombre"
+            android:text="PALABRA"
+            android:textSize="25dp"/>
+    <TextView
+        android:id="@+id/fechayHora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/palabra"
+        android:text="fechaHora"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/puntos"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0%"
+        android:textSize="50dp"
+        android:layout_alignBaseline="@+id/fechayHora"
+        />
+
+    </RelativeLayout>
+
