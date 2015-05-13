@@ -29,7 +29,12 @@ public class itemListaPuntos extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return items.size();
+        try {
+            return items.size();
+        }catch (NullPointerException e){
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     @Override
