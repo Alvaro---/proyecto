@@ -70,7 +70,7 @@ public class actLetras extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Letra seleccion= (Letra)parent.getItemAtPosition(position);
                 if (seleccion.getLetra().equals(letraObjetivo.getLetra())) {
-                    speak(CORRECTO);
+                    speak(letraObjetivo.getLetra()+" de "+letraObjetivo.getEjemplo()+". "+CORRECTO);
                     dialogoCorrecto();
                 }
                 else speak(INCORRECTO);
@@ -179,7 +179,7 @@ public class actLetras extends Activity {
         else if (i==13)
             l=new Letra("M","Motocicleta","drawable/letram","drawable/ejletram");
         else if (i==14)
-            l=new Letra("N","Naranaja","drawable/letran","drawable/ejletran");
+            l=new Letra("N","Naranja","drawable/letran","drawable/ejletran");
         else if (i==15)
             l=new Letra("O","Oveja","drawable/letrao","drawable/ejletrao");
         else if (i==16)
@@ -193,7 +193,7 @@ public class actLetras extends Activity {
         else if (i==20)
             l=new Letra("T","Tesoro","drawable/letrat","drawable/ejletrat");
         else if (i==21)
-            l=new Letra("U","Unicornio","drawable/letrau","drawable/ejletrau");
+            l=new Letra("Uu","Unicornio","drawable/letrau","drawable/ejletrau");
         else if (i==22)
             l=new Letra("V","Vaca","drawable/letrav","drawable/ejletrav");
         else if (i==23)

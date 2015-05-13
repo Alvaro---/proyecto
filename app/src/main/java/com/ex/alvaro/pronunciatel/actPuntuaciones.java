@@ -3,6 +3,7 @@ package com.ex.alvaro.pronunciatel;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,14 +24,15 @@ public class actPuntuaciones extends Activity {
         p.setIdUsuario(actMenuPrincipal.usuario.getId());
 
         ListView listaPuntos = (ListView) findViewById(R.id.listView);
-        ArrayList<Puntuacion> itemsPuntos = p.cargarResultados();
 
-        //obtenerItems();
+        try {
+            ArrayList<Puntuacion> itemsPuntos = p.cargarResultados();
 
-
-        itemListaPuntos adapter = new itemListaPuntos(this, itemsPuntos);
-
-        listaPuntos.setAdapter(adapter);
+            itemListaPuntos adapter = new itemListaPuntos(this, itemsPuntos);
+            listaPuntos.setAdapter(adapter);
+        }catch (Exception e){
+            Toast.makeText(this,"No Hay puntuaciones", Toast.LENGTH_LONG);
+        }
 
 
     }

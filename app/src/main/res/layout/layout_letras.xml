@@ -10,7 +10,8 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/tamLabelsTitulo"
         android:text="@string/letrasTitulo"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textStyle="bold"/>
 
     <TextView
         android:layout_width="fill_parent"

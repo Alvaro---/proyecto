@@ -108,7 +108,7 @@ public class Conexion extends SQLiteOpenHelper {
         palabrasImagenesRegistros.add("INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('tigre', '', '', '', 'tigre', 'el tigre vive en la selva')");
         palabrasImagenesRegistros.add("INSERT INTO actimagen (Palabra, palabra2, palabra3, palabra4, imagen, descripcion) values ('uvas', 'uvitas', '', '', 'uvas', 'las uvas crecen en los viñedos')");
         //PREGUNTAS
-        preguntasRegistros.add("INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Choco entre dos paredes \nlate mi corazón \nQuien no sepa mi nombre \nes un cabezón.', 'el chocolate', 'chocolate', 'chocolate')");
+        preguntasRegistros.add("INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Choco entre dos paredes \nlate mi corazón. \nQuien no sepa mi nombre \nes un cabezón.', 'el chocolate', 'chocolate', 'chocolate')");
         preguntasRegistros.add("INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Blanca por dentro,\nverde por fuera. Si no sabes, espera.', 'la pera', 'pera', 'pera2')");
         preguntasRegistros.add("INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Un señor gordito,\nmuy coloradito, \nno toma café, \nsiempre toma té', 'el tomate', 'tomate', 'tomate')");
         preguntasRegistros.add("INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Oro parece, plata no es. \nAbran las cortinas, \ny verán lo que es.', 'el platano', 'platano', 'platano')");

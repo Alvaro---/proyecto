@@ -114,8 +114,8 @@ public class reconocerVoz extends Service implements RecognitionListener {
 
         //Mostrar en pantalla el resultado
         /*
-        Toast.makeText(getApplicationContext(),"Resultados: "+texto,Toast.LENGTH_SHORT).show();
-        Log.d(LOG_TAG, texto);*/
+        Toast.makeText(getApplicationContext(),"Resultados: "+texto,Toast.LENGTH_SHORT).show();*/
+        Log.d(LOG_TAG, texto);
 
     }
 

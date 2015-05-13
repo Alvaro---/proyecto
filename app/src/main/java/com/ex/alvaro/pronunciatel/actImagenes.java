@@ -129,7 +129,6 @@ public class actImagenes extends Activity {
                                     }
                                 },3500);*/
                             }else{
-                                repeticiones=0;
                                 actMenuPrincipal.speak(CORRECTO+". "+actividadImagenes.getDetallePalabra());
                                 mostrarResultado(CORRECTO);
                             }
