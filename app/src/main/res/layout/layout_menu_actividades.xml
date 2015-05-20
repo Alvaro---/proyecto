@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#ffb9c7ff">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/menu2">
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/menu21">
+
 
     <TextView
         android:layout_width="fill_parent"
@@ -14,17 +26,26 @@
         android:gravity="center"
         android:id="@+id/lblSelectActividad"/>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="@drawable/menu22">
+
+
     <Button
-        android:layout_width="190dp"
-        android:layout_height="45dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         style="@style/buttonAct"
         android:text="@string/actividadImagen"
         android:id="@+id/btnActImagen"
         android:layout_marginBottom="@dimen/margenInfButon"/>
 
     <Button
-        android:layout_width="190dp"
-        android:layout_height="45dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         style="@style/buttonAct"
         android:text="@string/actividadPregunta"
         android:id="@+id/btnActPreguntas"
@@ -32,20 +53,43 @@
         android:layout_marginBottom="@dimen/margenInfButon"/>
 
     <Button
-        android:layout_width="190dp"
-        android:layout_height="45dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         style="@style/buttonAct"
         android:text="@string/actividadLetras"
         android:id="@+id/btnActLetras"
         android:layout_marginBottom="@dimen/margenInfButon"/>
 
     <Button
-        android:layout_width="190dp"
-        android:layout_height="45dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         style="@style/buttonAct"
         android:text="@string/actividadPintar"
         android:id="@+id/btnActPintar"
         android:layout_marginTop="@dimen/margenSupButon"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@style/buttonAct"
+        android:text="@string/actividadCuento"
+        android:id="@+id/btnActCuentos"
+        android:layout_marginTop="@dimen/margenSupButon"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        style="@style/buttonAct"
+        android:text="@string/actividadAntonimos"
+        android:id="@+id/btnActAntonimos"
+        android:layout_marginTop="@dimen/margenSupButon"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/menu23">
 
     <Button
         android:layout_width="180dp"
@@ -54,6 +98,9 @@
         android:text=""
         android:background="@android:color/transparent"
         android:id="@+id/btnAtrasActividades"/>
-
+    </LinearLayout>
 
 </LinearLayout>
+
+
+    </ScrollView>

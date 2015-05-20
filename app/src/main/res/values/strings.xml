@@ -34,6 +34,10 @@
 
     <string name="pronunciar">Pronunciar</string>
 
+    <string name="actividadCuento">Cuentos</string>
+
+    <string name="actividadAntonimos">Opuestos</string>
+
     //Acividades
     <string name="actividadImagen">Adivina la imagen</string>
     <string name="actividadPregunta">Preguntas</string>
@@ -51,6 +55,12 @@
     <string name="preguntasCorrectas">Preguntas correctas: </string>
 
     <string name="escuchar">Escuchar</string>
+
+    <string name="tituloCuentos">Cuentos</string>
+    <string name="instruccionCuentos">Escucha o lee el cuento en el cuadro, y pulsa el boton para ver que recuerdas</string>
+
+    <string name="tituloOpuestos">Palabras Opuestas</string>
+    <string name="instruccionOpuestas">¿Puedes pronunciar la palabra opuesta de la que se muestra?</string>
 
     //PINTAR
 

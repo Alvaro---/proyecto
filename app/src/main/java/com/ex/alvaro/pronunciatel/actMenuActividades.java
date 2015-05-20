@@ -18,8 +18,10 @@ public class actMenuActividades extends Activity{
     String PREGUNTAS="¿Puedes responder estas preguntas?";
     String LETRAS="Repasemos las letras";
     String PINTAR="Pintemos";
+    String CUENTOS="Leamos cuentos";
+    String OPUESTOS="¿Puedes ver identificar la palabra opuesta?";
 
-    Button btnActImagenes, btnActPreguntas, btnActPintar, btnActLetras, btnAtras;
+    Button btnActImagenes, btnActPreguntas, btnActPintar, btnActLetras, btnAtras, btnCuentos, btnOpuestos;
     TextView lblActividades;
     Handler espera=new Handler();
 
@@ -79,6 +81,26 @@ public class actMenuActividades extends Activity{
             }
         });
 
+        btnCuentos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                actMenuPrincipal.speak(CUENTOS);
+                Intent actividad =new Intent(actMenuActividades.this, actCuentos.class);
+                startActivity(actividad);
+            }
+        });
+
+        btnOpuestos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                actMenuPrincipal.speak(OPUESTOS);
+                Intent actividad =new Intent(actMenuActividades.this, actOpuestos.class);
+                startActivity(actividad);
+            }
+        });
+
+
+
         btnAtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +117,10 @@ public class actMenuActividades extends Activity{
         btnActLetras=(Button)findViewById(R.id.btnActLetras);
         btnAtras=(Button)findViewById(R.id.btnAtrasActividades);
 
+        btnCuentos=(Button)findViewById(R.id.btnActCuentos);
+        btnOpuestos=(Button)findViewById(R.id.btnActAntonimos);
         //Labels
         lblActividades=(TextView)findViewById(R.id.lblSelectActividad);
     }
+
 }
