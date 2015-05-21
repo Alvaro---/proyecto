@@ -25,30 +25,18 @@ public class Conexion extends SQLiteOpenHelper {
     private String tbPuntuacionPalabras="CREATE TABLE puntuacionImagen (fecha TEXT not null, hora TEXT not null,puntuacion NUMERIC, idUsuario INTEGER, idPalabra INTEGER, palabraPronunciada TEXT, primary key (fecha,hora))";
     private String tbPuntuacionPreguntas="CREATE TABLE puntuacionPreguntas (fecha TEXT not null, hora TEXT not null,puntuacion NUMERIC, idUsuario INTEGER, idPregunta INTEGER, palabraPronunciada TEXT, primary key (fecha,hora))";
 
+    private String tbCuentos="CREATE TABLE cuentos (id INTEGER PRIMARY KEY AUTOINCREMENT, cuento TEXT, pregunta1 TEXT, respuesta11 TEXT, respuesta12 TEXT, respuesta13 TEXT, pregunta2 TEXT, respuesta21 TEXT, respuesta22 TEXT, respuesta23 TEXT, pregunta3 TEXT, respuesta31 TEXT, respuesta32 TEXT, respuesta33 TEXT)";
+
+
     public static ArrayList <String> palabrasImagenesRegistros=new ArrayList<>();
 
     //PARA ACTIVIDAD DE PREGUTNAS
 
     public static ArrayList <String> preguntasRegistros=new ArrayList<>();
 
-    //private String actPreg1="INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Choco entre dos paredes \nlate mi corazón \nQuien no sepa mi nombre \nes un cabezón.', 'el chocolate', 'chocolate', 'chocolate')";
-    //private String actPreg2="INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Blanca por dentro,\nverde por fuera. \nSi no sabes, \nespera.', 'la pera', 'pera', 'pera2')";
-    //private String actPreg3="INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Un señor gordito,\nmuy coloradito, \nno toma café, \nsiempre toma té', 'el tomate', 'tomate', 'tomate')";
-    //private String actPreg4="INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Oro parece, plata no es. \nAbran las cortinas, \ny verán lo que es.', 'el platano', 'platano', 'platano')";
-    //private String actPreg5="INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Lo come Pancracio, \nestá en el champán; \nsi piensas despacio \nsabrás que es el…', 'el pan', 'pan', 'pan')";
-    //private String actPreg6="INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Por dentro soy carbón,\npor fuera soy madera, \nviajo en tu estuche \ny me llevas a la escuela.', 'el lápiz', 'lápiz', 'lapiz')";
-    //private String actPreg7="INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Me llamo Leo,\nme apellido Pardo,\nquien no me adivine \nes un poco tardo. ', 'el leopardo', 'leopardo', 'leopardo')";
-    //private String actPreg8="INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Llevo mi casita a cuestas camino con una pata \ny voy dejando mi huella \ncon un hilito de plata.', 'el caracol', 'caracol', 'caracol')";
-    //private String actPreg9="INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Un animal que tiene \nojos de gato, \norejas de gato, \npatas de gato, \nrabo de gato \ny no es gato.', 'la gata', 'gata', 'gata')";
-    //private String actPreg10="INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Soy un animal muy elegante, \nmuy veloz y poco fiero; \ny cuando quiero calzarme \nvoy a casa del herrero. ', 'el caballo', 'caballo', 'caballo2')";
-    //private String actPreg11="INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Antes huevecito, \ndespués capullito,\nmás tarde volaré \ncomo un pajarito', 'la mariposa', 'mariposa', 'mariposa')";
-    //private String actPreg12="INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Soy astuto y juguetón\ny cazar un ratón\nes mi mayor afición.', 'el gato', 'gato', 'gato2')";
-    //private String actPreg13="INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Cuál es el animal,\nde campo o corral,\nque si una zanahoria le das\nsus dientecitos verás?', 'el conejo', 'conejo', 'conejo')";
-    //private String actPreg14="INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values(' Vuelo de noche, \nduermo de día \ny nunca verás plumas \nen el ala mía', 'el murciélago', 'murciélago', 'murcielago')";
-    //private String actPreg15="INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Tengo agujas pero no sé coser, \ntengo números pero no sé leer,\nlas horas te doy,\n¿sabes quién soy?', 'el reloj', 'reloj', 'reloj')";
-    //private String actPreg16="INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Listo y grandullón, \nsi le preguntas no te habla.\nPero se sabe todas las respuestas,\nporque tiene todas las palabras.', 'el diccionario', 'diccionario', 'diccionario')";
+    //Actividad Para lectura de Cuentos
 
-
+    public static ArrayList <String> cuentos=new ArrayList<>();
 
 
 
@@ -124,6 +112,15 @@ public class Conexion extends SQLiteOpenHelper {
         preguntasRegistros.add("INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values(' Vuelo de noche, \nduermo de día \ny nunca verás plumas \nen el ala mía', 'el murciélago', 'murciélago', 'murcielago')");
         preguntasRegistros.add("INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Tengo agujas pero no sé coser, \ntengo números pero no sé leer,\nlas horas te doy,\n¿sabes quién soy?', 'el reloj', 'reloj', 'reloj')");
         preguntasRegistros.add("INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Listo y grandullón, \nsi le preguntas no te habla.\nPero se sabe todas las respuestas,\nporque tiene todas las palabras.', 'el diccionario', 'diccionario', 'diccionario')");
+
+        //CUENTOS
+        cuentos.add("INSERT INTO cuentos (cuento, pregunta1, respuesta11, respuesta12, respuesta13,pregunta2, respuesta21, respuesta22, respuesta23,pregunta3, respuesta31, respuesta32, respuesta33) values (" +
+                "'Un pajarito estaba encerrado en su jaula de oro. \n Llegó el invierno y los niños jugaron con la nieve.\nLlegó la primavera y los niños jugaron con las flores.\nLlegó el verano y el pajarito se escapó para jugar con el mar.'," +
+                "'¿Cómo estaba el pajarito en su jaula?', 'Alegre', 'Con ganas de escapar', 'Muy feliz'," +
+                "'¿Cuándo jugaban los niños a tirarse hojas?','En invierno','En otoño','En primavera'," +
+                "'El pajarito se escapó para jugar con el mar:','En primavera','En verano','En otoño')");
+        //La respuesta correcta es la segunda siempre. El orden cambiara en la aplicacion.
+
     }
 
     @Override
@@ -134,6 +131,7 @@ public class Conexion extends SQLiteOpenHelper {
         db.execSQL(tbPreguntas);
         db.execSQL(tbPuntuacionPalabras);
         db.execSQL(tbPuntuacionPreguntas);
+        db.execSQL(tbCuentos);
 
         //insercion de palabras actImagenes
 
@@ -143,6 +141,10 @@ public class Conexion extends SQLiteOpenHelper {
 
         for (int i=0; i<preguntasRegistros.size();i++){
             db.execSQL(preguntasRegistros.get(i));
+        }
+
+        for (int i=0; i<cuentos.size();i++){
+            db.execSQL(cuentos.get(i));
         }
 
         /*db.execSQL( actImg1);

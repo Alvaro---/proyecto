@@ -35,7 +35,7 @@
             android:background="@drawable/hojacuento">
 
             <TextView
-                android:id="@+id/txtCuento"
+                android:id="@+id/lblCuento"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Un "
@@ -51,9 +51,24 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
 
+            <Button
+                android:id="@+id/btnEstoyListo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/EstoyListoCuentos"/>
 
+            <Button
+                android:id="@+id/btnOtroCuento"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/otroCuento"/>
 
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>

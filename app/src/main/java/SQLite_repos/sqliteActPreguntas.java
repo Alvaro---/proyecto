@@ -51,6 +51,6 @@ public class sqliteActPreguntas implements repoActPreguntas {
     }
 
     private int obtenerAleatorio() {
-        return (int) (Math.random()*16);
+        return (int) (Math.random()*Conexion.preguntasRegistros.size());
     }
 }

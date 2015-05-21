@@ -80,4 +80,8 @@
     <string name="letrasTitulo">Letras</string>
     <string name="instruccionLetras">¿Puedes seleccionar la letra que se reproduce?</string>
 
+    //Cuentos
+    <string name="EstoyListoCuentos">Estoy Listo</string>
+    <string name="otroCuento">Otro Cuento</string>
+
 </resources>
