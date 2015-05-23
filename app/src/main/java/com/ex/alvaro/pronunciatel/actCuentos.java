@@ -21,7 +21,7 @@ public class actCuentos extends Activity implements View.OnClickListener {
     TextView lblCuento;
 
     public static Context con;
-    Cuento cuento=new Cuento("");
+    static Cuento cuento=new Cuento("");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +59,8 @@ public class actCuentos extends Activity implements View.OnClickListener {
                 break;
 
             case R.id.btnEstoyListo:
+                Intent actividad =new Intent(actCuentos.this, actPreguntasCuentos.class);
+                startActivity(actividad);
                 break;
 
             case R.id.lblCuento:

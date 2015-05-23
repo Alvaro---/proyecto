@@ -14,7 +14,7 @@ import SQLite_repos.sqliteCuentos;
 public class Cuento {
 
     int id;
-    ArrayList <PreguntasCuento> preguntas=null;
+    ArrayList <PreguntasCuento> preguntas=new ArrayList<>();
     String cuento;
 
     repoCuentos repository=new sqliteCuentos();
@@ -52,5 +52,14 @@ public class Cuento {
         this.setCuento(a.getCuento());
         this.setId(a.getId());
         Log.v("cuento desde clase", this.getCuento());
+    }
+
+    public void cargarPreguntas() {
+        try{
+            preguntas.clear();
+        }catch(Exception e){
+
+        }
+        setPreguntas(repository.cargarPreguntas(this.id));
     }
 }

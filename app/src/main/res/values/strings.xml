@@ -84,4 +84,7 @@
     <string name="EstoyListoCuentos">Estoy Listo</string>
     <string name="otroCuento">Otro Cuento</string>
 
+    <string name="TituloPreguntasCuentos">Contesta las preguntas</string>
+    <string name="contestar">Ya se la respuesta</string>
+
 </resources>

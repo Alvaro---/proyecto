@@ -25,7 +25,8 @@ public class Conexion extends SQLiteOpenHelper {
     private String tbPuntuacionPalabras="CREATE TABLE puntuacionImagen (fecha TEXT not null, hora TEXT not null,puntuacion NUMERIC, idUsuario INTEGER, idPalabra INTEGER, palabraPronunciada TEXT, primary key (fecha,hora))";
     private String tbPuntuacionPreguntas="CREATE TABLE puntuacionPreguntas (fecha TEXT not null, hora TEXT not null,puntuacion NUMERIC, idUsuario INTEGER, idPregunta INTEGER, palabraPronunciada TEXT, primary key (fecha,hora))";
 
-    private String tbCuentos="CREATE TABLE cuentos (id INTEGER PRIMARY KEY AUTOINCREMENT, cuento TEXT, pregunta1 TEXT, respuesta11 TEXT, respuesta12 TEXT, respuesta13 TEXT, pregunta2 TEXT, respuesta21 TEXT, respuesta22 TEXT, respuesta23 TEXT, pregunta3 TEXT, respuesta31 TEXT, respuesta32 TEXT, respuesta33 TEXT)";
+    private String tbCuentos="CREATE TABLE cuentos (id INTEGER PRIMARY KEY, cuento TEXT)";
+    private String tbPreguntasCuento="CREATE TABLE preguntascuento(id INTEGER PRIMARY KEY AUTOINCREMENT, pregunta TEXT, respuesta1 TEXT, respuesta2 TEXT, respuesta3 TEXT, idcuento INTEGER, FOREIGN KEY(idcuento) REFERENCES tbcuentos(id))";
 
 
     public static ArrayList <String> palabrasImagenesRegistros=new ArrayList<>();
@@ -37,6 +38,8 @@ public class Conexion extends SQLiteOpenHelper {
     //Actividad Para lectura de Cuentos
 
     public static ArrayList <String> cuentos=new ArrayList<>();
+
+    public static ArrayList <String> preguntaCuentoRegistros=new ArrayList<>();
 
 
 
@@ -114,12 +117,23 @@ public class Conexion extends SQLiteOpenHelper {
         preguntasRegistros.add("INSERT INTO actpreguntas (pregunta,palabra,palabra2,imagen) values('Listo y grandullón, \nsi le preguntas no te habla.\nPero se sabe todas las respuestas,\nporque tiene todas las palabras.', 'el diccionario', 'diccionario', 'diccionario')");
 
         //CUENTOS
-        cuentos.add("INSERT INTO cuentos (cuento, pregunta1, respuesta11, respuesta12, respuesta13,pregunta2, respuesta21, respuesta22, respuesta23,pregunta3, respuesta31, respuesta32, respuesta33) values (" +
-                "'Un pajarito estaba encerrado en su jaula de oro. \n Llegó el invierno y los niños jugaron con la nieve.\nLlegó la primavera y los niños jugaron con las flores.\nLlegó el verano y el pajarito se escapó para jugar con el mar.'," +
-                "'¿Cómo estaba el pajarito en su jaula?', 'Alegre', 'Con ganas de escapar', 'Muy feliz'," +
+        cuentos.add("INSERT INTO cuentos (id, cuento) values ( 1, " +
+                "'Un pajarito estaba encerrado en su jaula de oro. \n Llegó el invierno y los niños jugaron con la nieve.\nLlegó la primavera y los niños jugaron con las flores.\nLlegó el verano y el pajarito se escapó para jugar con el mar')");
+
+
+        //PREGUNTAS CUENTOS
+        preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('¿Cómo estaba el pajarito en su jaula?','Encerrado','Alegre','Corriendo','1')");
+        preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('¿Cuándo jugaban los niños a tirarse hojas?','Otoño','Primavera','Invierno','1')");
+        preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('El pajarito se escapó para jugar con el mar en:','Verano','Otoño','Invierno','1')");
+
+
+        /*
+
+        private String tbPreguntasCuento="CREATE TABLE preguntascuento(id INTEGER PRIMARY KEY AUTOINCREMENT, pregunta TEXT, respuesta1 TEXT, respuesta2 TEXT, respuesta3 TEXT, idcuento INTEGER FOREIGN KEY REFERENCES tbcuentos(id)";
+
+      ¿Cómo estaba el pajarito en su jaula?', 'Alegre', 'Con ganas de escapar', 'Muy feliz'," +
                 "'¿Cuándo jugaban los niños a tirarse hojas?','En invierno','En otoño','En primavera'," +
-                "'El pajarito se escapó para jugar con el mar:','En primavera','En verano','En otoño')");
-        //La respuesta correcta es la segunda siempre. El orden cambiara en la aplicacion.
+                        "'El pajarito se escapó para jugar con el mar:','En primavera','En verano','En otoño'))*/
 
     }
 
@@ -132,6 +146,7 @@ public class Conexion extends SQLiteOpenHelper {
         db.execSQL(tbPuntuacionPalabras);
         db.execSQL(tbPuntuacionPreguntas);
         db.execSQL(tbCuentos);
+        db.execSQL(tbPreguntasCuento);
 
         //insercion de palabras actImagenes
 
@@ -145,6 +160,10 @@ public class Conexion extends SQLiteOpenHelper {
 
         for (int i=0; i<cuentos.size();i++){
             db.execSQL(cuentos.get(i));
+        }
+
+        for (int i=0; i<preguntaCuentoRegistros.size();i++){
+            db.execSQL(preguntaCuentoRegistros.get(i));
         }
 
         /*db.execSQL( actImg1);

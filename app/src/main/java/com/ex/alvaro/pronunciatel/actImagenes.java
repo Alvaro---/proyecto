@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import config.distanciaPalabras;
+
 import java.util.ArrayList;
 
 import Clases.ActImagenes;
@@ -116,6 +118,7 @@ public class actImagenes extends Activity {
                                 if (compararResultado(i)){
                                     a=i;
                                     c=true;
+                                    break;
                                 }
                             }
                             dialogoEscucha.dismiss();
@@ -181,24 +184,54 @@ public class actImagenes extends Activity {
         });
     }
     public boolean compararResultado(int i){
-        if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo())){
-            palabraPronunciad=actividadImagenes.getPalabraObjetivo();
-            puntosPorReconocimiento=0;
+        //calculo valor LevenshteinDistance
+        int valorLev=-1;
+        int valor=-1;
+        String palabracercana;
+        if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo())) {
+            palabraPronunciad = actividadImagenes.getPalabraObjetivo();
+            puntosPorReconocimiento = 0;
+            System.out.println("primere");
             return true;
-        }else if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo2())){
-            palabraPronunciad=actividadImagenes.getPalabraObjetivo2();
-            puntosPorReconocimiento=1;
-            return true;
-        }else if(palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo3())){
-            palabraPronunciad=actividadImagenes.getPalabraObjetivo3();
-            puntosPorReconocimiento=2;
-            return true;
-        }else if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo4())) {
-            palabraPronunciad = actividadImagenes.getPalabraObjetivo4();
-            puntosPorReconocimiento = 3;
-            return true;
-        }else
-            return false;
+        }else {
+            valorLev = distanciaPalabras.computeLevenshteinDistance(palabrasReconocidas.get(i).toString(), actividadImagenes.getPalabraObjetivo());
+            palabracercana=actividadImagenes.getPalabraObjetivo();
+            if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo2())) {
+                palabraPronunciad = actividadImagenes.getPalabraObjetivo2();
+                puntosPorReconocimiento = 1;
+                return true;
+            } else {
+                valor = distanciaPalabras.computeLevenshteinDistance(palabrasReconocidas.get(i).toString(), actividadImagenes.getPalabraObjetivo2());
+                if (valor<valorLev){ valorLev=valor;
+                palabracercana=actividadImagenes.getPalabraObjetivo2();}
+                if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo3())) {
+                    palabraPronunciad = actividadImagenes.getPalabraObjetivo3();
+                    puntosPorReconocimiento = 2;
+                    return true;
+                } else {
+                    valor = distanciaPalabras.computeLevenshteinDistance(palabrasReconocidas.get(i).toString(), actividadImagenes.getPalabraObjetivo3());
+                    if (valor<valorLev){ valorLev=valor;
+                        palabracercana=actividadImagenes.getPalabraObjetivo3();}
+                    if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo4())) {
+                        palabraPronunciad = actividadImagenes.getPalabraObjetivo4();
+                        puntosPorReconocimiento = 3;
+                        return true;
+                    } else {
+                        valor = distanciaPalabras.computeLevenshteinDistance(palabrasReconocidas.get(i).toString(), actividadImagenes.getPalabraObjetivo4());
+                        if (valor<valorLev){ valorLev=valor;
+                            palabracercana=actividadImagenes.getPalabraObjetivo3();}
+                        if (valorLev==1||valorLev==0||valorLev==3){
+                            puntosPorReconocimiento = 4;
+                            System.out.println("TRUE valorlev=!"+valorLev+" y valor="+valor);
+                            return true;
+                        }else {
+                            System.out.println("FALSE valorlev=!" + valorLev + " y valor=" + valor);
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
     }
 
 

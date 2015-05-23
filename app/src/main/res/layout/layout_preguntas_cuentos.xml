@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/TituloPreguntasCuentos"
+        android:gravity="center"
+        android:textSize="@dimen/tamLabelsTitulo"/>
+
+
+    <TextView
+        android:id="@+id/lblPreguntaCuento"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New RadioButton"
+            android:id="@+id/respuesta1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New RadioButton"
+            android:id="@+id/respuesta2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New RadioButton"
+            android:id="@+id/respuesta3" />
+
+    <Button
+        android:id="@+id/btnContestarPreguntaCuento"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/contestar"/>
+
+
+</LinearLayout>
