@@ -28,6 +28,7 @@ public class Conexion extends SQLiteOpenHelper {
     private String tbCuentos="CREATE TABLE cuentos (id INTEGER PRIMARY KEY, cuento TEXT)";
     private String tbPreguntasCuento="CREATE TABLE preguntascuento(id INTEGER PRIMARY KEY AUTOINCREMENT, pregunta TEXT, respuesta1 TEXT, respuesta2 TEXT, respuesta3 TEXT, idcuento INTEGER, FOREIGN KEY(idcuento) REFERENCES tbcuentos(id))";
 
+    private String tbCadenaFonematica="CREATE TABLE cadena (id INTEGER PRIMARY KEY AUTOINCREMENT, imagen TEXT, palabra TEXT, letra TEXT, inicial INTEGER, final INTEGER, inversa INTEGER, media INTEGER)";
 
     public static ArrayList <String> palabrasImagenesRegistros=new ArrayList<>();
 
@@ -40,6 +41,8 @@ public class Conexion extends SQLiteOpenHelper {
     public static ArrayList <String> cuentos=new ArrayList<>();
 
     public static ArrayList <String> preguntaCuentoRegistros=new ArrayList<>();
+
+    public static ArrayList <String> letrasCadenaFonematicaRegistros=new ArrayList<>();
 
 
 
@@ -126,14 +129,69 @@ public class Conexion extends SQLiteOpenHelper {
         preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('¿Cuándo jugaban los niños a tirarse hojas?','Otoño','Primavera','Invierno','1')");
         preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('El pajarito se escapó para jugar con el mar en:','Verano','Otoño','Invierno','1')");
 
-
         /*
-
         private String tbPreguntasCuento="CREATE TABLE preguntascuento(id INTEGER PRIMARY KEY AUTOINCREMENT, pregunta TEXT, respuesta1 TEXT, respuesta2 TEXT, respuesta3 TEXT, idcuento INTEGER FOREIGN KEY REFERENCES tbcuentos(id)";
 
       ¿Cómo estaba el pajarito en su jaula?', 'Alegre', 'Con ganas de escapar', 'Muy feliz'," +
                 "'¿Cuándo jugaban los niños a tirarse hojas?','En invierno','En otoño','En primavera'," +
                         "'El pajarito se escapó para jugar con el mar:','En primavera','En verano','En otoño'))*/
+
+
+        //CADENA FONEMATICA
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra) values ('ala','ala','A')");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra) values ('aba','haba','A')");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra) values ('papa','papa','A')");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra) values ('tapa','tapa','A')");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra) values ('pala','pala','A')");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra) values ('mama','mamá','A')");
+        //letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra) values ('taza','taza','A')");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra) values ('lata','lata','A')");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra) values ('rama','rama','A')");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra) values ('mapa','mapa','A')");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra) values ('gata','gata','A')");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra) values ('cama','cama','A')");
+
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('ballena','ballena','B-V', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('balon','balon','B-V', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('bata','bata','B-V', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('barco','barco','B-V', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('bicho','bicho','B-V', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('bigote','bigote','B-V', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('bote','bote','B-V', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('botella','botella','B-V', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('buho','buho','B-V', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('vaca','vaca','B-V', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('vaso','vaso','B-V', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('vela','vela','B-V', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('vino','vino','B-V', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('violin','violin','B-V', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('bebida','bebida','B-V', 0, 1)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('llave','llave','B-V', 0, 1)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('lobo','lobo','B-V', 0, 1)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('uvas','uvas','B-V', 0, 1)");
+
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('silla','silla','C-S-Z', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('sandia','sandia','C-S-Z', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('sol','sol','C-S-Z', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('zapato','zapato','C-S-Z', 1, 0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('cesto','cesto','C-S-Z', 1, 0)");
+
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('oso','oso','C-S-Z', 0, 1)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('queso','queso','C-S-Z', 0, 1)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('pozo','pozo','C-S-Z', 0, 1)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('rosa','rosa','C-S-Z', 0, 1)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('beso','beso','C-S-Z', 0, 1)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('mesa','mesa','C-S-Z', 0, 1)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media) values ('vaso','vaso','C-S-Z', 0, 1)");
+
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media, final, inversa) values ('guantes','guantes','C-S-Z', 0, 0,1,0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media, final, inversa) values ('pez','pez','C-S-Z', 0, 0,1,0)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media, final, inversa) values ('medias','medias','C-S-Z', 0, 0,1,0)");
+
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media, final, inversa) values ('asno','asno','C-S-Z', 0, 0,0,1)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media, final, inversa) values ('vestido','vestido','C-S-Z', 0, 0,0,1)");
+        letrasCadenaFonematicaRegistros.add("insert into cadena (imagen, palabra, letra, inicial, media, final, inversa) values ('pez','pez','C-S-Z', 0, 0,0,1)");
+
 
     }
 
@@ -147,6 +205,7 @@ public class Conexion extends SQLiteOpenHelper {
         db.execSQL(tbPuntuacionPreguntas);
         db.execSQL(tbCuentos);
         db.execSQL(tbPreguntasCuento);
+        db.execSQL(tbCadenaFonematica);
 
         //insercion de palabras actImagenes
 
@@ -174,6 +233,10 @@ public class Conexion extends SQLiteOpenHelper {
         //insercion de preguntas
         db.execSQL(actPreg1);
         db.execSQL(actPreg2);... */
+
+        for (int i=0; i<letrasCadenaFonematicaRegistros.size();i++){
+            db.execSQL(letrasCadenaFonematicaRegistros.get(i));
+        }
 
     }
 

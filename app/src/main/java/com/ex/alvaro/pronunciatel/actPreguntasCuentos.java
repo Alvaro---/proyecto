@@ -45,11 +45,9 @@ public class actPreguntasCuentos extends Activity {
         setContentView(R.layout.layout_preguntas_cuentos);
         cargarElmenteosInterfaz();
 
-
         con=getApplicationContext();
         sReconocerVoz= new Intent(con, reconocerVoz.class);
         cargarPregunta();
-        
         
         pregunta.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,7 +135,6 @@ public class actPreguntasCuentos extends Activity {
     private void cargarPregunta() {
         if (numPreg<3) {
             actCuentos.cuento.cargarPreguntas();
-            System.out.println(actCuentos.cuento.getPreguntas().size());
             pregunta.setText(actCuentos.cuento.getPreguntas().get(numPreg).getPregunta());
 
             int aleatorio=(int)Math.random()*4;

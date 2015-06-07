@@ -140,12 +140,6 @@ public class actImagenes extends Activity {
                             actMenuPrincipal.speak(REPETIR_PRONUNCIACION);
                             repeticiones=repeticiones+1;
                             dialogoEscucha.dismiss();
-                           /* espera.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btnPronunciar.callOnClick();
-                                }
-                            },3500);*/
                         }
                         stopService(sReconocerVoz);
                     }

@@ -13,4 +13,6 @@ public interface repoPuntuacion {
     ArrayList<Puntuacion> cargarPuntuaciones(int idUsuario);
 
     void guardarPuntuacionPregunta(float puntuacion, String actividad, int idPregunta, String palabraPronunciad, String hora, String fecha);
+
+    void actualizaPuntosCadenaFonematica(float punt, String letraActual, String posicion);
 }

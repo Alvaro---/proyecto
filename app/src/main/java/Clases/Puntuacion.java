@@ -116,4 +116,8 @@ public class Puntuacion {
         repository.guardarPuntuacionPregunta(puntuacion,actividad,idPregunta,palabraPronunciad, Hora(), Fecha());
         return puntuacion;
     }
+
+    public void guardarAcumuladoCadenaFonematica(float punt, String letraActual, String posicion) {
+        repository.actualizaPuntosCadenaFonematica(punt, letraActual, posicion);
+    }
 }

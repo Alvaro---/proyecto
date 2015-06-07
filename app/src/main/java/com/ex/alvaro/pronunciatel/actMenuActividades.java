@@ -94,7 +94,7 @@ public class actMenuActividades extends Activity{
             @Override
             public void onClick(View v) {
                 actMenuPrincipal.speak(OPUESTOS);
-                Intent actividad =new Intent(actMenuActividades.this, actOpuestos.class);
+                Intent actividad =new Intent(actMenuActividades.this, actMenuCadenaFonematica.class);
                 startActivity(actividad);
             }
         });

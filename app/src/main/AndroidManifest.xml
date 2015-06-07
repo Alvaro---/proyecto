@@ -31,6 +31,10 @@
         <activity android:name=".actOpuestos"></activity>
         <activity android:name=".actPreguntasCuentos"></activity>
 
+        <activity android:name=".actMenuCadenaFonematica"></activity>
+        <activity android:name=".actSleccionaLetra"></activity>
+        <activity android:name=".actmostrarImagenCadena"></activity>
+
         <service android:name=".leerTTS" />
         <service android:name=".reconocerVoz"/>
     </application>
