@@ -5,7 +5,7 @@
     <dimen name="margenTituloMenuPrincipalSuperior">210dp</dimen>
 
     //menu actividades
-    <dimen name="margenTopTituloMenuActividades">120dp</dimen>
+    <dimen name="margenTopTituloMenuActividades">110dp</dimen>
     <dimen name="margenButonTituloMenuActividades">100dp</dimen>
     <dimen name="margenSuperiorBotonAtrasMenuActividades">100dp</dimen>
 

@@ -51,9 +51,13 @@ public class actMenuCadenaFonematica extends Activity implements View.OnClickLis
                 startActivity(seleccionaTipo);
                 break;
             case R.id.btnDiptongos:
+                seleccionaTipo.putExtra("select", 4);
+                startActivity(seleccionaTipo);
                 break;
             case R.id.btnTodas:
-               break;
+                seleccionaTipo.putExtra("select", 5);
+                startActivity(seleccionaTipo);
+                break;
         }
     }
 }

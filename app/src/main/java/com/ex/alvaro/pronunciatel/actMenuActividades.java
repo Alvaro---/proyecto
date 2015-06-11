@@ -86,6 +86,7 @@ public class actMenuActividades extends Activity{
             public void onClick(View v) {
                 actMenuPrincipal.speak(CUENTOS);
                 Intent actividad =new Intent(actMenuActividades.this, actCuentos.class);
+                actividad.putExtra("leer",true);
                 startActivity(actividad);
             }
         });

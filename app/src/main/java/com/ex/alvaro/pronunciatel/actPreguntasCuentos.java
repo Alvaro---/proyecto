@@ -39,6 +39,8 @@ public class actPreguntasCuentos extends Activity {
     String CORRECTO="Correcto";
     String REPETIR_PRONUNCIACION="Creo que no entendi bien. Puedes repetirlo?";
 
+    int aleatorio;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +83,8 @@ public class actPreguntasCuentos extends Activity {
                 abrirDialogoContestar();
             }
         });
+
+        speak(pregunta.getText().toString());
         
     }
 
@@ -127,7 +131,10 @@ public class actPreguntasCuentos extends Activity {
     }
 
     private void mostrarResultado(String correcto) {
-
+        if (correcto.equals(CORRECTO)){
+            numPreg++;
+            cargarPregunta();
+        }
 
     }
 
@@ -136,8 +143,9 @@ public class actPreguntasCuentos extends Activity {
         if (numPreg<3) {
             actCuentos.cuento.cargarPreguntas();
             pregunta.setText(actCuentos.cuento.getPreguntas().get(numPreg).getPregunta());
-
-            int aleatorio=(int)Math.random()*4;
+            speak(pregunta.getText().toString());
+            aleatorio=(int)(Math.random()*4);
+            System.out.println(aleatorio);
             if (aleatorio==0) {
                 respuesta1.setText(actCuentos.cuento.getPreguntas().get(numPreg).getRespuesta());
                 respuesta2.setText(actCuentos.cuento.getPreguntas().get(numPreg).getRespuesta2());
@@ -155,6 +163,9 @@ public class actPreguntasCuentos extends Activity {
                 respuesta2.setText(actCuentos.cuento.getPreguntas().get(numPreg).getRespuesta2());
                 respuesta1.setText(actCuentos.cuento.getPreguntas().get(numPreg).getRespuesta3());
             }
+        }else{
+            Intent intent=new Intent(actPreguntasCuentos.this, actCuentos.class);
+            startActivity(intent);
         }
 
     }

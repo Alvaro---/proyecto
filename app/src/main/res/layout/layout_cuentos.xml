@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#aaaaaaaa">
+    android:background="@drawable/fondocuentos">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical" android:layout_width="match_parent"
@@ -17,22 +17,29 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/tituloCuentos"
-                android:textSize="@dimen/tamLabelsTitulo"
+                android:textSize="35dp"
                 android:gravity="center"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:alpha="0.8"
+                android:background="#ffaaa8ff" />
 
             <TextView
+                android:alpha="0.8"
+                android:id="@+id/lblInstruccionCuentos"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/instruccionCuentos"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textSize="25dp"
+                android:background="#ffaaa8ff" />
 
         </LinearLayout>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical" android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/hojacuento">
+            android:layout_height="wrap_content"
+            android:background="@drawable/hojacuento"
+            android:alpha="0.6">
 
             <TextView
                 android:id="@+id/lblCuento"
@@ -60,13 +67,30 @@
                 android:id="@+id/btnEstoyListo"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/EstoyListoCuentos"/>
+                android:textSize="20dp"
+                android:text="@string/EstoyListoCuentos"
+                android:textStyle="bold"
+                android:drawableBottom="@drawable/ok"
+                android:alpha="0.7"
+                android:background="#ffa7ff73"
+                android:layout_marginBottom="5dp"/>
 
             <Button
+                android:textStyle="bold"
                 android:id="@+id/btnOtroCuento"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/otroCuento"/>
+                android:textSize="20dp"
+                android:text="@string/otroCuento"
+                android:drawableBottom="@drawable/recargar"
+                android:alpha="0.7"
+                android:background="#ffa7ff73" />
+
+           <ImageButton
+               android:id="@+id/btnAtrasCuentos"
+               android:layout_width="200dp"
+               android:layout_height="130dp"
+               android:background="@drawable/gatoatras"/>
 
         </LinearLayout>
     </LinearLayout>

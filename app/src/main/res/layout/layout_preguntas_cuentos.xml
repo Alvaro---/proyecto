@@ -1,44 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/fondopreguntascuentos">
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:weightSum="1">
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/TituloPreguntasCuentos"
         android:gravity="center"
-        android:textSize="@dimen/tamLabelsTitulo"/>
+        android:textSize="35dp"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold"
+        android:background="#ff8a83ff"
+        android:padding="10dp"
+        android:alpha="0.8"/>
 
 
     <TextView
         android:id="@+id/lblPreguntaCuento"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Pregunta"
+        android:textSize="30dp"
+        android:background="#ff5956ff"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"
+        android:alpha="0.9"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:drawableLeft="@drawable/fleccha1"
+            android:alpha="0.7"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="25dp"
             android:text="New RadioButton"
-            android:id="@+id/respuesta1" />
+            android:textStyle="bold"
+            android:id="@+id/respuesta1"
+            android:background="#ffffb334"
+            android:padding="10dp"
+            android:layout_marginBottom="5dp"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:alpha="0.7"
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/fleccha1"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="New RadioButton"
-            android:id="@+id/respuesta2" />
+            android:layout_gravity="center"
+            android:textSize="25dp"
+            android:id="@+id/respuesta2"
+            android:background="#ff42ff20"
+            android:padding="10dp"
+            android:layout_marginBottom="5dp"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:alpha="0.7"
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/fleccha1"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="New RadioButton"
-            android:id="@+id/respuesta3" />
+            android:layout_gravity="center"
+            android:textSize="25dp"
+            android:id="@+id/respuesta3"
+            android:background="#ffe1a3ff"
+            android:padding="10dp"
+            android:layout_marginBottom="5dp"/>
 
     <Button
+        android:layout_marginTop="50dp"
         android:id="@+id/btnContestarPreguntaCuento"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:drawableBottom="@drawable/boca"
+        android:textSize="20dp"
+        android:textStyle="bold"
         android:text="@string/contestar"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Otra Pregunta"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Vovler al menu de Actividades"/>
+
 
 
 </LinearLayout>
+</ScrollView>

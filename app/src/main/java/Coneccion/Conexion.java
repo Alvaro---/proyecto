@@ -123,12 +123,33 @@ public class Conexion extends SQLiteOpenHelper {
         cuentos.add("INSERT INTO cuentos (id, cuento) values ( 1, " +
                 "'Un pajarito estaba encerrado en su jaula de oro. \n Llegó el invierno y los niños jugaron con la nieve.\nLlegó la primavera y los niños jugaron con las flores.\nLlegó el verano y el pajarito se escapó para jugar con el mar')");
 
+        cuentos.add("INSERT INTO cuentos (id, cuento) values ( 2, " +
+                "'La gallina vive en un gallinero.\nTiene 3 pollitos. Cuando tienen frio,\nlos pollitos se meten debajo de sus alas.')");
+
+        cuentos.add("INSERT INTO cuentos (id, cuento) values ( 3 , " +
+                "'El perro de Juan se llama Tobi.  \n Cuando Juan vuelve del cole le saluda con la pata. \nSus amigos juegan con Tobi a la pelota.')");
+
+        cuentos.add("INSERT INTO cuentos (id, cuento) values ( 4 , " +
+                "'Un águila y una zorra se hicieron amigas, \ny para reflejar su amistad decidieron vivir juntas. \nEl águila se construyó un nido en lo alto \nde un risco, y la zorra una madriguera al pie del risco. \nAsí Vivían Felices y contentas.')");
+
 
         //PREGUNTAS CUENTOS
         preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('¿Cómo estaba el pajarito en su jaula?','Encerrado','Alegre','Corriendo','1')");
         preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('¿Cuándo jugaban los niños a tirarse hojas?','Otoño','Primavera','Invierno','1')");
         preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('El pajarito se escapó para jugar con el mar en:','Verano','Otoño','Invierno','1')");
 
+        preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('¿Dónde Vive la gallina?','En el gallinero','En su casa','En el corral','2')");
+        preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('¿Cuántos pollitos tiene?','Tres','Dos','Ninguno','2')");
+        preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('Los pollitos se meten bajo sus alas cuando tienen ','Frio','Calor','Nunca','2')");
+
+        preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('¿Cómo se llama el perro de Juan?','Tobi','Pepe','Tito','3')");
+        preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('¿Qué hace cuando Juan vuelve del cole?','Saluda','Muerde','Ladra','3')");
+        preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('¿A que juegan con Tobi los amigos de Juan?','A la pelota','A correr','A saltar','3')");
+
+
+        preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('¿Cómo decidieron vivir el águila y la zorra?','Juntas','Lejos','Separadas','4')");
+        preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('El águila hizo un nido en lo alto de un ','Risco','árbol','Pino','4')");
+        preguntaCuentoRegistros.add("INSERT INTO preguntascuento (pregunta, respuesta1, respuesta2, respuesta3, idcuento) VALUES ('La zorra construyó una','Madriguera','Casa','Hoguera','4')");
         /*
         private String tbPreguntasCuento="CREATE TABLE preguntascuento(id INTEGER PRIMARY KEY AUTOINCREMENT, pregunta TEXT, respuesta1 TEXT, respuesta2 TEXT, respuesta3 TEXT, idcuento INTEGER FOREIGN KEY REFERENCES tbcuentos(id)";
 

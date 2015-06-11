@@ -110,5 +110,10 @@ public class sqlitePuntuacion implements repoPuntuacion {
         }
     }
 
+    @Override
+    public void actualizaPuntosCadenaFonematica(float punt, String letraActual, String posicion) {
+
+    }
+
 
 }

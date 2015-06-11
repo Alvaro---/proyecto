@@ -80,7 +80,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         style="@style/buttonAct"
-        android:text="@string/actividadAntonimos"
+        android:text="Practicar palabras por letras"
         android:id="@+id/btnActAntonimos"
         android:layout_marginTop="@dimen/margenSupButon"/>
 

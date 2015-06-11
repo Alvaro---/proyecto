@@ -1,44 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fondocadfonematica">
 
 
     <TextView
+        android:alpha="0.9"
         android:layout_width="fill_parent"
+        android:textSize="30dp"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Selecciona la opción que quieras practicar"/>
+        android:text="Selecciona la opción que quieras practicar"
+        android:layout_marginBottom="35dp"
+        android:background="#ffbaff9e" />
 
     <Button
+        android:drawableLeft="@drawable/vocales"
+        android:alpha="0.7"
+        android:layout_marginBottom="10dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnVocales"
-        android:text="Vocales"/>
+        android:text="Vocales"
+        android:background="#ff94ff67" />
 
     <Button
+        android:alpha="0.7"
+        android:layout_marginBottom="10dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnConsonantes"
-        android:text="Consonantes"/>
+        android:text="Consonantes"
+        android:drawableLeft="@drawable/consonantes"
+        android:background="#ff94ff67" />
 
     <Button
+        android:alpha="0.7"
+        android:layout_marginBottom="10dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnCombinadas"
-        android:text="Silabas combinadas"/>
+        android:text="Silabas combinadas"
+        android:background="#ff94ff67" />
 
     <Button
+        android:alpha="0.7"
+        android:layout_marginBottom="10dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnDiptongos"
-        android:text="Diptongos"/>
+        android:text="Diptongos"
+        android:background="#ff94ff67" />
 
     <Button
+        android:alpha="0.7"
+        android:layout_marginBottom="10dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnTodas"
-        android:text="Todas"/>
+        android:text="Todas"
+        android:background="#ff94ff67" />
 
 
 
