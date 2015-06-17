@@ -41,6 +41,7 @@
         android:background="#ff94ff67" />
 
     <Button
+        android:drawableLeft="@drawable/comb"
         android:alpha="0.7"
         android:layout_marginBottom="10dp"
         android:textSize="20dp"
@@ -52,6 +53,7 @@
         android:background="#ff94ff67" />
 
     <Button
+        android:drawableLeft="@drawable/diptongos"
         android:alpha="0.7"
         android:layout_marginBottom="10dp"
         android:textSize="20dp"
@@ -62,16 +64,7 @@
         android:text="Diptongos"
         android:background="#ff94ff67" />
 
-    <Button
-        android:alpha="0.7"
-        android:layout_marginBottom="10dp"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnTodas"
-        android:text="Todas"
-        android:background="#ff94ff67" />
+
 
 
 

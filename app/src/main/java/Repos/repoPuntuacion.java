@@ -15,4 +15,6 @@ public interface repoPuntuacion {
     void guardarPuntuacionPregunta(float puntuacion, String actividad, int idPregunta, String palabraPronunciad, String hora, String fecha);
 
     void actualizaPuntosCadenaFonematica(float punt, String letraActual, String posicion);
+
+    void guardarPuntosCuento(int puntosCorreccion, int idCuento, String palabraPronunciad, String fecha, String hora);
 }

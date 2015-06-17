@@ -32,7 +32,6 @@ public class actMenuCadenaFonematica extends Activity implements View.OnClickLis
         btnConsonantes=(Button)findViewById(R.id.btnConsonantes);
         btnCombinadas=(Button)findViewById(R.id.btnCombinadas);
         btnDiptongos=(Button)findViewById(R.id.btnDiptongos);
-        btnTodas=(Button)findViewById(R.id.btnTodas);
     }
 
     @Override
@@ -52,10 +51,6 @@ public class actMenuCadenaFonematica extends Activity implements View.OnClickLis
                 break;
             case R.id.btnDiptongos:
                 seleccionaTipo.putExtra("select", 4);
-                startActivity(seleccionaTipo);
-                break;
-            case R.id.btnTodas:
-                seleccionaTipo.putExtra("select", 5);
                 startActivity(seleccionaTipo);
                 break;
         }

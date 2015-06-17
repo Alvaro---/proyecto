@@ -11,7 +11,7 @@
     <string name="lblBienvenido">Hola </string>
     <string name="lblQueDeseaHacer">¿Que quieres hacer?</string>
 
-    <string name="lblIngreseSuNombreHablado">Presiona el boton e ingresa tu nombre</string>
+    <string name="lblIngreseSuNombreHablado">Presiona el botón e ingresa tu nombre</string>
 
     <string name="lblIngresaTunombreEscrito">Escribe tu nombre en el cuadro</string>
 
@@ -57,7 +57,7 @@
     <string name="escuchar">Escuchar</string>
 
     <string name="tituloCuentos">Cuentos</string>
-    <string name="instruccionCuentos">Escucha o lee el cuento en el cuadro, y pulsa el boton para ver que recuerdas</string>
+    <string name="instruccionCuentos">Escucha o lee el cuento en el cuadro, y pulsa el botón para ver que recuerdas</string>
 
     <string name="tituloOpuestos">Palabras Opuestas</string>
     <string name="instruccionOpuestas">¿Puedes pronunciar la palabra opuesta de la que se muestra?</string>

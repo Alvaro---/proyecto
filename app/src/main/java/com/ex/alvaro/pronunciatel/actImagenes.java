@@ -185,17 +185,16 @@ public class actImagenes extends Activity {
         if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo())) {
             palabraPronunciad = actividadImagenes.getPalabraObjetivo();
             puntosPorReconocimiento = 0;
-            System.out.println("primere");
             return true;
         }else {
-            valorLev = distanciaPalabras.computeLevenshteinDistance(palabrasReconocidas.get(i).toString(), actividadImagenes.getPalabraObjetivo());
+            valorLev = distanciaPalabras.LevenshteinDistance(palabrasReconocidas.get(i).toString(), actividadImagenes.getPalabraObjetivo());
             palabracercana=actividadImagenes.getPalabraObjetivo();
             if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo2())) {
                 palabraPronunciad = actividadImagenes.getPalabraObjetivo2();
                 puntosPorReconocimiento = 1;
                 return true;
             } else {
-                valor = distanciaPalabras.computeLevenshteinDistance(palabrasReconocidas.get(i).toString(), actividadImagenes.getPalabraObjetivo2());
+                valor = distanciaPalabras.LevenshteinDistance(palabrasReconocidas.get(i).toString(), actividadImagenes.getPalabraObjetivo2());
                 if (valor<valorLev){ valorLev=valor;
                 palabracercana=actividadImagenes.getPalabraObjetivo2();}
                 if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo3())) {
@@ -203,7 +202,7 @@ public class actImagenes extends Activity {
                     puntosPorReconocimiento = 2;
                     return true;
                 } else {
-                    valor = distanciaPalabras.computeLevenshteinDistance(palabrasReconocidas.get(i).toString(), actividadImagenes.getPalabraObjetivo3());
+                    valor = distanciaPalabras.LevenshteinDistance(palabrasReconocidas.get(i).toString(), actividadImagenes.getPalabraObjetivo3());
                     if (valor<valorLev){ valorLev=valor;
                         palabracercana=actividadImagenes.getPalabraObjetivo3();}
                     if (palabrasReconocidas.get(i).toString().equals(actividadImagenes.getPalabraObjetivo4())) {
@@ -211,7 +210,7 @@ public class actImagenes extends Activity {
                         puntosPorReconocimiento = 3;
                         return true;
                     } else {
-                        valor = distanciaPalabras.computeLevenshteinDistance(palabrasReconocidas.get(i).toString(), actividadImagenes.getPalabraObjetivo4());
+                        valor = distanciaPalabras.LevenshteinDistance(palabrasReconocidas.get(i).toString(), actividadImagenes.getPalabraObjetivo4());
                         if (valor<valorLev){ valorLev=valor;
                             palabracercana=actividadImagenes.getPalabraObjetivo3();}
                         if (valorLev==1||valorLev==0||valorLev==3){

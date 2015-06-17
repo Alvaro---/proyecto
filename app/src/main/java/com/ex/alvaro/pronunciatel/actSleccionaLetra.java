@@ -62,11 +62,10 @@ public class actSleccionaLetra extends Activity implements AdapterView.OnItemCli
         consonantes.add("L");
         consonantes.add("M");
         consonantes.add("N");
-        consonantes.add("NN");
+        consonantes.add("Ñ");
         consonantes.add("P");
         consonantes.add("R");
         consonantes.add("RR");
-        consonantes.add("C-S-Z");
         consonantes.add("T");
         consonantes.add("X");
         consonantes.add("Y");
@@ -88,7 +87,7 @@ public class actSleccionaLetra extends Activity implements AdapterView.OnItemCli
     }
 
     private void cargarLissta(ArrayList<String> letras) {
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, letras);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, R.layout.listacentrada, letras);
         lista.setAdapter(adapter);
     }
 
@@ -104,7 +103,7 @@ public class actSleccionaLetra extends Activity implements AdapterView.OnItemCli
 
                 //MOSTRAR LISTA POSIBLES POSICIONES
                 ListView modeList = new ListView(this);
-                ArrayAdapter<String> modeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, posiciones);
+                ArrayAdapter<String> modeAdapter = new ArrayAdapter<String>(this, R.layout.listacentrada, android.R.id.text1, posiciones);
                 modeList.setAdapter(modeAdapter);
 
                 modeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

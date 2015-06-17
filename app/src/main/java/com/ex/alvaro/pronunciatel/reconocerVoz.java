@@ -50,7 +50,7 @@ public class reconocerVoz extends Service implements RecognitionListener {
         }
 
 
-        Toast.makeText(getApplicationContext(),"onCreate",Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"Habla",Toast.LENGTH_SHORT).show();
         super.onCreate();
     }
 

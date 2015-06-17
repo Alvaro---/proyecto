@@ -21,6 +21,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import config.distanciaPalabras;
+
 /**
  * Created by Alvaro on 13/04/2015.
  */
@@ -130,15 +132,27 @@ public class actPintar extends Activity implements View.OnClickListener{
 
     private void buscarColorResultado() {
         boolean encontrado=false;
-        for (int i=0;i<palabrasReconocidas.size();i++)
-            for (int j=0;j<colores.size();j++)
+        int valorLev=1000;
+        String colorPosible="";
+        int distancia=0;
+        for (int i=0;i<palabrasReconocidas.size();i++) {
+            for (int j = 0; j < colores.size(); j++) {
+                distancia = distanciaPalabras.LevenshteinDistance(palabrasReconocidas.get(i), colores.get(j));
                 if (palabrasReconocidas.get(i).toString().equals(colores.get(j))) {
-                    encontrado=true;
+                    encontrado = true;
                     desplegarPosiblesColores(colores.get(j));
                     break;
+                }else if (i==0 && valorLev>distancia){
+                    valorLev=distancia;
+                    colorPosible=colores.get(j);
                 }
-        if (!encontrado)
-            actMenuPrincipal.speak(NO_ENCONTRADO);
+            }
+        }
+
+        if (!encontrado){
+            desplegarPosiblesColores(colorPosible);
+            //actMenuPrincipal.speak(NO_ENCONTRADO);
+        }
     }
 
     private void desplegarPosiblesColores(String color) {

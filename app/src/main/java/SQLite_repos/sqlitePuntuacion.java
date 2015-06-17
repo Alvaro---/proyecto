@@ -115,5 +115,29 @@ public class sqlitePuntuacion implements repoPuntuacion {
 
     }
 
+    @Override
+    public void guardarPuntosCuento(int puntosCorreccion, int idCuento, String palabraPronunciad, String fecha, String hora) {
+        Conexion conex=Conexion.getInstance(actMenuPrincipal.con);
+        SQLiteDatabase db= conex.getWritableDatabase();
+
+        String fechaActual=fecha;
+        String horaActual=hora;
+
+        ContentValues registro=new ContentValues();
+        registro.put("fecha",fechaActual);
+        registro.put("hora", horaActual);
+        registro.put("idUsuario", actMenuPrincipal.usuario.getId());
+        registro.put("hora", horaActual);
+        registro.put("idPregunta", idCuento);
+        registro.put("palabraPronunciada", palabraPronunciad);
+        registro.put("puntuacion", puntosCorreccion);
+        Log.v("SQLITE:", "GUARDADO");
+        try {
+            db.insertOrThrow("puntuacionPreguntas", null, registro);
+        }catch (SQLiteConstraintException e){
+            Log.v("SQLITE:", "NO GUARDO - error puntuaciones");
+        }
+    }
+
 
 }

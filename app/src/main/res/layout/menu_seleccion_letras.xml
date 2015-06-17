@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fondomar"
+    android:alpha="0.7">
 
-
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Selecciona la el sonido que quieres practicar"
+        android:textSize="30dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:background="#ff9ea9ff"
+        android:alpha="0.8"/>
     <ListView
+        android:padding="10dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/ListaSeleccionLetras" />
+        android:id="@+id/ListaSeleccionLetras"
+        android:alpha="0.7"
+        android:background="#fffffef2" />
 </LinearLayout>

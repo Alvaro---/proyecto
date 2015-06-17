@@ -15,6 +15,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import Clases.PreguntasCuento;
+import Clases.Puntuacion;
+import config.distanciaPalabras;
 
 /**
  * Created by Alvaro on 21/05/2015.
@@ -37,9 +39,12 @@ public class actPreguntasCuentos extends Activity {
 
     String INCORRECTO="Creo que esa no es la respuesta correcta. Intenta de nuevo";
     String CORRECTO="Correcto";
-    String REPETIR_PRONUNCIACION="Creo que no entendi bien. Puedes repetirlo?";
+    String REPETIR_PRONUNCIACION="No entendi bien. Puedes repetirlo?";
 
     int aleatorio;
+
+    int puntosCorrecto;
+    String palabraPronunciada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,11 +108,25 @@ public class actPreguntasCuentos extends Activity {
                 Log.d("PREGUNTAS CUENTOS:", text);
                 boolean c = false;
                 if (text != "") {
+                    int valorHas1=10;
                     //calificar pronunciacion
                     for (int i = 0; i < palabrasReconocidas.size(); i++) {
                         if (palabrasReconocidas.get(i).toUpperCase().equals(actCuentos.cuento.getPreguntas().get(numPreg).getRespuesta().toUpperCase())) {
                             c = true;
+                            puntosCorrecto=i;
+                            palabraPronunciada=actCuentos.cuento.getPreguntas().get(numPreg).getRespuesta().toUpperCase()+" - "+palabrasReconocidas.get(i).toUpperCase();
                             break;
+                        }else{
+                            int valorComprado= distanciaPalabras.LevenshteinDistance(palabrasReconocidas.get(i).toUpperCase(),actCuentos.cuento.getPreguntas().get(numPreg).getRespuesta().toUpperCase());
+                            if (valorComprado<5){
+                                if (valorHas1>valorComprado) {
+                                    valorHas1 = valorComprado;
+                                    puntosCorrecto=valorHas1*5;
+                                    palabraPronunciada=actCuentos.cuento.getPreguntas().get(numPreg).getRespuesta().toUpperCase()+" - "+palabrasReconocidas.get(i).toUpperCase();
+                                }
+                                c=true;
+                            }
+
                         }
                     }
                     dialogoEscucha.dismiss();
@@ -115,7 +134,7 @@ public class actPreguntasCuentos extends Activity {
                         actMenuPrincipal.speak(INCORRECTO);
                         repeticiones = repeticiones + 2;
                     } else {
-                        actMenuPrincipal.speak(CORRECTO + ". ");
+                        actMenuPrincipal.speak(CORRECTO + ".");
                         mostrarResultado(CORRECTO);
                     }
                     c = false;
@@ -134,8 +153,10 @@ public class actPreguntasCuentos extends Activity {
         if (correcto.equals(CORRECTO)){
             numPreg++;
             cargarPregunta();
-        }
+            Puntuacion p=new Puntuacion();
+            float puntos=p.guardarPuntosCuentos(puntosCorrecto, actCuentos.cuento.getId(), palabraPronunciada);
 
+        }
     }
 
 
@@ -143,7 +164,10 @@ public class actPreguntasCuentos extends Activity {
         if (numPreg<3) {
             actCuentos.cuento.cargarPreguntas();
             pregunta.setText(actCuentos.cuento.getPreguntas().get(numPreg).getPregunta());
-            speak(pregunta.getText().toString());
+            if (numPreg>0)
+                speak("Correcto. "+pregunta.getText().toString());
+            else
+                speak(pregunta.getText().toString());
             aleatorio=(int)(Math.random()*4);
             System.out.println(aleatorio);
             if (aleatorio==0) {

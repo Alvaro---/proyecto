@@ -117,6 +117,12 @@ public class Puntuacion {
         return puntuacion;
     }
 
+    public float guardarPuntosCuentos(int puntosCorreccion, int idCuento, String palabra ){
+        float puntos=100-puntosCorreccion;
+        repository.guardarPuntosCuento((int)puntos, idCuento, palabra, Fecha(), Hora());
+        return puntos;
+    }
+
     public void guardarAcumuladoCadenaFonematica(float punt, String letraActual, String posicion) {
         repository.actualizaPuntosCadenaFonematica(punt, letraActual, posicion);
     }
